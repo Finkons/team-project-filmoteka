@@ -1,7 +1,10 @@
+import { getPopularMovies } from "./getMovies"
+
 const refs = {
     galleryContainer: document.querySelector (".card-collection"),
 }
 
+let page = 1;
 
 function renderMoviesList(movies) {
     const markup = movies.map(movie => {
