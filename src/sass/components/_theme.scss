@@ -1,6 +1,13 @@
 .dark{
   background:radial-gradient(ellipse at bottom, #7b7f8a 40%, #000000 100%);
-  color:var(--background-footer)
+  @extend %animation;
+  --primary-text-color: #f8f1f1;
+  --title-text-color: #FF6B08;
+  --secondary-title-color: #ffffff;
+  --footer-text-color: #545454;
+  --background-footer: #f7f7f7;
+  --background-body: #ffffff;
+  color: #f7f7f7;
 }
 .theme-btn {
   position: absolute;
@@ -12,9 +19,7 @@
   padding: 10px;
   border-radius: 15px;
   transition: 0.3s;
-  &:hover{
-    background: #f7f5f5;
-  }
+  @extend %animation;
   img{
     width: 32px;
   }
