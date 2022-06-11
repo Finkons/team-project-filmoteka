@@ -9,3 +9,9 @@ export async function getPopularMovies(page) {
     const response = await axios.get(url);
     return response.data;
 };
+
+export async function getMoviesById(id) {
+    const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=uk`;
+    const response = await axios.get(url);
+    return response;
+}

@@ -1,15 +1,20 @@
 .dark{
+  // background-color: rgb(104, 142, 224);
   background:radial-gradient(ellipse at bottom, #7b7f8a 40%, #000000 100%);
-  @extend %animation;
   --primary-text-color: #f8f1f1;
   --title-text-color: #FF6B08;
   --secondary-title-color: #ffffff;
-  --footer-text-color: #545454;
-  --background-footer: #f7f7f7;
+  --footer-text-color: #dcdceb;
+  --background-footer: #252525;
   --background-body: #ffffff;
   color: #f7f7f7;
 }
+body.dark{
+  transition: 350ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .theme-btn {
+  transition: 0.4s;
   position: absolute;
   top: 20px;
   left: 20px;
@@ -19,8 +24,4 @@
   padding: 10px;
   border-radius: 15px;
   transition: 0.3s;
-  @extend %animation;
-  img{
-    width: 32px;
-  }
 }

@@ -1,5 +1,19 @@
 const themeBtn = document.getElementById('toggle-theme-btn')
-const themeImg = document.getElementById('toggle-theme-img')
+const themeImg = document.querySelector('.theme-img')
+
+
+
+function setDarkTheme() {
+  document.body.classList.add('dark')
+  themeImg.src = "./images/theme/sun.png"
+  localStorage.theme = 'dark'
+}
+
+function setLightTheme() {
+  document.body.classList.remove('dark')
+  themeImg.src = "./images/theme/moon.png"
+  localStorage.theme = 'light'
+}
 
 themeBtn.addEventListener('click', () => {
   if (document.body.classList.contains('dark')) {
@@ -8,18 +22,6 @@ themeBtn.addEventListener('click', () => {
     setDarkTheme()
   }
 })
-
-function setDarkTheme() {
-  document.body.classList.add('dark')
-  themeImg.src = 'images/theme/sunnysunshine.ico'
-  localStorage.theme = 'dark'
-}
-
-function setLightTheme() {
-  document.body.classList.remove('dark')
-  themeImg.src = 'images/theme/moon.png'
-  localStorage.theme = 'light'
-}
 
 if (localStorage.theme === 'dark') {
   setDarkTheme()
