@@ -84,7 +84,7 @@ module.exports=require("./lib/axios");
 },{"axios":"dZBD"}],"Yclo":[function(require,module,exports) {
 "use strict";var e=require("./getMovies");const t={galleryContainer:document.querySelector(".cards-collection")};let a=1;function n(e){const a=e.map(e=>`<li class="cards-collection-item">\n        <div class="card-poster">\n  <img src="https://image.tmdb.org/t/p/w500${e.poster_path}" alt="${e.title}" loading="lazy" height = "450 px" />\n  <span class="card-vote-average">${e.vote_average}</span>\n    </div>\n  <div class="card-info">\n    <p class="card-title">${e.title}</p>\n    <p class="card-text"></p>\n  </div>\n</li>`).join("");t.galleryContainer.insertAdjacentHTML("beforeend",a)}function s(){(0,e.getPopularMovies)(a).then(e=>{console.log(e.results),n(e.results)})}s();
 },{"./getMovies":"fzjf"}],"qwQt":[function(require,module,exports) {
-const e=document.getElementById("toggle-theme-btn"),t=document.querySelector(".theme-img");function o(){document.body.classList.add("dark"),t.src="./images/theme/sun.png",localStorage.theme="dark"}function c(){document.body.classList.remove("dark"),t.src="./images/theme/moon.png",localStorage.theme="light"}e.addEventListener("click",()=>{document.body.classList.contains("dark")?c():o()}),"dark"===localStorage.theme&&o(),console.log(t.src);
+const t=document.getElementById("toggle-theme-btn");function e(){document.body.classList.add("dark"),t.textContent="🔆",localStorage.theme="dark"}function o(){document.body.classList.remove("dark"),t.textContent="🌙",localStorage.theme="light"}t.addEventListener("click",()=>{document.body.classList.contains("dark")?o():e()}),"dark"===localStorage.theme&&e();
 },{}],"FqPt":[function(require,module,exports) {
 var define;
 var global = arguments[3];
@@ -100,4 +100,4 @@ var e,t=arguments[3];!function(t,i){"function"==typeof e&&e.amd?e([],function(){
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/getMovies"),require("./js/insertMovies"),require("./js/theme"),require("./js/loader"),require("./js/team"),require("./js/modal-team");
 },{"./sass/main.scss":"clu1","./js/getMovies":"fzjf","./js/insertMovies":"Yclo","./js/theme":"qwQt","./js/loader":"vQE2","./js/team":"ZxpD","./js/modal-team":"O9Th"}]},{},["Focm"], null)
-//# sourceMappingURL=/team-project-filmoteka/src.82d8c092.js.map
+//# sourceMappingURL=/team-project-filmoteka/src.26a2755e.js.map
