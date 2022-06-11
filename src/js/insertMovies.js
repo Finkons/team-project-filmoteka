@@ -1,13 +1,14 @@
-import { getPopularMovies } from "./getMovies"
+import { getPopularMovies } from './getMovies';
 
 const refs = {
-    galleryContainer: document.querySelector (".cards-collection"),
-}
+  galleryContainer: document.querySelector('.cards-collection'),
+};
 
 let page = 1;
 
 function renderMoviesList(movies) {
-    const markup = movies.map(movie => {
+  const markup = movies
+    .map(movie => {
       return `<li class="cards-collection-item">
         <div class="card-poster">
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" loading="lazy" height = "450 px" />
@@ -17,16 +18,17 @@ function renderMoviesList(movies) {
     <p class="card-title">${movie.title}</p>
     <p class="card-text"></p>
   </div>
-</li>`
-    }).join("");
-    refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
-};
+</li>`;
+    })
+    .join('');
+  refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
+}
 
 function insertPopularMovies() {
-    getPopularMovies(page).then(data => {
-        console.log(data.results);
-        renderMoviesList(data.results);
-    })
+  getPopularMovies(page).then(data => {
+    console.log(data.results);
+    renderMoviesList(data.results);
+  });
 }
 
 insertPopularMovies();

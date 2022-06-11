@@ -1,0 +1,17 @@
+{{#each this}}
+  <li class='cards-collection-item'>
+    <div class='card-poster'>
+      <img
+        src='https://image.tmdb.org/t/p/w500{{poster_path}}'
+        alt='{{title}}'
+        loading='lazy'
+        height='450 px'
+      />
+      <span class='card-vote-average'>{{vote_average}}</span>
+    </div>
+    <div class='card-info'>
+      <p class='card-title'>{{title}}</p>
+      <p class='card-text'></p>
+    </div>
+  </li>
+{{/each}}
