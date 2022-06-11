@@ -1,0 +1,21 @@
+.dark{
+  background:radial-gradient(ellipse at bottom, #7b7f8a 40%, #000000 100%);
+  color:var(--background-footer)
+}
+.theme-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 15px;
+  transition: 0.3s;
+  &:hover{
+    background: #f7f5f5;
+  }
+  img{
+    width: 32px;
+  }
+}

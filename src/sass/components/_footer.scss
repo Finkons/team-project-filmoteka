@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #f7f7f7;
+  background: var(--background-footer);
   height: 77px;
   max-width: 1024px;
   &__box {
@@ -20,7 +20,7 @@
     }
     display: flex;
     text-align: center;
-    color: #545454;
+    color: var(--footer-text-color);
     font-size: 16px;
     font-weight: 400;
     font-style: normal;
