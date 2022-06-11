@@ -1,17 +1,17 @@
 const themeBtn = document.getElementById('toggle-theme-btn')
-const themeImg = document.querySelector('.theme-img')
+
 
 
 
 function setDarkTheme() {
   document.body.classList.add('dark')
-  themeImg.src = "./images/theme/sun.png"
+  themeBtn.textContent = "🔆"
   localStorage.theme = 'dark'
 }
 
 function setLightTheme() {
   document.body.classList.remove('dark')
-  themeImg.src = "./images/theme/moon.png"
+  themeBtn.textContent = "🌙"
   localStorage.theme = 'light'
 }
 
@@ -26,4 +26,5 @@ themeBtn.addEventListener('click', () => {
 if (localStorage.theme === 'dark') {
   setDarkTheme()
 }
-console.log(themeImg.src);
+
+
