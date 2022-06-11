@@ -1,28 +1,23 @@
 import { getPopularMovies } from "./getMovies"
 
 const refs = {
-    galleryContainer: document.querySelector (".card-collection"),
+    galleryContainer: document.querySelector (".cards-collection"),
 }
 
 let page = 1;
 
 function renderMoviesList(movies) {
     const markup = movies.map(movie => {
-        return `<div class="movie-card">
-  <img src="https://www.themoviedb.org/t/p/w220_and_h330_face${movie.poster_path}" alt="poster" loading="lazy" height = "200 px" />
-  <div class="info">
-    <p class="info-item">
-      <b>Title</b> ${movie.title}
-    </p>
-    <p class="info-item">
-      <b>Average</b> ${movie.vote_average}
-    </p>
-
-    <p class="info-item">
-      <b>Id</b> ${movie.id}
-    </p>
+      return `<li class="cards-collection-item">
+        <div class="card-poster">
+  <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" loading="lazy" height = "450 px" />
+  <span class="card-vote-average">${movie.vote_average}</span>
+    </div>
+  <div class="card-info">
+    <p class="card-title">${movie.title}</p>
+    <p class="card-text"></p>
   </div>
-</div>`
+</li>`
     }).join("");
     refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
 };
