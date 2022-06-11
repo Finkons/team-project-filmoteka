@@ -82,10 +82,10 @@ module.exports=require("./lib/axios");
 },{"./lib/axios":"nUiQ"}],"fzjf":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.getPopularMovies=i;const e=require("axios"),t="250f014fd6a936550e378176122f5d39",a="https://api.themoviedb.org/3";let o=1;async function i(o){const i=`${a}/trending/movie/day?api_key=${t}&language=uk&page=${o}`;return(await e.get(i)).data}
 },{"axios":"dZBD"}],"Yclo":[function(require,module,exports) {
-"use strict";var e=require("./getMovies");const n={galleryContainer:document.querySelector(".card-collection")};let t=1;function i(e){const t=e.map(e=>`<div class="movie-card">\n  <img src="https://www.themoviedb.org/t/p/w220_and_h330_face${e.poster_path}" alt="poster" loading="lazy" height = "200 px" />\n  <div class="info">\n    <p class="info-item">\n      <b>Title</b> ${e.title}\n    </p>\n    <p class="info-item">\n      <b>Average</b> ${e.vote_average}\n    </p>\n\n    <p class="info-item">\n      <b>Id</b> ${e.id}\n    </p>\n  </div>\n</div>`).join("");n.galleryContainer.insertAdjacentHTML("beforeend",t)}function o(){(0,e.getPopularMovies)(t).then(e=>{console.log(e.results),i(e.results)})}o();
+"use strict";var e=require("./getMovies");const t={galleryContainer:document.querySelector(".cards-collection")};let a=1;function n(e){const a=e.map(e=>`<li class="cards-collection-item">\n        <div class="card-poster">\n  <img src="https://image.tmdb.org/t/p/w500${e.poster_path}" alt="${e.title}" loading="lazy" height = "450 px" />\n  <span class="card-vote-average">${e.vote_average}</span>\n    </div>\n  <div class="card-info">\n    <p class="card-title">${e.title}</p>\n    <p class="card-text"></p>\n  </div>\n</li>`).join("");t.galleryContainer.insertAdjacentHTML("beforeend",a)}function s(){(0,e.getPopularMovies)(a).then(e=>{console.log(e.results),n(e.results)})}s();
 },{"./getMovies":"fzjf"}],"E4FI":[function(require,module,exports) {
 const e=document.getElementById("toggle-theme-btn");e.addEventListener("click",()=>{document.body.classList.toggle("dark")});
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/getMovies"),require("./js/insertMovies"),require("./JS/theme");
 },{"./sass/main.scss":"clu1","./js/getMovies":"fzjf","./js/insertMovies":"Yclo","./JS/theme":"E4FI"}]},{},["Focm"], null)
-//# sourceMappingURL=/team-project-filmoteka/src.cf1a83cc.js.map
+//# sourceMappingURL=/team-project-filmoteka/src.c9fab60b.js.map
