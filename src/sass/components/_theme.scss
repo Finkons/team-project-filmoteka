@@ -1,8 +1,8 @@
-.dark{
+.dark {
   background-color: rgb(82, 84, 87);
   // background:radial-gradient(ellipse at bottom, #7b7f8a 40%, #000000 100%);
   --primary-text-color: #f8f1f1;
-  --title-text-color: #FF6B08;
+  --title-text-color: #ff6b08;
   --secondary-title-color: #ffffff;
   --footer-text-color: #dcdceb;
   --background-footer: #252525;
@@ -12,7 +12,7 @@
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
-   transition: 350ms;
+  transition: 350ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .theme-btn {
@@ -26,29 +26,60 @@ body {
   border-radius: 15px;
   transition: 0.3s;
   &:hover {
-    transform:  rotate(-20deg) scale(1.25);
+    transform: rotate(-20deg) scale(1.25);
     -webkit-transform: rotate(-20deg) scale(1.15);
+  }
+  @media screen and (min-width: 320px) {
+    font-size: 20px;
+    top: 150px;
+    right: 5%;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 30px;
+    top: 150px;
+    right: 5%;
+  }
+  @media screen and (min-width: 1024px) {
+    top: 150px;
+    right: 5%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 150px;
+    right: 18%;
+  }
+  @media screen and (min-width: 2560px) {
+    top: 150px;
+    right: 32%;
+  }
 }
- @media screen and (min-width: 320px) {
-      font-size: 20px;
-      top: 150px;
-      right: 5%;
-    }
-    @media screen and (min-width: 768px) {
-      font-size: 30px;
-       top: 150px;
-      right: 5%;
-    }
-    @media screen and (min-width: 1024px) {
-       top: 150px;
-      right: 5%;
-    }
-    @media screen and (min-width: 1440px) {
-       top: 150px;
-      right: 18%;
-    }
-     @media screen and (min-width: 2560px) {
-       top: 150px;
-      right: 32%;
-    }
+
+.selected-lenguage {
+  background-color: transparent;
+  color: currentColor;
+  font-size: 23px;
+  text-decoration: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+   position: absolute;
+  @media screen and (min-width: 320px) {
+    top: 165px;
+    right: 10%;
+  }
+  @media screen and (min-width: 768px) {
+    top: 165px;
+    right: 10%;
+  }
+  @media screen and (min-width: 1024px) {
+    top: 165px;
+    right: 10%;
+  }
+  @media screen and (min-width: 1440px) {
+    top: 165px;
+    right: 22%;
+  }
+  @media screen and (min-width: 2560px) {
+    top: 165px;
+    right: 35%;
+  }
 }
