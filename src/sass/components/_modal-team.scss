@@ -69,11 +69,13 @@
   border-radius: 10px;
 }
 .front {
-  background-color: #fff;
+  background-color: #FF6B08;
   
 }
 .back {
-  background-color: #BDBDBD;
+  padding: 20px;
+  stroke: #fdd4b87c;
+  background-color: #818181;
   transform: rotateY(180deg);
 }
 .clicked .front {transform: rotateY(360deg);}
@@ -91,7 +93,7 @@
 .modal {
   position: relative;
   padding: 40px;
-  background-color: #8c3939;
+  background-color: #545454;;
   box-shadow: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   transition: transform 550ms cubic-bezier(0.4, 0, 0.2, 1);
