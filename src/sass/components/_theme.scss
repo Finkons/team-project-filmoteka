@@ -31,20 +31,24 @@ body {
 }
  @media screen and (min-width: 320px) {
       font-size: 20px;
-      top: 12vh;
-      right: 50%;
-      transform: translateX(120px);
+      top: 150px;
+      right: 5%;
     }
     @media screen and (min-width: 768px) {
       font-size: 30px;
-       top: 10vh;
-      right: 50%;
-      transform: translateX(350px);
+       top: 150px;
+      right: 5%;
     }
     @media screen and (min-width: 1024px) {
-      top: 10vh;
-      right: 50%;
-      transform: translateX(470px);
+       top: 150px;
+      right: 5%;
     }
-    
+    @media screen and (min-width: 1440px) {
+       top: 150px;
+      right: 18%;
+    }
+     @media screen and (min-width: 2560px) {
+       top: 150px;
+      right: 32%;
+    }
 }
