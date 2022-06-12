@@ -1,0 +1,311 @@
+// сброс установок браузера по-умолчанию.
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-b;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+// стили header
+
+.header {
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header/header-mob@1.jpg);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: top;
+    width: 100%;
+    height: 230px;
+    padding-bottom: 97px;
+    padding-top: 46px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+// dpr2 и 280px+
+@media (min-device-pixel-ratio: 2) and (min-width: 320px),
+(min-resolution: 192dpi) and (min-width: 320px),
+(min-resolution: 2dppx) and (min-width: 320px) {
+    .header {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header/header-mob@2x.jpg);
+    }
+}
+
+.header__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.logo__list {
+    display: flex;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+.picture {
+    width: 100%;
+}
+
+.logo__icon {
+    animation-name: icon;
+    animation-timing-function: ease;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    stroke: #818181;
+    margin-right: 10px;
+}
+
+.logo__list:hover>.logo__icon {
+    stroke: #ff6b08;
+    transition: stroke 300ms;
+}
+
+.logo_item:not(:last-child) {
+    margin-right: 10px;
+}
+
+.logotext__link {
+    display: none;
+}
+
+.navigation__list {
+    display: flex;
+    margin-bottom: 30px;
+    padding-left: 0;
+    align-items: center;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 40px;
+    }
+}
+
+.navigation__item:not(:last-child) {
+    margin-right: 39px;
+}
+
+.navigation__button {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background-color: inherit;
+
+    &:hover {
+        color: darkgrey;
+        transition: color 300ms;
+    }
+}
+
+.header__input {
+    width: 100%;
+    background-color: inherit;
+    border-bottom: 1px solid white;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    padding-bottom: 4px;
+    padding-left: 1px;
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+        border-bottom: 1px solid #ff6b08;
+        transition: border-bottom 500ms;
+    }
+}
+
+.header__input::placeholder {
+    font-size: 14px;
+    line-height: 16px;
+    padding-left: 1px;
+
+    color: #fff;
+}
+
+.input__wrapper {
+    width: 280px;
+    height: 20px;
+    display: block;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.input__icon {
+    position: absolute;
+    top: 4px;
+    right: 0px;
+}
+
+.navigation__button.current {
+    position: relative;
+}
+
+.navigation__button.current::after {
+    position: absolute;
+    top: 13px;
+    display: block;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: #ff6b08;
+    margin-bottom: 20px;
+}
+
+// tablet
+@media screen and (min-width: 768px) {
+    .header {
+        padding-top: 41px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header/header-tab@1.jpg);
+
+    }
+
+    // dpr2 и 768px
+    @media (min-device-pixel-ratio: 2) and (min-width: 768px),
+    (min-resolution: 192dpi) and (min-width: 768px),
+    (min-resolution: 2dppx) and (min-width: 768px) {
+        .header {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                url(../images/header/header-tab@2x.jpg);
+
+        }
+    }
+
+    .logotext__link {
+        display: block;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: #ffffff;
+    }
+
+    .input__wrapper {
+        width: 336px;
+        margin: 0 auto;
+    }
+
+    .logo__list {
+        padding: 0;
+        height: 35px;
+        align-items: center;
+    }
+
+    .navigation__list {
+        padding-top: 9px;
+        margin-bottom: 41px;
+        padding-left: 0;
+        align-items: center;
+    }
+}
+
+//DESKTOP
+@media screen and (min-width: 1024px) {
+    .header {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header/header-desk@1.jpg);
+    }
+
+    .logotext__link {
+        display: block;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: #ffffff;
+    }
+
+    .input__wrapper {
+        width: 336px;
+        margin: 0 auto;
+    }
+
+    // dpr2 и 1024px
+    @media (min-device-pixel-ratio: 2) and (min-width: 1024px),
+    (min-resolution: 192dpi) and (min-width: 1024px),
+    (min-resolution: 2dppx) and (min-width: 1024px) {
+        .header {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+                url(../images/header/header-desk@2x.jpg);
+        }
+    }
+}
+
+input {
+    display: block;
+}
