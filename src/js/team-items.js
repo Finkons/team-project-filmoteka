@@ -1,5 +1,12 @@
 export const teamItems = [
   {
+    photo: '',
+    name: 'Наша',
+    family: 'команда',
+    description: '',
+    rol: '',
+  },
+  {
     photo: '../images/photo-team/photo-4vh.jpg',
     name: 'Vadym',
     family: 'Hudyma',
