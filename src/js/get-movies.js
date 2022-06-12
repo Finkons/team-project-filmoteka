@@ -15,3 +15,9 @@ export async function getMoviesById(id) {
     const response = await axios.get(url);
     return response;
 }
+
+export async function getMoviesByName(page,searchQuery) {
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&language=uk&include_adult=false&page=${page}`;
+    const response = await axios.get(url);
+    return response.data;
+};
