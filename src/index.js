@@ -8,3 +8,4 @@ import './js/modal-team';
 // import './js/modal-items';
 import './js/movie-genres'
 import './js/search-movies';
+import './js/refs'
