@@ -31,16 +31,20 @@ body {
 }
  @media screen and (min-width: 320px) {
       font-size: 20px;
-      top: 23vh;
-      right: 5vw;
+      top: 12vh;
+      right: 50%;
+      transform: translateX(120px);
     }
     @media screen and (min-width: 768px) {
       font-size: 30px;
-       top: 20vh;
-      right: 14vw;
+       top: 10vh;
+      right: 50%;
+      transform: translateX(350px);
     }
     @media screen and (min-width: 1024px) {
-      top: 20vh;
-      right: 14vw;
+      top: 10vh;
+      right: 50%;
+      transform: translateX(470px);
     }
+    
 }
