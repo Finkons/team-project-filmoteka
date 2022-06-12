@@ -7,9 +7,9 @@ export const teamItems = [
     rol: '',
   },
   {
-    photo: '4vh.jpg',
+    photo: 'images/team/photo-4vh.jpg',
     name: 'Вадим',
-    family: 'Hudyma',
+    family: 'Гудіма',
     description: 'Підключені номери сторінок (пагінація) на головній сторінці',
     rol: 'Developer',
   },
@@ -21,17 +21,17 @@ export const teamItems = [
     rol: 'Developer',
   },
   {
-    photo: 'images/team/photo-6vk.jpg',
+    photo: 'images/team/photo-6ek.jpg',
     name: 'Єлла',
     family: 'Кадряєва',
-    description: 'Модальне вікно Наша комада',
+    description: 'Реалізоване модальне вікно "Наша комада"',
     rol: 'Developer',
   },
   {
     photo: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
     name: 'Катерина',
     family: 'Клімчук',
-    description: 'Відображення у картці фільму жанру/жанрів. За натисканням на кнопку "My Library" відображається бібліотека користувача. Зверстано контейнер сторінки "My Library".  ',
+    description: 'Реалізоване відображення у картці фільму жанрів, бібліотека користувача "My Library". Зверстано контейнер сторінки "My Library".  ',
     rol: 'Developer',
   },
   {
@@ -52,7 +52,7 @@ export const teamItems = [
     photo: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
     name: 'Оксана',
     family: 'Олефіренко',
-    description: 'Реалізувано підвантаження популярних фільмів на головну (першу) сторінку. Зверстано шаблон картки одного фільму',
+    description: 'Реалізовано підвантаження популярних фільмів на головну (першу) сторінку. Зверстано шаблон картки одного фільму',
     rol: 'Developer',
   },
   {
@@ -66,14 +66,14 @@ export const teamItems = [
     photo: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
     name: 'Кирило',
     family: 'Мінаєв',
-    description: 'За натисканням на кнопку "Watched" показуються переглянуті фільми користувача. За натисканням на кнопку "Queue" показуються фільми додані в чергу користувача',
+    description: 'За натисканням на кнопку "Watched"/"Queue" показуються переглянуті фільми користувача/ фільми додані в чергу користувача',
     rol: 'Developer',
   },
   {
     photo: 'https://ca.slack-edge.com/T02UC9J08RZ-U030J8LHJBS-17674dec2a10-512',
     name: 'Андрій',
     family: 'Михайленко',
-    description: 'Верстка футера (мобілка, планшет, десктоп) (однаковий для двох сторінок). Dark and Light theme switcher.',
+    description: 'Реалізована верстка футера (мобілка, планшет, десктоп). Dark and Light theme switcher.',
     rol: 'Developer, TeamLead',
   },
 ];
