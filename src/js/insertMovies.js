@@ -1,4 +1,5 @@
 import { getPopularMovies } from './getMovies';
+import { getMovieGenre } from './movieGenre';
 
 const refs = {
   galleryContainer: document.querySelector('.cards-collection'),
@@ -9,6 +10,8 @@ let page = 1;
 function renderMoviesList(movies) {
   const markup = movies
     .map(movie => {
+    const genreList = getMovieGenre(...movie.genre_ids)
+
       return `<li class="cards-collection-item">
         <div class="card-poster">
   <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" loading="lazy" height = "450 px" />
@@ -16,6 +19,8 @@ function renderMoviesList(movies) {
     </div>
   <div class="card-info">
     <p class="card-title">${movie.title}</p>
+    <p class="card-title">${genreList}</p>
+
     <p class="card-text"></p>
   </div>
 </li>`;
