@@ -1,5 +1,5 @@
-import { getPopularMovies } from './getMovies';
-import { getMovieGenre } from './movieGenre';
+import { getPopularMovies } from './get-movies';
+import { getMovieGenre } from './movie-genres';
 
 const refs = {
   galleryContainer: document.querySelector('.cards-collection'),
@@ -10,7 +10,7 @@ let page = 1;
 function renderMoviesList(movies) {
   const markup = movies
     .map(movie => {
-    const genreList = getMovieGenre(...movie.genre_ids)
+      const genreList = getMovieGenre(...movie.genre_ids)
 
       return `<li class="cards-collection-item">
         <div class="card-poster">
