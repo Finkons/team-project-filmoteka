@@ -16,30 +16,30 @@ function handleCardClick(event) {
   let filmId = event.target.closest('li').dataset.id;
 
   putFetchToMarkup(filmId).then(markup => {
+    // const modalBtnWatched = document.getElementsByClassName('modal-btn-watched');
+    // console.dir(modalBtnWatched);
     instance = basicLightbox.create(markup, {
       onShow: () => {
-        // const modalBtnWatched = document.querySelector('.modal-btn-watched');
-        // console.log(modalBtnWatched);
-        // console.log(filmId);
         // modalBtnWatched.addEventListener('click', addFilmToWatched(filmId))
         // modalBtnQueued.addEventListener('click', addFilmToQueued(filmId))
-        window.addEventListener('keydown', onEskPress);
+        window.addEventListener('keydown', onEscPress);
       },
       onClose: () => {
         // modalBtnWatched.removeEventListener('click', addFilmToWatched(filmId))
         // modalBtnQueued.removeEventListener('click', addFilmToQueued(filmId))
-        window.removeEventListener('keydown', onEskPress);
+        window.removeEventListener('keydown', onEscPress);
       },
     });
 
     instance.show();
 
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
+    //треба вимикати eventListener якось, треба придумати як
   });
 }
 
-function addListenerForCloseBtn(ref) {
-  ref.addEventListener('click', event => {
+function addListenerForCloseBtn(closeBtn) {
+  closeBtn.addEventListener('click', event => {
     instance.close();
   });
 }
@@ -118,7 +118,7 @@ function makeFilmModalMarkup(result) {
   return filmModal;
 }
 
-function onEskPress(event) {
+function onEscPress(event) {
   const ESC_KEY = 'Escape';
 
   if (event.code === ESC_KEY) {
