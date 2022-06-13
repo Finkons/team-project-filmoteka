@@ -1,9 +1,7 @@
 import { getPopularMovies } from './get-movies';
 import { getMovieGenre } from './movie-genres';
-
-const refs = {
-  galleryContainer: document.querySelector('.cards-collection'),
-};
+import moviesListPatern from '../templates/list-of-movies.hbs';
+import refs from './refs';
 
 let page = 1;
 
@@ -26,13 +24,16 @@ function renderMoviesList(movies) {
 </li>`;
     })
     .join('');
+  const markup = moviesListPatern(movies)
+    // .map(movie => {
+    //   const genreList = getMovieGenre(...movie.genre_ids)
+    // })
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
 function insertPopularMovies() {
   getPopularMovies(page).then(data => {
-    console.log(data.results);
-    renderMoviesList(data.results);
+  renderMoviesList(data.results);
   });
 }
 
