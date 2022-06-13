@@ -1,4 +1,6 @@
 import refs from './refs';
+import { ifMyLibraryOpen } from './render-local-movies';
+import { watchedRender } from './render-local-movies';
 
 refs.myLibraryBtn.addEventListener('click', switchCurrentLibrary);
 refs.homeBtn.addEventListener('click', switchCurrentHome);
@@ -12,6 +14,10 @@ function switchCurrentLibrary(e) {
   refs.libraryBtnsList.classList.remove('is-hidden-header');
 
   ifMyLibraryOpen();
+
+  refs.filterForm.classList.add('is-hidden-header');
+
+  watchedRender();
 }
 
 function switchCurrentHome(e) {
@@ -21,11 +27,4 @@ function switchCurrentHome(e) {
 
   refs.searchForm.classList.remove('is-hidden-header');
   refs.libraryBtnsList.classList.add('is-hidden-header');
-}
-
-function ifMyLibraryOpen() {
-  if (refs.myLibraryBtn.classList.contains('current')) {
-    // console.log('hi');
-    refs.galleryContainer.innerHTML = '';
-  }
 }
