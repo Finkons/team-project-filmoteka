@@ -14,7 +14,7 @@ export const teamItems = [
     rol: 'Developer',
   },
   {
-    photo: 'images/team/photo-5vk.jpg',
+    photo: 'https://ca.slack-edge.com/T02UC9J08RZ-U02UL6K4J3Z-52ebdd25a53d-512',
     name: 'Влад',
     family: 'Koблай',
     description: 'За натисканням на кнопку "Add to watched" фільм додається до переглянутих фільмів поточного користувача (local-storage)',
@@ -42,7 +42,7 @@ export const teamItems = [
     rol: 'Developer, Scram master',
   },
   {
-    photo: 'images/team/photo-2sk.jpg',
+    photo: 'https://files.slack.com/files-pri/T02UC9J08RZ-F03JZ134HRD/pfoto-2.jpg',
     name: 'Сергій',
     family: 'Кіслинський',
     description: ' Реалізоване відкриття модалки з динамічно підставленою інформацією про фільм та закриття її за натисканням на клавішу ESC.',
@@ -63,8 +63,8 @@ export const teamItems = [
     rol: 'Developer',
   },
   {
-    photo: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
-    name: 'Кирило',
+    photo: 'https://ca.slack-edge.com/T02UC9J08RZ-U02V13GTDA6-3181b03cc28c-512',
+    name: 'Кіріл',
     family: 'Мінаєв',
     description: 'За натисканням на кнопку "Watched"/"Queue" показуються переглянуті фільми користувача/ фільми додані в чергу користувача',
     rol: 'Developer',
