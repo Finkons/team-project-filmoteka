@@ -1,5 +1,5 @@
 {{#each this}}
-  <li class='cards-collection-item'>
+  <li class='cards-collection-item' data-id={{id}}>
     <div class='card-poster'>
       <img
         src='https://image.tmdb.org/t/p/w500{{poster_path}}'
@@ -11,7 +11,7 @@
     </div>
     <div class='card-info'>
       <p class='card-title'>{{title}}</p>
-      <p class='card-text'></p>
+      <p class='card-text'>{{genreList}}</p>
     </div>
   </li>
 {{/each}}
