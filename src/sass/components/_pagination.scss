@@ -2,9 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    &:after, &:before {
-        box-sizing: border-box;
-    }
 }
 
 .pagination {
@@ -19,7 +16,7 @@
 .pagination-button {
     margin: 0 2px;
     padding: 8px;
-    background-color: #fff;
+    background-color: transparent;
     border: none;
     color: #000;
     cursor: pointer;
@@ -47,6 +44,7 @@
 .dots {
     margin-right: 16px;
     margin-left: 16px;
+    color: #000;
 }
 
 .pagination--current {
