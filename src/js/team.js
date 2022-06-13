@@ -1,18 +1,25 @@
 import { teamItems } from './team-items.js';
 import teamCardTpl from '../templates/templet-team.hbs';
-// export default refs; дописать всем refs
-const teamContainer = document.querySelector('.team-container');
+import refs from './refs';
+
 createTeamMarkup(teamItems);
 function createTeamMarkup(teamItems) {
   const markup = teamCardTpl(teamItems);
  
-  return teamContainer.innerHTML = markup;
+  return refs.teamContainer.innerHTML = markup;
 }
 
 [...document.querySelectorAll('.team__item')].forEach((teamItem) => {
 	teamItem.addEventListener("click", () => teamItem.classList.toggle("clicked"));
 });
 
+refs.openModalBtn.addEventListener('click', toggleModalTeam);
+refs.closeModalBtn.addEventListener('click', toggleModalTeam);
+
+function toggleModalTeam() {
+  document.body.classList.toggle('modal-open');
+  refs.modal.classList.toggle('is-hidden');
+}
 
 
 
