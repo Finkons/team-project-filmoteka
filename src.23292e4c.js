@@ -136,4 +136,4 @@ var e,n=arguments[3];!function(t){"object"==typeof exports&&"undefined"!=typeof 
 },{"./movie-genres":"QkJj"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/get-movies"),require("./js/insert-movies"),require("./js/theme"),require("./js/loader"),require("./js/team"),require("./js/modal-team"),require("./js/movie-genres"),require("./js/search-movies"),require("./js/refs"),require("./js/pagination"),require("./js/film-modal"),require("./js/home-library-btns"),require("./js/render-local-movies"),require("./js/search-form");
 },{"./sass/main.scss":"clu1","./js/get-movies":"Inr0","./js/insert-movies":"R2tR","./js/theme":"qwQt","./js/loader":"vQE2","./js/team":"ZxpD","./js/modal-team":"O9Th","./js/movie-genres":"QkJj","./js/search-movies":"Tvyp","./js/refs":"VyiV","./js/pagination":"o8lo","./js/film-modal":"v6dG","./js/home-library-btns":"waxZ","./js/render-local-movies":"o5xV","./js/search-form":"EuJe"}]},{},["Focm"], null)
-//# sourceMappingURL=/team-project-filmoteka/src.f61a1ee4.js.map
+//# sourceMappingURL=/team-project-filmoteka/src.23292e4c.js.map
