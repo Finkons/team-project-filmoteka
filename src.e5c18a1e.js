@@ -126,4 +126,4 @@ const e={pagination:document.querySelector(".pagination"),page1:document.querySe
 },{"./movie-genres":"QkJj"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/get-movies"),require("./js/insert-movies"),require("./js/theme"),require("./js/loader"),require("./js/team"),require("./js/modal-team"),require("./js/movie-genres"),require("./js/search-movies"),require("./js/refs"),require("./js/pagination"),require("./js/home-library-btns"),require("./js/render-local-movies"),require("./js/search-form");
 },{"./sass/main.scss":"clu1","./js/get-movies":"Inr0","./js/insert-movies":"R2tR","./js/theme":"qwQt","./js/loader":"vQE2","./js/team":"ZxpD","./js/modal-team":"O9Th","./js/movie-genres":"QkJj","./js/search-movies":"Tvyp","./js/refs":"VyiV","./js/pagination":"o8lo","./js/home-library-btns":"waxZ","./js/render-local-movies":"o5xV","./js/search-form":"EuJe"}]},{},["Focm"], null)
-//# sourceMappingURL=/team-project-filmoteka/src.a82d502b.js.map
+//# sourceMappingURL=/team-project-filmoteka/src.e5c18a1e.js.map
