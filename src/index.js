@@ -12,3 +12,4 @@ import './js/refs';
 import './js/pagination';
 import './js/home-library-btns';
 import './js/render-local-movies';
+import './JS/search-form';
