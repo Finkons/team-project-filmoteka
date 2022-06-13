@@ -27,11 +27,12 @@
     margin-left: 5px;
   }
   &__heart {
+     font-style: normal;
     display: flex;
     align-items: center;
-    color: red;
+    color: #FF6B08;
     margin: 0 6px;
-    font-size: 13px;
+    font-size: 19px;
   }
 }
 
