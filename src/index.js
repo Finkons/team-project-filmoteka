@@ -10,6 +10,7 @@ import './js/movie-genres';
 import './js/search-movies';
 import './js/refs';
 import './js/pagination';
+import './js/film-modal';
 import './js/home-library-btns';
 import './js/render-local-movies';
 import './js/search-form';
