@@ -93,6 +93,20 @@ body {
   padding-top: 46px;
   margin: 0 auto;
   position: relative;
+
+  &__my-library {
+    background-repeat: no-repeat;
+    background-color: black;
+    background-position: bottom;
+    width: 100%;
+    height: 230px;
+    padding-bottom: 97px;
+    padding-top: 46px;
+    margin: 0 auto;
+    position: relative;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header__my-library/my-lib-header-mob@1.jpg);
+}
 }
 
 // dpr2 и 280px+
@@ -102,6 +116,13 @@ body {
   .header {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-mob@2x.jpg);
+
+      &__my-library {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header__my-library/my-lib-header-mob@2x.jpg);
+    }
+
+
   }
 }
 
@@ -182,6 +203,8 @@ body {
   padding-bottom: 4px;
   padding-left: 1px;
   color: #ffffff;
+  border: none;
+outline: none;
 
   &:hover,
   &:focus {
@@ -233,6 +256,13 @@ body {
     padding-top: 41px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-tab@1.jpg);
+
+      &__my-library {
+        padding-top: 41px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header__my-library/my-lib-header-tab@1.jpg);
+    }
+      
   }
 
   // dpr2 и 768px
@@ -242,6 +272,12 @@ body {
     .header {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/header/header-tab@2x.jpg);
+
+        &__my-library {
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+              url(../images/header__my-library/my-lib-header-mob@2x.jpg);
+      }
+        
     }
   }
 
@@ -250,7 +286,14 @@ body {
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
-    color: #ffffff;
+    color: #ffffff; 
+    cursor: pointer;
+    transition: color 500ms linear;
+
+    &:hover,
+    &:focus {
+      color:#ff6b08;
+    }
   }
 
   .input__wrapper {
@@ -276,6 +319,12 @@ body {
   .header {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-desk@1.jpg);
+
+      &__my-library {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+            url(../images/header__my-library/my-lib-header-desk@1.jpg);
+    }
+
   }
 
   .logotext__link {
@@ -298,6 +347,13 @@ body {
     .header {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/header/header-desk@2x.jpg);
+
+        &__my-library {
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+              url(../images/header__my-library/my-lib-header-desk@2x.jpg);
+          background-position: top;
+      }
+
     }
   }
 }
