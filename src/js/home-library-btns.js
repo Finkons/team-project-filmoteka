@@ -25,7 +25,7 @@ function switchCurrentHome(e) {
 
 function ifMyLibraryOpen() {
   if (refs.myLibraryBtn.classList.contains('current')) {
-    console.log('hi');
+    // console.log('hi');
     refs.galleryContainer.innerHTML = '';
   }
 }
