@@ -10,6 +10,8 @@ function switchCurrentLibrary(e) {
 
   refs.searchForm.classList.add('is-hidden-header');
   refs.libraryBtnsList.classList.remove('is-hidden-header');
+
+  ifMyLibraryOpen();
 }
 
 function switchCurrentHome(e) {
@@ -19,4 +21,11 @@ function switchCurrentHome(e) {
 
   refs.searchForm.classList.remove('is-hidden-header');
   refs.libraryBtnsList.classList.add('is-hidden-header');
+}
+
+function ifMyLibraryOpen() {
+  if (refs.myLibraryBtn.classList.contains('current')) {
+    // console.log('hi');
+    refs.galleryContainer.innerHTML = '';
+  }
 }
