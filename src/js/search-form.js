@@ -116,7 +116,7 @@ searchGenreEl.addEventListener('click', (event) => {
         })
             .then(({ results }) => {
 
-                console.log(results);
+                // console.log(results);
 
                 const film = results.map(({ id, title, poster_path, overview, release_date, genre_ids, vote_average }) => {
                     const dateOf = release_date.slice(0, 4);

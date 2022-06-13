@@ -5,7 +5,6 @@ const teamContainer = document.querySelector('.team-container');
 createTeamMarkup(teamItems);
 function createTeamMarkup(teamItems) {
   const markup = teamCardTpl(teamItems);
-  console.log(markup);
   return teamContainer.innerHTML = markup;
 }
 
