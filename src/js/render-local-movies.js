@@ -1,6 +1,6 @@
 import refs from './refs';
 
-console.log(refs);
+// console.log(refs);
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);

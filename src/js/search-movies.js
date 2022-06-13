@@ -29,7 +29,7 @@ async function onMovieSearch(event) {
     try {
         const fetchedQuery = await getMoviesByName(page, searchQuery);
         clearGallery();
-        console.log(fetchedQuery.results);
+        // console.log(fetchedQuery.results);
         if (fetchedQuery.results.length === 0) {
             onSearchFailure();
         };
