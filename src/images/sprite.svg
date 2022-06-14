@@ -11,19 +11,31 @@
         </symbol>
     </defs>
 </svg>
-<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<defs>
-<symbol id="icon-arrow-left" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M25.334 16h-18.668M16 25.334l-9.334-9.334 9.334-9.334"></path>
-</symbol>
-<symbol id="icon-arrow-right" viewBox="0 0 32 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
-</symbol>
-<symbol id="icon-close" viewBox="0 0 32 32">
-<path d="M23.734 10.304l-1.504-1.504-5.963 5.962-5.962-5.962-1.504 1.504 5.962 5.962-5.962 5.963 1.504 1.504 5.962-5.963 5.963 5.963 1.504-1.504-5.963-5.963 5.963-5.962z"></path>
-</symbol>
-<symbol id="icon-equalizer" viewBox="0 0 32 32">
-<path d="M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z"></path>
-</symbol>
-</defs>
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1"
+    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <symbol id="icon-arrow-left" viewBox="0 0 32 32">
+            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666"
+                d="M25.334 16h-18.668M16 25.334l-9.334-9.334 9.334-9.334"></path>
+        </symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 32 32">
+            <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666"
+                d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
+        </symbol>
+        <symbol id="icon-close" viewBox="0 0 32 32">
+            <path
+                d="M23.734 10.304l-1.504-1.504-5.963 5.962-5.962-5.962-1.504 1.504 5.962 5.962-5.962 5.963 1.504 1.504 5.962-5.963 5.963 5.963 1.504-1.504-5.963-5.963 5.963-5.962z">
+            </path>
+        </symbol>
+        <symbol id="icon-equalizer" viewBox="0 0 32 32">
+            <path
+                d="M14 4v-0.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18zM8 8v-4h4v4h-4zM26 13.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-18v4h18v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h6v-4h-6v-0.5zM20 18v-4h4v4h-4zM14 23.5c0-0.825-0.675-1.5-1.5-1.5h-5c-0.825 0-1.5 0.675-1.5 1.5v0.5h-6v4h6v0.5c0 0.825 0.675 1.5 1.5 1.5h5c0.825 0 1.5-0.675 1.5-1.5v-0.5h18v-4h-18v-0.5zM8 28v-4h4v4h-4z">
+            </path>
+        </symbol>
+        <symbol id="chevron-up" viewBox="0 0 28 32">
+            <path
+                d="M15.061 8.158l12.146 12.146c0.586 0.586 0.586 1.536 0 2.121l-1.417 1.417c-0.585 0.585-1.533 0.586-2.119 0.003l-9.672-9.626-9.672 9.626c-0.586 0.583-1.534 0.582-2.119-0.003l-1.417-1.417c-0.586-0.586-0.586-1.536 0-2.121l12.146-12.146c0.586-0.586 1.536-0.586 2.121-0z">
+            </path>
+        </symbol>
+    </defs>
 </svg>
