@@ -11,6 +11,7 @@
         <ul class="navigation__list">
           <li class="navigation__item">
             <button
+              id="home"
               class="navigation__button current home__btn"
               type="button"
               onclick="window.location.href = './index.html';"
@@ -19,7 +20,9 @@
             </button>
           </li>
           <li class="navigation__item">
-            <button class="navigation__button my-library__btn" type="button">My library</button>
+            <button id="library" class="navigation__button my-library__btn" type="button">
+              My library
+            </button>
           </li>
         </ul>
       </nav>
@@ -39,8 +42,16 @@
       </button>
     </form>
     <div class="library-btn__list is-hidden-header">
-      <button class="library-btn watched-btn active" type="button">Watched</button>
-      <button class="library-btn queue-btn" type="button">Queue</button>
+      <button id="watched-lang" class="library-btn watched-btn active" type="button">
+        Watched
+      </button>
+      <button id="queue-lang" class="library-btn queue-btn" type="button">Queue</button>
+    </div>
+    <button class="theme-btn" id="toggle-theme-btn">🌙</button>
+    <div class="header-lang__btn">
+      <button class="translate" id="e-lang-en">En</button>
+      <span class="translate__span">|</span>
+      <button class="translate" id="e-lang-ua">Ua</button>
     </div>
   </div>
 </header>
