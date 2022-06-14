@@ -1,22 +1,36 @@
 import { getPopularMovies } from './get-movies';
-import { getMovieGenre } from './movie-genres';
 import moviesListPatern from '../templates/list-of-movies.hbs';
 import refs from './refs';
+import { getGenres } from './get-movies';
 
 let page = 1;
 
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies)
-    // .map(movie => {
-    //   const genreList = getMovieGenre(...movie.genre_ids)
-    // })
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-function insertPopularMovies() {
-  getPopularMovies(page).then(data => {
-  renderMoviesList(data.results);
-  });
+function insertGenresToMovies() {
+  return getPopularMovies(page).then(data => {
+    return getGenres().then(genresList => {
+
+      return data.results.map(movie => ({
+        ...movie,
+        release_date: movie.release_date.split('-')[0],
+        genres: movie.genre_ids
+          .map(id => genresList.genres.filter(el => el.id === id))
+          .flat(),
+      }))
+    })
+  })
 }
 
-insertPopularMovies();
+export function insertPopularMovies() {
+  insertGenresToMovies().then(
+    renderMoviesList
+  ).catch(error => {
+    console.log(error.message)
+  })
+}
+
+insertPopularMovies()

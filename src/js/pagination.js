@@ -29,7 +29,7 @@ const onBtnsClick = (evt) => {
     const { page } = evt.target.dataset;
     currentPage = page;
     // getMoviesByName(page,searchQuery)
-    console.log (page);
+    // console.log (page);
 }
 
 refs.pagination.addEventListener('click', onBtnsClick);

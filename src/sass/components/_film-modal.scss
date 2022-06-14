@@ -1,0 +1,116 @@
+.film-modal {
+    display: flex;
+    width: 814px;
+    height: 558px;
+    padding: 40px 16px;
+    background-color: var(--background-body);
+}
+
+.film-poster-wrapper {
+    margin-right: 16px;
+}
+
+.film-poster-img {
+    max-width: inherit;
+    height: 478px;
+    border-radius: 5px;
+}
+
+.film-info-wrapper {
+    width: 100%;
+}
+
+.film-modal-header {
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.16;
+    text-transform: uppercase;
+}
+
+.film-modal-item {
+    display: flex;
+
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+
+.film-item-title {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--modal-text-color);
+    min-width: 30%;
+}
+
+.film-item-desc {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.16;
+}
+
+.vote-mod {
+    padding: 1px 10px;
+    border-radius: 5px;
+    background-color: var(--background-footer);
+
+    &.color {
+        background-color: var(--secondary-bg-color);
+        color: var(--secondary-title-color);
+    }
+}
+
+.original-title {
+    text-transform: uppercase;
+    line-height: 1.33;
+}
+
+.genre-desc {
+    line-height: 1.33;
+}
+
+.film-modal-about {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.film-modal-overview {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.67;
+}
+
+.film-modal-btns {
+    margin-top: 20px;
+}
+
+.film-modal-btns {
+    margin-left: 8px;
+}
+
+.modal-btn-watched {
+    @extend .button;
+    margin-right: 15px;
+}
+
+.modal-btn-queue {
+    @extend .button;
+}
+
+.film-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: transparent;
+    cursor: pointer;
+    
+
+    &:hover .modal-close-ico,
+    &:focus .modal-close-ico {
+        @extend %animation;
+         stroke: var(--secondary-bg-color);
+    }
+}
+
