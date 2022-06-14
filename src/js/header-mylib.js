@@ -9,7 +9,6 @@ headerLibrary.addEventListener('click', onMyLibraryBtnClick);
 logo.addEventListener('click', onheaderHomeBtnClick);
 
 function onheaderHomeBtnClick() {
-  form.classList.remove('is-hidden'); // з'являється форма
   header.classList.remove('header__my-library'); // видаляється фонове зображення сторінки My library
 }
 
