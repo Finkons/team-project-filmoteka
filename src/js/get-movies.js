@@ -1,7 +1,8 @@
 const axios = require('axios');
 
-const API_KEY = '250f014fd6a936550e378176122f5d39';
-const BASE_URL = 'https://api.themoviedb.org/3';
+export const API_KEY = '250f014fd6a936550e378176122f5d39';
+const BASE_URL = "https://api.themoviedb.org/3";
+
 let page = 1;
 
 export async function getPopularMovies(page) {
@@ -23,7 +24,14 @@ export async function getMoviesByName(page, searchQuery) {
 }
 
 export async function getGenres() {
+
+    const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+    const response = await axios.get(url);
+    return response.data;
+};
+
   const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
   const response = await axios.get(url);
   return response.data;
 }
+

@@ -1,28 +1,121 @@
-.search-form__wrap {
-    padding: 30px 30px;
+.search-form-btn {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin: 20px;
+    padding: 10px 30px 10px 40px;
+
+    color: #ff6b08;
+    background-color: inherit;
+    box-shadow: 1px 1px 12px 1px rgba(255, 127, 27, 0.88);
+
+    transition: box-shadow 250ms linear, color 250ms linear;
+
+&:hover {
+    color: rgb(246, 181, 61);
+    box-shadow: 1px 1px 12px 3px rgba(243, 205, 135, 0.88);
 }
+
+    @media screen and (min-width:768px) {
+        display: none;
+}
+}
+
+.icon-equalizer {
+    display: inline-block;
+    margin-left: 20px;
+    width: 1em;
+    height: 1em;
+
+    fill: currentColor;
+}
+
+.search-form__wrap {
+    display: none;
+
+    @media screen and (min-width:768px) {
+            display: block;
+            padding: 30px 30px;
+
+            z-index: 99;
+    }
+}
+
+.search-form__wrap.is-open {
+
+    @media screen and (max-width:767px) {
+    display: block;
+    padding: 30px 30px;
+
+    background-color: rgb(246, 240, 240);
+    z-index: 99;
+
+    position: absolute;
+    top: 20;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    }
+}
+
+
+
 
 .genre-search {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: end;
+    flex-direction: column;
+    justify-content: start;
+
     margin-left: auto;
     margin-right: auto;
     padding: 30px 30px;
-    width: max-content;
+    max-width: 250px;
+
     box-shadow: 1px 1px 12px 3px rgba(255, 127, 27, 0.88);
+
+
+    @media screen and (min-width:768px) {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
+
+        margin-left: auto;
+        margin-right: auto;
+        padding: 30px 30px;
+        max-width: max-content;
+
+        transition: box-shadow 250ms linear, transform 250ms linear;
+
+        &:hover {
+            transform: scale(1.01);
+            box-shadow: 1px 1px 12px 3px rgba(221, 137, 72, 0.88);
+        }
+    }
+    
 }
 
 .search-label {
     font-weight: 500;
-    margin-right: 20px;
-    margin-left: 20px;
+    margin: 20px 0px;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    @media screen and (min-width:768px) {
+    margin: 0 20px;
+        &:first-child {
+            margin-left: 0;
+    }
 }
+}
+
 
 select {
     border: 1px solid rgb(230, 199, 142);
-    // background-color: orange;
 }
 
 option {
