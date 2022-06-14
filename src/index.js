@@ -14,3 +14,4 @@ import './js/film-modal';
 import './js/home-library-btns';
 import './js/render-local-movies';
 import './js/search-form';
+import './js/header-mylib';
