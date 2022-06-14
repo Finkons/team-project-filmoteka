@@ -105,8 +105,8 @@ body {
     margin: 0 auto;
     position: relative;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-        url(../images/header__my-library/my-lib-header-mob@1.jpg);
-}
+      url(../images/header__my-library/my-lib-header-mob@1.jpg);
+  }
 }
 
 // dpr2 и 280px+
@@ -117,12 +117,10 @@ body {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-mob@2x.jpg);
 
-      &__my-library {
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url(../images/header__my-library/my-lib-header-mob@2x.jpg);
+    &__my-library {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header__my-library/my-lib-header-mob@2x.jpg);
     }
-
-
   }
 }
 
@@ -204,7 +202,7 @@ body {
   padding-left: 1px;
   color: #ffffff;
   border: none;
-outline: none;
+  outline: none;
 
   &:hover,
   &:focus {
@@ -257,12 +255,11 @@ outline: none;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-tab@1.jpg);
 
-      &__my-library {
-        padding-top: 41px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url(../images/header__my-library/my-lib-header-tab@1.jpg);
+    &__my-library {
+      padding-top: 41px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header__my-library/my-lib-header-tab@1.jpg);
     }
-      
   }
 
   // dpr2 и 768px
@@ -273,11 +270,10 @@ outline: none;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/header/header-tab@2x.jpg);
 
-        &__my-library {
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-              url(../images/header__my-library/my-lib-header-mob@2x.jpg);
+      &__my-library {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+          url(../images/header__my-library/my-lib-header-mob@2x.jpg);
       }
-        
     }
   }
 
@@ -286,13 +282,13 @@ outline: none;
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
-    color: #ffffff; 
+    color: #ffffff;
     cursor: pointer;
     transition: color 500ms linear;
 
     &:hover,
     &:focus {
-      color:#ff6b08;
+      color: #ff6b08;
     }
   }
 
@@ -320,11 +316,10 @@ outline: none;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-desk@1.jpg);
 
-      &__my-library {
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-            url(../images/header__my-library/my-lib-header-desk@1.jpg);
+    &__my-library {
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+        url(../images/header__my-library/my-lib-header-desk@1.jpg);
     }
-
   }
 
   .logotext__link {
@@ -348,12 +343,11 @@ outline: none;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(../images/header/header-desk@2x.jpg);
 
-        &__my-library {
-          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
-              url(../images/header__my-library/my-lib-header-desk@2x.jpg);
-          background-position: top;
+      &__my-library {
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+          url(../images/header__my-library/my-lib-header-desk@2x.jpg);
+        background-position: top;
       }
-
     }
   }
 }
@@ -381,9 +375,15 @@ input {
 }
 
 .library-btn {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+
   border-radius: 5px;
-  border: 1px solid var(--secondary-title-color);
-  color: var(--secondary-title-color);
+  border: 1px solid #ffffff;
+  color: #ffffff;
   background-color: transparent;
 
   width: 130px;
@@ -393,14 +393,27 @@ input {
     width: 152px;
   }
   @media screen and (min-width: 1024px) {
-    width: 148;
+    width: 148px;
     height: 42px;
+  }
+
+  @extend %animation;
+  &:hover,
+  &:focus {
+    background-color: var(--secondary-bg-color);
+    box-shadow: 0px 4px 4px rgb(245 124 50 / 12%), 0px 4px 4px rgb(245 124 50 / 12%),
+      1px 4px 6px rgb(245 124 50 / 12%);
   }
 }
 
 .active {
   background-color: var(--title-text-color);
-  border: 0;
+  border: 0px solid var(--title-text-color);
+  @extend %animation;
+  &:hover,
+  &:focus {
+    border: 1px solid #ffffff;
+  }
 }
 
 .is-hidden-header {
