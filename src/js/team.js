@@ -5,7 +5,6 @@ import refs from './refs';
 createTeamMarkup(teamItems);
 function createTeamMarkup(teamItems) {
   const markup = teamCardTpl(teamItems);
- 
   return refs.teamContainer.innerHTML = markup;
 }
 

@@ -10,6 +10,7 @@ const refs = {
   libraryBtnQueue: document.querySelector('.queue-btn'),
   // Main //
   galleryContainer: document.querySelector('.cards-collection'),
+  filterForm: document.querySelector('.search-form__wrap'),
 
   // My Library //
 
