@@ -26,9 +26,16 @@ function insertGenresToMovies() {
 }
 
 export function insertPopularMovies() {
-  insertGenresToMovies().then(
-    renderMoviesList
-  ).catch(error => {
+  insertGenresToMovies().then(res => {
+    res.map(element => {
+      if (element.genres.length > 2) {
+        const Obj = {name: "Other"};
+        element.genres[2] = Obj;
+        element.genres.length = 3
+      }
+    })
+        renderMoviesList(res);
+  }).catch(error => {
     console.log(error.message)
   })
 }
