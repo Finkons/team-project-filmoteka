@@ -30,8 +30,3 @@ export async function getGenres() {
   return response.data;
 };
 
-const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
-const response = await axios.get(url);
-return response.data;
-
-
