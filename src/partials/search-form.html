@@ -1,15 +1,22 @@
+<div>
+<button class="search-form-btn">Filter
+    <svg class="icon icon-equalizer">
+        <use xlink:href="./images/sprite.svg#icon-equalizer"></use>
+    </svg>
+</button>
+
 <div class="search-form__wrap">
-    <form class="genre-search" action="#">
+    <form class="genre-search" action="#" id="search-form">
         <label for="lang" class="search-label">Genres</label>
         <select name="genres" id="genres">
         <legend></legend>
-            <option value="genres">genres</option>
+            <option value="genres">all genres</option>
         </select>
 
         <label for="lang" class="search-label">Year</label>
         <select name="genres" id="years">
             <legend></legend>
-            <option class="first-opt" value="year">year</option>
+            <option class="first-opt" id="year-chose" value="year">year</option>
             <option value="2022">2022</option>
             <option value="2021">2021</option>
             <option value="2020">2020</option>
@@ -25,4 +32,5 @@
             <option value="vote_count">users choise first</option>
         </select>
     </form>
+</div>
 </div>
