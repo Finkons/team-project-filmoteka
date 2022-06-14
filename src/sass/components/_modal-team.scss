@@ -88,7 +88,9 @@
 .is-hidden {
   opacity: 0;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(1.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .modal {
@@ -174,6 +176,7 @@ body.modal-open {
 }
 .team__item-title {
   text-transform: uppercase;
+  color: rgba(24,56,214,1);
   line-height: 1.14;
   font-weight: 500;
   margin-bottom: 8px;
@@ -185,4 +188,7 @@ body.modal-open {
   font-weight: 400;
   line-height: 1.14;
   margin-bottom: 10px;
+}
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.1);
 }
