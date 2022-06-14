@@ -10,7 +10,12 @@ function createTeamMarkup(teamItems) {
 }
 
 [...document.querySelectorAll('.team__item')].forEach((teamItem) => {
-	teamItem.addEventListener("click", () => teamItem.classList.toggle("clicked"));
+	teamItem.addEventListener("click", () => {
+    const teamItemClicked = document.querySelector('.team__item.clicked')
+    if(teamItemClicked) {
+      teamItemClicked.classList.remove("clicked");
+    }
+    teamItem.classList.add("clicked")});
 });
 
 refs.openModalBtn.addEventListener('click', toggleModalTeam);
