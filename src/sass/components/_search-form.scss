@@ -5,17 +5,18 @@
     align-items: center;
 
     margin: 20px;
-    padding: 10px 30px 10px 40px;
+    padding: 10px 30px;
 
     color: #ff6b08;
     background-color: inherit;
-    box-shadow: 1px 1px 12px 1px rgba(255, 127, 27, 0.88);
+    box-shadow: 1px 1px 8px 1px rgba(255, 127, 27, 0.88);
 
     transition: box-shadow 250ms linear, color 250ms linear;
 
-&:hover {
+
+    &:hover {
     color: rgb(246, 181, 61);
-    box-shadow: 1px 1px 12px 3px rgba(243, 205, 135, 0.88);
+    box-shadow: 1px 1px 8px 3px rgba(243, 205, 135, 0.88);
 }
 
     @media screen and (min-width:768px) {
@@ -23,14 +24,19 @@
 }
 }
 
-.icon-equalizer {
+.icon-droplet {
+
     display: inline-block;
-    margin-left: 20px;
     width: 1em;
     height: 1em;
 
+    margin-left: 16px;
+    stroke-width: 0;
+    stroke: currentColor;
     fill: currentColor;
 }
+
+
 
 .search-form__wrap {
     display: none;
@@ -49,7 +55,10 @@
     display: block;
     padding: 30px 30px;
 
-    background-color: rgb(246, 240, 240);
+        background-color: #ffffff;
+
+        border-bottom: 3px solid rgba(254, 136, 19, 0.35);
+        border-radius: 16px 0px 32px 0px;
     z-index: 99;
 
     position: absolute;
@@ -59,8 +68,6 @@
     height: 100%;
     }
 }
-
-
 
 
 .genre-search {
