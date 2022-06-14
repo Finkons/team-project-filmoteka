@@ -1,12 +1,14 @@
 .dark {
-  background-color: rgb(82, 84, 87);
-  // background:radial-gradient(ellipse at bottom, #7b7f8a 40%, #000000 100%);
-  --primary-text-color: #f8f1f1;
+  background-color: rgb(80, 75, 68);
+  // background:radial-gradient(ellipse at bottom, #7b7f8a 10%, #000000 100%);
+
+  --primary-text-color: #696666;
   --title-text-color: #ff6b08;
-  --secondary-title-color: #ffffff;
-  --footer-text-color: #dcdceb;
+  --secondary-title-color: #2c0b0b;
+  --footer-text-color: #8b887f;
   --background-footer: #252525;
-  --background-body: #ffffff;
+  --background-body: #79716a;
+    --modal-text-color: #f5e9c2;
   color: #f7f7f7;
   transition: 350ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,57 +31,100 @@ body {
     transform: rotate(-20deg) scale(1.25);
     -webkit-transform: rotate(-20deg) scale(1.15);
   }
+
+  @media screen and (max-width: 320px) {
+    font-size: 20px;
+    top: 175px;
+    // right: 5%;
+  }
   @media screen and (min-width: 320px) {
     font-size: 20px;
-    top: 150px;
-    right: 5%;
+    top: 175px;
+    // right: 5%;
   }
   @media screen and (min-width: 768px) {
     font-size: 30px;
-    top: 150px;
-    right: 5%;
+    top: 160px;
+    // right: 5%;
   }
   @media screen and (min-width: 1024px) {
-    top: 150px;
-    right: 5%;
+    top: 160px;
+    // right: 5%;
   }
   @media screen and (min-width: 1440px) {
-    top: 150px;
-    right: 18%;
+    top: 160px;
+    // right: 18%;
   }
   @media screen and (min-width: 2560px) {
-    top: 150px;
-    right: 32%;
+    top: 160px;
+    // right: 32%;
   }
 }
 
-.selected-lenguage {
-  background-color: transparent;
-  color: currentColor;
-  font-size: 23px;
+// .selected-lenguage {
+ 
+//   cursor: pointer;
+//   background-color: transparent;
+//   color: currentColor;
+//   font-size: 16px;
+//   outline-style: none;
+//   border: none;
+//   text-decoration: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//    position: absolute;
+//     color: #f0b58f;
+//    @media screen and (max-width: 320px) {
+//     top: 165px;
+//     right: 20%;
+//   }
+//   @media screen and (min-width: 320px) {
+//     top: 165px;
+//     right: 15%;
+//   }
+//   @media screen and (min-width: 768px) {
+//     top: 165px;
+//     right: 12%;
+//   }
+//   @media screen and (min-width: 1024px) {
+//     top: 165px;
+//     right: 10%;
+//   }
+//   @media screen and (min-width: 1440px) {
+//     top: 165px;
+//     right: 22%;
+//   }
+//   @media screen and (min-width: 2560px) {
+//     top: 165px;
+//     right: 35%;
+//   }
+//     transition: 700ms;
+//   transition-timing-function: cubic-bezier(0.9, 0, 0.2, 1);
+
+// }
+.translate{
+  padding: 0 10px 0 10px;
+  right: 40px;
   text-decoration: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-   position: absolute;
-  @media screen and (min-width: 320px) {
-    top: 165px;
-    right: 10%;
+  font-size: 20px;
+  background-color: transparent;
+  color: #f3efec;
+   transition: 300ms;
+  transition-timing-function: cubic-bezier(0.9, 0, 0.2, 1);
+  &__span{
+    font-size: 20px;
+    color: #f3eae5;
   }
-  @media screen and (min-width: 768px) {
-    top: 165px;
-    right: 10%;
+  &:hover{
+    transform: scale(1.2);
+    color: #ff6b08;
+     transition: 300ms;
+  transition-timing-function: cubic-bezier(0.9, 0, 0.2, 1);
   }
-  @media screen and (min-width: 1024px) {
-    top: 165px;
-    right: 10%;
-  }
-  @media screen and (min-width: 1440px) {
-    top: 165px;
-    right: 22%;
-  }
-  @media screen and (min-width: 2560px) {
-    top: 165px;
-    right: 35%;
-  }
+}
+.header-lang__btn{
+  padding-top: 30px;
+  display: flex;
+  justify-content: end;
 }

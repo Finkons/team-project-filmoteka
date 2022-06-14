@@ -8,8 +8,11 @@ const refs = {
   libraryBtnsList: document.querySelector('.library-btn__list'),
   libraryBtnWatched: document.querySelector('.watched-btn'),
   libraryBtnQueue: document.querySelector('.queue-btn'),
+  enLangBTN: document.getElementById('e-lang-en'),
+  uaLangBTN: document.getElementById('e-lang-ua'),
   // Main //
   galleryContainer: document.querySelector('.cards-collection'),
+  filterForm: document.querySelector('.search-form__wrap'),
 
   // My Library //
 
