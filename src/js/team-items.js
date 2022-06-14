@@ -28,7 +28,7 @@ export const teamItems = [
     rol: 'Developer',
   },
   {
-    photo: 'https://cdn.pixabay.com/photo/2019/05/14/16/43/himilayan-blue-poppy-4202825__340.jpg',
+    photo: 'https://ca.slack-edge.com/T02UC9J08RZ-U02UMA1R1K9-01eb6d0df2f7-512',
     name: 'Катерина',
     family: 'Клімчук',
     description: 'Реалізоване відображення у картці фільму жанрів, бібліотека користувача "My Library". Зверстано контейнер сторінки "My Library".  ',
