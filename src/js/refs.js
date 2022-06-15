@@ -5,16 +5,17 @@ const refs = {
   myLibraryBtn: document.querySelector('.my-library__btn'),
   homeBtn: document.querySelector('.home__btn'),
   logo: document.querySelector('.logo__list'),
-  libraryBtnsList: document.querySelector('.library-btn__list'),
-  libraryBtnWatched: document.querySelector('.watched-btn'),
-  libraryBtnQueue: document.querySelector('.queue-btn'),
   enLangBTN: document.getElementById('e-lang-en'),
   uaLangBTN: document.getElementById('e-lang-ua'),
   // Main //
   galleryContainer: document.querySelector('.cards-collection'),
-  filterForm: document.querySelector('.search-form__wrap'),
+  filterForm: document.querySelector('.search-filter-form'),
+  pagination: document.querySelector('.pagination'),
 
   // My Library //
+  libraryBtnsList: document.querySelector('.library-btn__list'),
+  libraryBtnWatched: document.querySelector('.watched-btn'),
+  libraryBtnQueue: document.querySelector('.queue-btn'),
 
   // Film Card //
 

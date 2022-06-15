@@ -1,6 +1,7 @@
 import refs from './refs';
 import moviesListPatern from '../templates/list-of-movies.hbs';
 import { getMoviesById } from './get-movies';
+import { startLoader, stopLoader } from './loader.js';
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);
@@ -32,6 +33,9 @@ function WatchedBtnAction(e) {
 
   ifMyLibraryOpen();
 
+  startLoader();
+  stopLoader();
+
   watchedRender();
 }
 
@@ -42,6 +46,9 @@ function QueueBtnAction(e) {
   currentButton.classList.add('active');
 
   ifMyLibraryOpen();
+
+  startLoader();
+  stopLoader();
 
   queueRender();
 }
