@@ -1,20 +1,20 @@
 <div class="search-filter-form">
-  <button class="search-form-btn">
+  <button id="filter-lang" class="search-form-btn">
     Filter
-    <svg class="icon icon-equalizer">
-      <use xlink:href="./images/sprite.svg#icon-equalizer"></use>
+    <svg class="icon-droplet" width="14" height="14">
+      <use href="./images/svg/search-form.svg#icon-equalizer"></use>
     </svg>
   </button>
 
   <div class="search-form__wrap">
     <form class="genre-search" action="#" id="search-form">
-      <label for="lang" class="search-label">Genres</label>
+      <label id="genr-lang" for="lang" class="search-label">Genres</label>
       <select name="genres" id="genres">
         <legend></legend>
-        <option value="genres">all genres</option>
+        <option id="all-genres-lang" value="genres">all genres</option>
       </select>
 
-      <label for="lang" class="search-label">Year</label>
+      <label id="year-lang" for="lang" class="search-label">Year</label>
       <select name="genres" id="years">
         <legend></legend>
         <option class="first-opt" id="year-chose" value="year">year</option>
@@ -24,12 +24,14 @@
         <option value="2019">2019</option>
       </select>
 
-      <label for="lang" class="search-label">Popularity</label>
+      <label for="lang" class="search-label">
+        <span id="popularity-lang">Popularity</span>
+      </label>
       <select name="genres" id="popularity">
         <legend></legend>
-        <option value="option">popularity</option>
-        <option value="popularity">most popular first</option>
-        <option value="vote_count">users choise first</option>
+        <option id="p-lang" value="option">popularity</option>
+        <option id="most-popular-lang" value="popularity">most popular first</option>
+        <option id="users-choise-lang" value="vote_count">users choise first</option>
       </select>
     </form>
   </div>
