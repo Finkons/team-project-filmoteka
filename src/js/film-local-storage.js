@@ -1,27 +1,24 @@
-import { Notify } from "notiflix";
 const queueStoragedFilms = [];
 const watchedStoragedFilms = [];
-const queueHasFilmMessage = 'That film is already in queue';
-const watchedHasFilmMessage = 'That film is already in watched';
 
 export function addFilmToQueued (filmId) {
     localStorage.setItem("queued_films", queueStoragedFilms)
 
     if (localStorage.queued_films.includes(filmId)) {
-        return Notify.warning(queueHasFilmMessage);
+        queueStoragedFilms.splice(queueStoragedFilms.indexOf(filmId), 1)
     } else {
-        queueStoragedFilms.push(JSON.stringify(filmId));
-        localStorage.setItem("queued_films", queueStoragedFilms)
+        queueStoragedFilms.push(filmId);
     }
+    localStorage.setItem("queued_films", queueStoragedFilms)
 }
 
 export function addFilmToWatched (filmId) {
     localStorage.setItem("watched_films", watchedStoragedFilms)
 
     if (localStorage.watched_films.includes(filmId)) {
-        return Notify.warning(watchedHasFilmMessage);
+        watchedStoragedFilms.splice(watchedStoragedFilms.indexOf(filmId), 1)
     } else {
-        watchedStoragedFilms.push(JSON.stringify(filmId));
-        localStorage.setItem("watched_films", watchedStoragedFilms)
+        watchedStoragedFilms.push(filmId);
     }
+    localStorage.setItem("watched_films", watchedStoragedFilms)
 }
