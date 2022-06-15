@@ -13,7 +13,6 @@ function renderMoviesList(movies) {
 function insertGenresToMovies() {
   return getPopularMovies(page).then(data => {
     return getGenres().then(genresList => {
-
       return data.results.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
@@ -29,7 +28,7 @@ export function insertPopularMovies() {
   insertGenresToMovies().then(res => {
     res.map(element => {
       if (element.genres.length > 2) {
-        const Obj = {name: "Other"};
+        const Obj = {name: "Інше"};
         element.genres[2] = Obj;
         element.genres.length = 3
       }
