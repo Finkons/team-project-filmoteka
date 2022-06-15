@@ -16,3 +16,4 @@ import './js/render-local-movies';
 import './js/search-form';
 import './js/header-mylib';
 import './js/language';
+import './js/scrolltop';
