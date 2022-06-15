@@ -1,13 +1,13 @@
 .scrolltop {
     position: fixed;
-    // bottom: -150px;
-    bottom: 20px;
+    bottom: -150px;
+    // bottom: 20px;
     right: 10px;
     transition: 0.6s all;
 }
 
 .scrolltop.showed {
-    bottom: 10px;
+    bottom: 20px;
     transition: 0.6s all;
 }
 
