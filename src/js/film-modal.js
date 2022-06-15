@@ -31,6 +31,8 @@ function handleCardClick(event) {
 
     instance.show();
 
+    addListenerForWatched(document.querySelector('.modal-btn-watched'), filmId);
+    addListenerForQueued(document.querySelector('.modal-btn-queue'), filmId);
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
   });
 }
@@ -38,6 +40,18 @@ function handleCardClick(event) {
 function addListenerForCloseBtn(closeBtn) {
   closeBtn.addEventListener('click', event => {
     instance.close();
+  });
+}
+
+function addListenerForWatched(watchBtn, filmId) {
+  watchBtn.addEventListener('click', () => {
+    addFilmToWatched(filmId);
+  });
+}
+
+function addListenerForQueued(queueBtn, filmId) {
+  queueBtn.addEventListener('click', () => {
+    addFilmToQueued(filmId);
   });
 }
 
