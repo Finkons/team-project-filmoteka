@@ -24,8 +24,7 @@ export async function getMoviesByName(page, searchQuery) {
 }
 
 export async function getGenres() {
-
-  const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`;
+  const url = `${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=uk`;
   const response = await axios.get(url);
   return response.data;
 };
