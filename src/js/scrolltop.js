@@ -9,7 +9,7 @@ function handleClick() {
 
 document.addEventListener('scroll', () => {
   let scrolled = window.scrollY;
-  console.log(scrolled);
+
   if (scrolled < WINDOW_SCROLL_POSSITION) {
     scrollTopBtn.classList.remove('showed');
   } else {
