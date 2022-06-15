@@ -4,6 +4,7 @@ import { getMoviesById } from './get-movies';
 import { startLoader, stopLoader } from './loader';
 import { addFilmToWatched } from './film-local-storage';
 import { addFilmToQueued } from './film-local-storage';
+import { getMovieGenre } from './movie-genres';
 
 const filmsContainer = document.querySelector('.cards-collection');
 let instance;
@@ -14,19 +15,16 @@ function handleCardClick(event) {
   if (!event.target.closest('li')) return;
 
   let filmId = event.target.closest('li').dataset.id;
-
+  startLoader();
   putFetchToMarkup(filmId).then(markup => {
-    // const modalBtnWatched = document.getElementsByClassName('modal-btn-watched');
-    // console.dir(modalBtnWatched);
     instance = basicLightbox.create(markup, {
       onShow: () => {
-        // modalBtnWatched.addEventListener('click', addFilmToWatched(filmId))
-        // modalBtnQueued.addEventListener('click', addFilmToQueued(filmId))
+        document.body.classList.toggle('no-scroll');
+        stopLoader();
         window.addEventListener('keydown', onEscPress);
       },
       onClose: () => {
-        // modalBtnWatched.removeEventListener('click', addFilmToWatched(filmId))
-        // modalBtnQueued.removeEventListener('click', addFilmToQueued(filmId))
+        document.body.classList.toggle('no-scroll');
         window.removeEventListener('keydown', onEscPress);
       },
     });
@@ -34,7 +32,6 @@ function handleCardClick(event) {
     instance.show();
 
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
-    //треба вимикати eventListener якось, треба придумати як
   });
 }
 
@@ -110,7 +107,7 @@ function makeFilmModalMarkup(result) {
             </svg>
           </button>
         </div>
-        `
+        `;
       },
     )
     .join('');
@@ -120,7 +117,7 @@ function makeFilmModalMarkup(result) {
 
 function onEscPress(event) {
   const ESC_KEY = 'Escape';
-
+  // console.log(event);
   if (event.code === ESC_KEY) {
     instance.close();
   }

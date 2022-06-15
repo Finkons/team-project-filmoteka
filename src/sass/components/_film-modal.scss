@@ -1,19 +1,48 @@
 .film-modal {
-    display: flex;
-    width: 814px;
-    height: 558px;
-    padding: 40px 16px;
+    width: 280px;
+    padding: 48px 20px 40px 20px;
     background-color: var(--background-body);
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        width: 704px;
+        height: 552px;
+        padding: 40px 72px 40px 36px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 814px;
+        height: 558px;
+        padding: 40px 16px;
+    }
 }
 
 .film-poster-wrapper {
-    margin-right: 16px;
+    margin-bottom: 20px;
+    
+    @media screen and (min-width: 768px) {
+        margin-right: 68px;
+        margin-bottom: 0px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        margin-right: 16px;
+    }
 }
 
 .film-poster-img {
-    max-width: inherit;
-    height: 478px;
+    width: 240px;
+    height: 357px;
     border-radius: 5px;
+
+    @media screen and (min-width: 768px) {
+        width: 250px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 333px;
+        height: 478px;
+    }
 }
 
 .film-info-wrapper {
@@ -41,7 +70,15 @@
     font-size: 12px;
     line-height: 1.33;
     color: var(--modal-text-color);
-    min-width: 30%;
+    min-width: 50%;
+
+    @media screen and (min-width: 768px) {
+        min-width: 40%;
+    }
+
+    @media screen and (min-width: 1024px) {
+        min-width: 30%;
+    }
 }
 
 .film-item-desc {
@@ -80,6 +117,11 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 1.67;
+
+    @media screen and (max-width: 1024px) {
+        height: 25%;
+        overflow-y: auto;
+    }
 }
 
 .film-modal-btns {
@@ -87,12 +129,16 @@
 }
 
 .film-modal-btns {
-    margin-left: 8px;
+    display: flex;
+    
+    @media screen and (min-width: 1024px) {
+        margin-left: 8px;
+    }
 }
 
 .modal-btn-watched {
     @extend .button;
-    margin-right: 15px;
+    margin-right: 20px;
 }
 
 .modal-btn-queue {
