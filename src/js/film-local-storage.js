@@ -11,8 +11,8 @@ export function addFilmToQueued (filmId) {
         return Notify.warning(queueHasFilmMessage);
     } else {
         queueStoragedFilms.push(JSON.stringify(filmId));
+        localStorage.setItem("queued_films", queueStoragedFilms)
     }
-    localStorage.setItem("queued_films", queueStoragedFilms)
 }
 
 export function addFilmToWatched (filmId) {
@@ -22,6 +22,6 @@ export function addFilmToWatched (filmId) {
         return Notify.warning(watchedHasFilmMessage);
     } else {
         watchedStoragedFilms.push(JSON.stringify(filmId));
+        localStorage.setItem("watched_films", watchedStoragedFilms)
     }
-    localStorage.setItem("watched_films", watchedStoragedFilms)
 }
