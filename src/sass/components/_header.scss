@@ -9,7 +9,7 @@
 *,
 *:before,
 *:after {
-  box-sizing: border-b;
+  box-sizing: border-box;
 }
 
 nav,
@@ -21,7 +21,6 @@ aside {
 
 html,
 body {
-  height: 100%;
   width: 100%;
   font-size: 100%;
   line-height: 1;
