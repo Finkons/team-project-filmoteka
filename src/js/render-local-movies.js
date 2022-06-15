@@ -6,25 +6,6 @@ import { startLoader, stopLoader } from './loader.js';
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);
 
-////////// !! это нужно только для примера !!!
-
-const WATCHED_LOCALSTORAGE = 'WATCHED_localstorage';
-const QUEUE_LOCALSTORAGE = 'QUEUE_localstorage';
-
-const Watchedids = ['414906', '526896', '705861', '361743'];
-const queueids = ['507086', '639933'];
-
-function setLocalStorage() {
-  localStorage.setItem(WATCHED_LOCALSTORAGE, JSON.stringify(Watchedids));
-}
-setLocalStorage();
-function setQueueLocalStorage() {
-  localStorage.setItem(QUEUE_LOCALSTORAGE, JSON.stringify(queueids));
-}
-setQueueLocalStorage();
-
-//////////////// !!!
-
 function WatchedBtnAction(e) {
   const currentButton = e.target;
 
@@ -68,11 +49,10 @@ export function watchedRender() {
     'beforeend',
     `<p>Your watched films library is empty :(</p>`,
   );
-  if (localStorage.getItem(WATCHED_LOCALSTORAGE)) {
+  if (localStorage.getItem('watched_films')) {
     refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.getItem(WATCHED_LOCALSTORAGE);
-    const localGetParse = JSON.parse(localMessage);
-    localGetParse.map(id => {
+    const localMessage = localStorage.watched_films.split(',');
+    localMessage.map(id => {
       renderMovie(id);
     });
   }
@@ -83,11 +63,10 @@ function queueRender() {
     'beforeend',
     `<p>Your queue films library is empty :(</p>`,
   );
-  if (localStorage.getItem(QUEUE_LOCALSTORAGE)) {
+  if (localStorage.getItem('queued_films')) {
     refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.getItem(QUEUE_LOCALSTORAGE);
-    const localGetParse = JSON.parse(localMessage);
-    localGetParse.map(id => {
+    const localMessage = localStorage.queued_films.split(',');
+    localMessage.map(id => {
       renderMovie(id);
     });
   }
