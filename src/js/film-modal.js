@@ -16,31 +16,39 @@ function handleCardClick(event) {
   let filmId = event.target.closest('li').dataset.id;
 
   putFetchToMarkup(filmId).then(markup => {
-    // const modalBtnWatched = document.getElementsByClassName('modal-btn-watched');
-    // console.dir(modalBtnWatched);
     instance = basicLightbox.create(markup, {
       onShow: () => {
-        // modalBtnWatched.addEventListener('click', addFilmToWatched(filmId))
-        // modalBtnQueued.addEventListener('click', addFilmToQueued(filmId))
         window.addEventListener('keydown', onEscPress);
       },
       onClose: () => {
-        // modalBtnWatched.removeEventListener('click', addFilmToWatched(filmId))
-        // modalBtnQueued.removeEventListener('click', addFilmToQueued(filmId))
         window.removeEventListener('keydown', onEscPress);
       },
     });
 
     instance.show();
 
+    addListenerForWatched(document.querySelector('.modal-btn-watched'), filmId);
+    addListenerForQueued(document.querySelector('.modal-btn-queue'), filmId);
+
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
-    //треба вимикати eventListener якось, треба придумати як
   });
 }
 
 function addListenerForCloseBtn(closeBtn) {
   closeBtn.addEventListener('click', event => {
     instance.close();
+  });
+}
+
+function addListenerForWatched(watchBtn, filmId) {
+  watchBtn.addEventListener('click', event => {
+    addFilmToWatched(filmId);
+  });
+}
+
+function addListenerForQueued(queueBtn, filmId) {
+  queueBtn.addEventListener('click', event => {
+    addFilmToQueued(filmId);
   });
 }
 
