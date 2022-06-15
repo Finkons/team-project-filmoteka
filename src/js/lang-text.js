@@ -13,7 +13,7 @@ export const text = {
     'users-choise-lang': 'users choise first',
     'home': 'HOME',
     'library': 'MY LIBRARY',
-    'search-form': 'Search Movie'
+    // 'search-form': 'Search Movie',
   }
   , ua: {
     'queue-lang': 'В черзі',
@@ -29,6 +29,6 @@ export const text = {
     'users-choise-lang': 'вибір користувача',
     'home': 'ГОЛОВНА',
     'library': 'МОЯ БІБЛІОТЕКА',
-    'search-form': 'Пошук Фільмів'
+    // 'search-form': 'Пошук Фільмів'
   }
 };
