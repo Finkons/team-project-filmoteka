@@ -1,6 +1,7 @@
 import refs from './refs';
 import { ifMyLibraryOpen } from './render-local-movies';
 import { watchedRender } from './render-local-movies';
+import { startLoader, stopLoader } from './loader.js';
 
 refs.myLibraryBtn.addEventListener('click', switchCurrentLibrary);
 refs.homeBtn.addEventListener('click', switchCurrentHome);
@@ -16,6 +17,10 @@ function switchCurrentLibrary(e) {
   ifMyLibraryOpen();
 
   refs.filterForm.classList.add('is-hidden-header');
+  refs.pagination.classList.add('is-hidden-header');
+
+  startLoader();
+  stopLoader();
 
   watchedRender();
 }
