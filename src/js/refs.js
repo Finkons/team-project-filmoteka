@@ -5,6 +5,8 @@ const refs = {
   myLibraryBtn: document.querySelector('.my-library__btn'),
   homeBtn: document.querySelector('.home__btn'),
   logo: document.querySelector('.logo__list'),
+  enLangBTN: document.getElementById('e-lang-en'),
+  uaLangBTN: document.getElementById('e-lang-ua'),
   // Main //
   galleryContainer: document.querySelector('.cards-collection'),
   filterForm: document.querySelector('.search-filter-form'),
