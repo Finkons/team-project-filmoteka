@@ -15,44 +15,60 @@
 
 .pagination-button {
     margin: 0 2px;
-    padding: 8px;
+    padding: 12px;
     background-color: transparent;
     border: none;
-    color: #000;
+    color: #000000;
     cursor: pointer;
-    font-family: Roboto;
     font-weight: 500;
     font-size: 12px;
     line-height: 1.333;
+
+    &:hover{
+        background-color: #FF6B08;
+        color: #ffffff;
+        border-radius: 5px;
+    }
 }
 
 .arrow-left, .arrow-right {
     width: 40px;
     height: 40px;
+    padding: 4px;
     border-radius: 5px;
     background-color: #f7f7f7;
     background-position: 50%;
     background-repeat: no-repeat;
+
+    &:hover{
+        fill: #ffffff
+    }
 }
 
-.dots, .first-button, .last-button {
+.pagination-dots, .first-button, .last-button {
     @media screen and (max-width: 767px) {
     display: none;
     }
 }
 
-.dots {
+.pagination-dots {
     margin-right: 16px;
     margin-left: 16px;
-    color: #000;
+    color: #000000;
 }
 
-.pagination--current {
-    width: 40px;
+
+.pagination-list {
+    display: flex;
+    align-items: center;
+}
+
+.pagination__current-btn {
+    background-color: #545454;
     height: 40px;
+    width: 40px;
     border-radius: 5px;
-    background-color: #ff6b08;
-    color: #fff;
+    color: #ffffff;
 }
 
 
