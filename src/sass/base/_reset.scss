@@ -1,8 +1,32 @@
 body {
   margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
 }
 
-p,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
 h1,
 h2,
 h3,
@@ -11,6 +35,8 @@ h5,
 h6 {
   margin: 0;
   padding: 0;
+  font-size: inherit;
+  font-weight: 400;
 }
 
 ul {
@@ -18,15 +44,64 @@ ul {
   padding: 0;
   margin: 0;
 }
-a {
+
+li {
+  list-style: none;
+}
+
+a,
+a:visited {
   text-decoration: none;
   color: currentColor;
 }
+
+a:hover {
+  text-decoration: none;
+}
+
 img {
   display: block;
   min-width: 100%;
+  vertical-align: top;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
 }
 
 .no-scroll {
   overflow: hidden;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

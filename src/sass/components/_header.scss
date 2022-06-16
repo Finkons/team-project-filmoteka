@@ -1,102 +1,24 @@
-// сброс установок браузера по-умолчанию.
-
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-}
-
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-nav,
-footer,
-header,
-aside {
-  display: block;
-}
-
-html,
-body {
-  width: 100%;
-  font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
-}
-
-input,
-button,
-textarea {
-  font-family: inherit;
-}
-
-input::-ms-clear {
-  display: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
-}
-
-a,
-a:visited {
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: none;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-img {
-  vertical-align: top;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-size: inherit;
-  font-weight: 400;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-}
-
 // стили header
 
 .header {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(../images/header/header-mob@1.jpg);
   background-repeat: no-repeat;
-  background-color: black;
-  background-position: top;
+  background-color: var(--primary-text-color);
+  background-position: center;
+  background-size: cover;
   width: 100%;
   height: 230px;
   padding-bottom: 97px;
   padding-top: 46px;
   margin: 0 auto;
   position: relative;
+ 
 
   &__my-library {
     background-repeat: no-repeat;
-    background-color: black;
-    background-position: bottom;
+    background-color: var(--primary-text-color);
+    background-position: center;
     width: 100%;
     height: 230px;
     padding-bottom: 97px;
@@ -126,9 +48,9 @@ body {
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
-
+  align-items: center;
   margin-bottom: 54px;
+
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -149,12 +71,12 @@ body {
   animation-timing-function: ease;
   animation-duration: 5000ms;
   animation-iteration-count: infinite;
-  stroke: #818181;
+  stroke: var(--base-stroke-color);
   margin-right: 10px;
 }
 
-.logo__list:hover > .logo__icon {
-  stroke: #ff6b08;
+.logo__list:hover .logo__icon {
+  stroke: var(--secondary-bg-color);
   transition: stroke 300ms;
 }
 
@@ -183,11 +105,11 @@ body {
   font-size: 12px;
   line-height: 14px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--secondary-title-color);
   background-color: inherit;
 
   &:hover {
-    color: darkgrey;
+    color: var(--hover-navigation-btn);
     transition: color 300ms;
   }
 }
@@ -196,16 +118,16 @@ body {
   width: 100%;
   background-color: inherit;
   border-bottom: 1px solid white;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-bottom 250ms cubic-bezier(0.4, 0, 0.2, 1), stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding-bottom: 4px;
   padding-left: 1px;
-  color: #ffffff;
+  color: var(--secondary-title-color);
   // border: none;
   outline: none;
 
   &:hover,
-  &:focus {
-    border-bottom: 1px solid #ff6b08;
+  &:focus {   
+    border-bottom: 1px solid var(--secondary-bg-color);
     transition: border-bottom 500ms;
   }
 }
@@ -215,7 +137,7 @@ body {
   line-height: 16px;
   padding-left: 1px;
 
-  color: #fff;
+  color: var(--secondary-title-color);
 }
 
 .input__wrapper {
@@ -230,6 +152,13 @@ body {
   position: absolute;
   top: 4px;
   right: 0px;
+  stroke: var(--base-stroke-color);
+
+  &:hover,
+  &:focus {
+    stroke: var(--secondary-bg-color);
+    transition: stroke 300ms;
+  }
 }
 
 .navigation__button.current {
@@ -243,8 +172,18 @@ body {
   content: '';
   height: 3px;
   width: 100%;
-  background-color: #ff6b08;
+  background-color: var(--secondary-bg-color);
   margin-bottom: 20px;
+}
+
+.input__wrapper:hover .input__icon {
+  stroke: var(--secondary-bg-color);
+  transition: stroke 300ms;
+}
+
+.input__wrapper:focus .input__icon {
+  stroke: var(--secondary-bg-color);
+  transition: stroke 300ms;
 }
 
 // tablet
@@ -281,14 +220,8 @@ body {
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
-    color: #ffffff;
+    color: var(--secondary-title-color);
     cursor: pointer;
-    transition: color 500ms linear;
-
-    &:hover,
-    &:focus {
-      color: #ff6b08;
-    }
   }
 
   .input__wrapper {
@@ -303,7 +236,7 @@ body {
   }
 
   .navigation__list {
-    padding-top: 9px;
+    // padding-top: 9px;
     padding-left: 0;
     align-items: center;
   }
@@ -314,6 +247,7 @@ body {
   .header {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(../images/header/header-desk@1.jpg);
+      
 
     &__my-library {
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
@@ -326,7 +260,7 @@ body {
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;
-    color: #ffffff;
+    color: var(--secondary-title-color);
   }
 
   .input__wrapper {
@@ -381,8 +315,8 @@ input {
   text-transform: uppercase;
 
   border-radius: 5px;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  border: 1px solid var(--secondary-title-color);
+  color: var(--secondary-title-color);
   background-color: transparent;
 
   width: 130px;
@@ -411,7 +345,7 @@ input {
   @extend %animation;
   &:hover,
   &:focus {
-    border: 1px solid #ffffff;
+    border: 1px solid var(--secondary-title-color);
   }
 }
 
