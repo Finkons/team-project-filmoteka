@@ -18,13 +18,11 @@
 }
 
 .team__item {
-  padding: 10px;
-  
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   cursor: pointer;
-  
+  padding: 10px;
   perspective: 600px;
   text-align: center;
 }
@@ -124,8 +122,8 @@
   .modal {
     top: 50%;
     left: 50%;
-    transform: translate(-65%, -50%) scale(1.1);
-    width: 1200px;
+    transform: translate(-50%, -50%) scale(1.1);
+    width: 1140px;
   }
 }
 
