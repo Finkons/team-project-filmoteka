@@ -17,3 +17,6 @@ import './js/search-form';
 import './js/header-mylib';
 import './js/language';
 import './js/scrolltop';
+
+import './js/trailer-api';
+import './js/movie-trailer';
