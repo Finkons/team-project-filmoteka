@@ -1,12 +1,16 @@
 <div class="search-filter-form">
-<button id="filter-lang" class="search-form-btn">
-  Filter
+<button class="search-btn search-btn--open">
     <svg class="icon-droplet" width="14" height="14">
-        <use href="./images/svg/search-form.svg#icon-equalizer"></use>
+        <use href="./images/svg/search-form.svg#icon-filter"></use>
     </svg>
   </button>
 
   <div class="search-form__wrap">
+    <button class="search-btn search-btn--close">
+      <svg class="icon-droplet" width="14" height="14">
+        <use href="./images/svg/search-form.svg#icon-cross"></use>
+      </svg>
+    </button>
     <form class="genre-search" action="#" id="search-form">
       <label id="genr-lang" for="lang" class="search-label">Genres</label>
       <select name="genres" id="genres">
