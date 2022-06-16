@@ -14,19 +14,23 @@ function setLang(lang) {
     window.localStorage.setItem('lang', lang);
   for (par in text[lang]) {
     document.getElementById(par).innerText = text[lang][par];
+
     if (lang === 'ua') {
+      document.querySelector('html').setAttribute('lang', 'ua')
       inputPlaceholder.placeholder = 'Пошук Фільму'
       refs.enLangBTN.style.cssText = `color: white;`
       refs.uaLangBTN.style.cssText = `color: orange;
   `;
     } else {
+      document.querySelector('html').setAttribute('lang', 'en')
       inputPlaceholder.placeholder = 'Search Movies'
       refs.uaLangBTN.style.cssText = `color: white;`
       refs.enLangBTN.style.cssText = `color: orange;`
     }
   }
-
 }
+
+
 var lang = (window.hasOwnProperty('localStorage') && window.localStorage.getItem('lang', lang)) || 'en';
 setLang(lang);
 

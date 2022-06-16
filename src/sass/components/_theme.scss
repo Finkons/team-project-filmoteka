@@ -1,13 +1,13 @@
 .dark {
-  background-color: rgb(80, 75, 68);
-  // background:radial-gradient(ellipse at bottom, #7b7f8a 10%, #000000 100%);
+  // background-color: rgb(80, 75, 68);
+  background-image:radial-gradient(ellipse at bottom, #7b7f8a 20%, #000000 100%);
 
-  --primary-text-color: #696666;
+  --primary-text-color: #d8d0d0;
   --title-text-color: #ff6b08;
   --secondary-title-color: #2c0b0b;
   --footer-text-color: #8b887f;
   --background-footer: #252525;
-  --background-body: #79716a;
+  --background-body: #797776;
     --modal-text-color: #f5e9c2;
   color: #f7f7f7;
   transition: 350ms;
@@ -20,7 +20,7 @@ body {
 .theme-btn {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition: 0.4s;
-  position: absolute;
+
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -105,12 +105,11 @@ body {
 // }
 .translate{
   padding: 0 10px 0 10px;
-  right: 40px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   background-color: transparent;
   color: #f3efec;
-   transition: 300ms;
+  transition: 300ms;
   transition-timing-function: cubic-bezier(0.9, 0, 0.2, 1);
   &__span{
     font-size: 20px;
@@ -124,7 +123,8 @@ body {
   }
 }
 .header-lang__btn{
-  padding-top: 30px;
+  position: relative;
   display: flex;
-  justify-content: end;
+  justify-content: start;
+  align-items: center;
 }

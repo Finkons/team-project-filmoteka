@@ -1,162 +1,199 @@
 .film-modal {
-    width: 280px;
-    padding: 48px 20px 40px 20px;
-    background-color: var(--background-body);
+  width: 280px;
+  padding: 15px 20px 40px 20px;
+  background-color: var(--background-body);
 
-    @media screen and (min-width: 768px) {
-        display: flex;
-        width: 704px;
-        height: 552px;
-        padding: 40px 72px 40px 36px;
-    }
+  @media screen and (max-width: 767px) {
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 
-    @media screen and (min-width: 1024px) {
-        width: 814px;
-        height: 558px;
-        padding: 40px 16px;
-    }
+  @media screen and (min-width: 768px) {
+    display: flex;
+    width: 704px;
+    height: 552px;
+    padding: 40px 72px 40px 36px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 814px;
+    height: 558px;
+    padding: 40px 16px;
+  }
 }
 
 .film-poster-wrapper {
-    margin-bottom: 20px;
-    
-    @media screen and (min-width: 768px) {
-        margin-right: 68px;
-        margin-bottom: 0px;
-    }
+  position: relative;
+  margin-bottom: 20px;
 
-    @media screen and (min-width: 1024px) {
-        margin-right: 16px;
-    }
+  @media screen and (min-width: 768px) {
+    margin-right: 68px;
+    margin-bottom: 0px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-right: 16px;
+  }
+}
+
+.modal-btn-trailer {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+
+  @media screen and (min-width: 768px) {
+    top: 140px;
+    left: 80px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: 200px;
+    left: 130px;
+  }
+}
+
+.modal-btn-trailer {
+  background: transparent;
+  transform: scale(1);
+  transition: transform 250ms linear;
+  z-index: 1001;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .film-poster-img {
-    width: 240px;
-    height: 357px;
-    border-radius: 5px;
+  width: 240px;
+  height: 357px;
+  border-radius: 5px;
+  z-index: 1001;
 
-    @media screen and (min-width: 768px) {
-        width: 250px;
-    }
+  @media screen and (min-width: 768px) {
+    width: 250px;
+  }
 
-    @media screen and (min-width: 1024px) {
-        width: 333px;
-        height: 478px;
-    }
+  @media screen and (min-width: 1024px) {
+    width: 333px;
+    height: 478px;
+  }
 }
 
 .film-info-wrapper {
-    width: 100%;
+  width: 100%;
 }
 
 .film-modal-header {
-    margin-bottom: 20px;
-    font-weight: 500;
-    font-size: 30px;
-    line-height: 1.16;
-    text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+  text-transform: uppercase;
 }
 
 .film-modal-item {
-    display: flex;
+  display: flex;
 
-    &:not(:last-child) {
-        margin-bottom: 8px;
-    }
+  &:not(:last-child) {
+    margin-bottom: 8px;
+  }
 }
 
 .film-item-title {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
-    color: var(--modal-text-color);
-    min-width: 50%;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--modal-text-color);
+  min-width: 50%;
 
-    @media screen and (min-width: 768px) {
-        min-width: 40%;
-    }
+  @media screen and (min-width: 768px) {
+    min-width: 40%;
+  }
 
-    @media screen and (min-width: 1024px) {
-        min-width: 30%;
-    }
+  @media screen and (min-width: 1024px) {
+    min-width: 30%;
+  }
 }
 
 .film-item-desc {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.16;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
 }
 
 .vote-mod {
-    padding: 1px 10px;
-    border-radius: 5px;
-    background-color: var(--background-footer);
+  padding: 1px 10px;
+  border-radius: 5px;
+  background-color: var(--background-footer);
 
-    &.color {
-        background-color: var(--secondary-bg-color);
-        color: var(--secondary-title-color);
-    }
+  &.color {
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-title-color);
+  }
 }
 
 .original-title {
-    text-transform: uppercase;
-    line-height: 1.33;
+  text-transform: uppercase;
+  line-height: 1.33;
 }
 
 .genre-desc {
-    line-height: 1.33;
+  line-height: 1.33;
 }
 
 .film-modal-about {
-    margin-top: 20px;
-    margin-bottom: 8px;
-    font-weight: 500;
+  margin-top: 20px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .film-modal-overview {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.67;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
 
-    @media screen and (max-width: 1024px) {
-        height: 25%;
-        overflow-y: auto;
-    }
+  @media screen and (max-width: 1024px) {
+    height: 25%;
+    overflow-y: auto;
+  }
 }
 
 .film-modal-btns {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .film-modal-btns {
-    display: flex;
-    
-    @media screen and (min-width: 1024px) {
-        margin-left: 8px;
-    }
+  display: flex;
+
+  @media screen and (min-width: 1024px) {
+    margin-left: 8px;
+  }
 }
 
 .modal-btn-watched {
-    @extend .button;
-    margin-right: 20px;
+  @extend .button;
+  margin-right: 20px;
 }
 
 .modal-btn-queue {
-    @extend .button;
+  @extend .button;
 }
 
 .film-modal-close {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background-color: transparent;
-    cursor: pointer;
-    
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
 
-    &:hover .modal-close-ico,
-    &:focus .modal-close-ico {
-        @extend %animation;
-         stroke: var(--secondary-bg-color);
-    }
+  @media screen and (max-width: 767px) {
+    position: static;
+    transform: translateX(225px) translateY(-10px);
+  }
+
+  &:hover .modal-close-ico,
+  &:focus .modal-close-ico {
+    @extend %animation;
+    stroke: var(--secondary-bg-color);
+  }
 }
-

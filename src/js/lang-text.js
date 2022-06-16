@@ -2,7 +2,7 @@ export const text = {
   en: {
     'queue-lang': 'Queue',
     'watched-lang': 'Watched',
-    'filter-lang': 'Filter',
+    // 'filter-lang': 'Filter',
     'genr-lang': 'Genres',
     'year-lang': 'Year',
     'year-chose': 'year',
@@ -18,7 +18,7 @@ export const text = {
   , ua: {
     'queue-lang': 'В черзі',
     'watched-lang': 'Переглянуті',
-    'filter-lang': 'Фільтр',
+    // 'filter-lang': 'Фільтр',
     'genr-lang': 'Жанри',
     'year-lang': 'Рік',
     'year-chose': 'рік',

@@ -5,7 +5,7 @@ import './js/theme';
 import './js/loader';
 import './js/team';
 // import './js/modal-team';
-// import './js/modal-items';
+import './js/modal-author';
 import './js/movie-genres';
 import './js/search-movies';
 import './js/refs';
@@ -17,6 +17,7 @@ import './js/search-form';
 import './js/header-mylib';
 import './js/language';
 import './js/scrolltop';
-
 import './js/trailer-api';
 import './js/movie-trailer';
+import './js/firebase-cng';
+
