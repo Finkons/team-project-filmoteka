@@ -5,7 +5,7 @@ import './js/theme';
 import './js/loader';
 import './js/team';
 // import './js/modal-team';
-// import './js/modal-items';
+import './js/modal-author';
 import './js/movie-genres';
 import './js/search-movies';
 import './js/refs';
