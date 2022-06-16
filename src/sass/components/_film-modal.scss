@@ -24,6 +24,7 @@
 }
 
 .film-poster-wrapper {
+  position: relative;
   margin-bottom: 20px;
 
   @media screen and (min-width: 768px) {
@@ -36,10 +37,38 @@
   }
 }
 
+.modal-btn-trailer {
+  position: absolute;
+  top: 130px;
+  left: 80px;
+
+  @media screen and (min-width: 768px) {
+    top: 140px;
+    left: 80px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: 200px;
+    left: 130px;
+  }
+}
+
+.modal-btn-trailer {
+  background: transparent;
+  transform: scale(1);
+  transition: transform 250ms linear;
+  z-index: 1001;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
 .film-poster-img {
   width: 240px;
   height: 357px;
   border-radius: 5px;
+  z-index: 1001;
 
   @media screen and (min-width: 768px) {
     width: 250px;

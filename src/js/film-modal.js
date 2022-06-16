@@ -5,6 +5,7 @@ import filmModalTemplate from '../templates/film-modal.hbs';
 import { startLoader, stopLoader } from './loader';
 import { addFilmToWatched } from './film-local-storage';
 import { addFilmToQueued } from './film-local-storage';
+// import { watchFilmTrailer } from './movie-trailer'; ===== Уляна ======
 
 const filmsContainer = document.querySelector('.cards-collection');
 let instance;
@@ -34,6 +35,8 @@ function handleCardClick(event) {
     addListenerForWatched(document.querySelector('.modal-btn-watched'), filmId);
     addListenerForQueued(document.querySelector('.modal-btn-queue'), filmId);
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
+
+    // addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId); ===== Уляна ======
   });
 }
 
@@ -54,6 +57,13 @@ function addListenerForQueued(queueBtn, filmId) {
     addFilmToQueued(filmId);
   });
 }
+
+// ===== Уляна ======
+// function addListenerForTrailer(trailerBtn, filmId) {
+//   trailerBtn.addEventListener('click', () => {
+//     watchFilmTrailer(filmId);
+//   });
+// }
 
 async function putFetchToMarkup(filmId, lang) {
   try {
