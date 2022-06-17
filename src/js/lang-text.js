@@ -2,7 +2,7 @@ export const text = {
   en: {
     'queue-lang': 'Queue',
     'watched-lang': 'Watched',
-    // 'filter-lang': 'Filter',
+    'zsu': 'support Ukraine',
     'genr-lang': 'Genres',
     'year-lang': 'Year',
     'year-chose': 'year',
@@ -13,12 +13,12 @@ export const text = {
     'users-choise-lang': 'users choise first',
     'home': 'HOME',
     'library': 'MY LIBRARY',
-    // 'search-form': 'Search Movie',
+    'log-lang': 'Log in',
   }
   , ua: {
     'queue-lang': 'В черзі',
     'watched-lang': 'Переглянуті',
-    // 'filter-lang': 'Фільтр',
+    'zsu': 'Підтримай ЗСУ',
     'genr-lang': 'Жанри',
     'year-lang': 'Рік',
     'year-chose': 'рік',
@@ -29,6 +29,6 @@ export const text = {
     'users-choise-lang': 'вибір користувача',
     'home': 'ГОЛОВНА',
     'library': 'МОЯ БІБЛІОТЕКА',
-    // 'search-form': 'Пошук Фільмів'
+    'log-lang': 'УВІЙТИ',
   }
 };
