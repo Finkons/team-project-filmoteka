@@ -71,7 +71,7 @@
 }
 
 .card-text {
-    color: #FF6B08;
+    color: var(--title-text-color);
 }
 
 .card-poster {
@@ -84,7 +84,7 @@
     left: 0;
     width: 50px;
     height: 20px;
-    background-color: #FF6B08;
+    background-color: var(--secondary-bg-color);
     color: white;
     display: flex;
     align-items: center;

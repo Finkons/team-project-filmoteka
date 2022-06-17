@@ -1,3 +1,5 @@
+import { Notify } from "notiflix";
+
 const queueStoragedFilms = JSON.parse(localStorage.getItem('queued_films')) || [];
 const watchedStoragedFilms = JSON.parse(localStorage.getItem('watched_films')) || [];
 
@@ -21,22 +23,26 @@ export function addFilmToWatched (filmId) {
     localStorage.setItem("watched_films", JSON.stringify(watchedStoragedFilms));
 }
 
-export function swapQueueBtn(queueBtn, filmId) {
+export function notifySuccessQueued(queueBtn, filmId) {
     if (localStorage.getItem('queued_films').includes(filmId)) {
+        Notify.success('Added to queued');
         // queueBtn.classList.add('added');
-        queueBtn.textContent = 'Added to queued';
+        // queueBtn.textContent = 'Added to queued';
     } else {
+        Notify.success('Deleted from queue');
         // queueBtn.classList.remove('added');
-        queueBtn.textContent = 'Add to queue';
+        // queueBtn.textContent = 'Add to queue';
     }
 }
 
-export function swapWatchBtn(watchBtn, filmId) {
+export function notifySuccessWatched(watchBtn, filmId) {
     if (localStorage.getItem('watched_films').includes(filmId)) {
+        Notify.success('Added to watched');
         // watchBtn.classList.add('added');
-        watchBtn.textContent = 'Added to watched';
+        // watchBtn.textContent = 'Added to watched';
     } else {
+        Notify.success('Deleted from watched');
         // watchBtn.classList.remove('added');
-        watchBtn.textContent = 'Add to watched';
+        // watchBtn.textContent = 'Add to watched';
     }
 }
