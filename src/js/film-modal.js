@@ -3,8 +3,8 @@ import 'basiclightbox/dist/basicLightbox.min.css';
 import { getMoviesById } from './get-movies';
 import filmModalTemplate from '../templates/film-modal.hbs';
 import { startLoader, stopLoader } from './loader';
-import { addFilmToWatched, swapWatchBtn } from './film-local-storage';
-import { addFilmToQueued, swapQueueBtn } from './film-local-storage';
+import { addFilmToWatched, notifySuccessWatched } from './film-local-storage';
+import { addFilmToQueued, notifySuccessQueued } from './film-local-storage';
 import { watchFilmTrailer } from './movie-trailer';
 
 const filmsContainer = document.querySelector('.cards-collection');
@@ -49,14 +49,14 @@ function addListenerForCloseBtn(closeBtn) {
 function addListenerForWatched(watchBtn, filmId) {
   watchBtn.addEventListener('click', () => {
     addFilmToWatched(filmId);
-    swapWatchBtn(watchBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
+    notifySuccessWatched(watchBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
   });
 }
 
 function addListenerForQueued(queueBtn, filmId) {
   queueBtn.addEventListener('click', () => {
     addFilmToQueued(filmId);
-    swapQueueBtn(queueBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
+    notifySuccessQueued(queueBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
   });
 }
 
