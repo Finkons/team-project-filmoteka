@@ -16,8 +16,9 @@ function handleCardClick(event) {
   if (!event.target.closest('li')) return;
 
   let filmId = event.target.closest('li').dataset.id;
+
   startLoader();
-  putFetchToMarkup(filmId).then(markup => {
+  renderMarkup(filmId).then(markup => {
     instance = basicLightbox.create(markup, {
       onShow: () => {
         document.body.classList.toggle('no-scroll');
@@ -36,7 +37,7 @@ function handleCardClick(event) {
     addListenerForQueued(document.querySelector('.modal-btn-queue'), JSON.parse(filmId));
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
 
-    addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId); 
+    addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId);
   });
 }
 
@@ -60,16 +61,15 @@ function addListenerForQueued(queueBtn, filmId) {
   });
 }
 
-
 function addListenerForTrailer(trailerBtn, filmId) {
   trailerBtn.addEventListener('click', () => {
     watchFilmTrailer(filmId);
   });
 }
 
-async function putFetchToMarkup(filmId, lang) {
+async function renderMarkup(filmId) {
   try {
-    const resultData = await getMoviesById(filmId, lang);
+    const resultData = await getMoviesById(filmId);
     let markup = filmModalTemplate(resultData.data);
     return markup;
   } catch (error) {

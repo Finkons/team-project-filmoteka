@@ -12,6 +12,13 @@ export async function getPopularMovies(page) {
 }
 
 export async function getMoviesById(id, lang) {
+  const pageLang = document.querySelector('html').getAttribute('lang');
+  if (pageLang === 'ua') {
+    lang = `uk`;
+  } else {
+    lang = `en`;
+  }
+
   const url = `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=${lang}`;
   const response = await axios.get(url);
   return response;
