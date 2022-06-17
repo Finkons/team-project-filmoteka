@@ -20,3 +20,23 @@ export function addFilmToWatched (filmId) {
     }
     localStorage.setItem("watched_films", JSON.stringify(watchedStoragedFilms));
 }
+
+export function swapQueueBtn(queueBtn, filmId) {
+    if (localStorage.getItem('queued_films').includes(filmId)) {
+        // queueBtn.classList.add('added');
+        queueBtn.textContent = 'Added to queued';
+    } else {
+        // queueBtn.classList.remove('added');
+        queueBtn.textContent = 'Add to queue';
+    }
+}
+
+export function swapWatchBtn(watchBtn, filmId) {
+    if (localStorage.getItem('watched_films').includes(filmId)) {
+        // watchBtn.classList.add('added');
+        watchBtn.textContent = 'Added to watched';
+    } else {
+        // watchBtn.classList.remove('added');
+        watchBtn.textContent = 'Add to watched';
+    }
+}
