@@ -1,74 +1,82 @@
 .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
+@media screen and (min-width: 320px) and (max-width: 767px) {
 .pagination {
-    @media screen and (min-width: 320px) and (max-width: 767px) {
-        padding: 40px 0;
-    }
-    @media screen and (min-width: 768px) {
-        padding: 50px 0 60px;;
-    }
-} 
+    padding: 40px 0;
+}
+}
+@media screen and (min-width: 768px) {
+.pagination {
+    padding: 50px 0 60px;
+}
+}
 
 .pagination-button {
-    margin: 0 2px;
-    padding: 12px;
-    background-color: transparent;
-    border: none;
-    color: #000000;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.333;
+margin: 0 2px;
+padding: 12px;
+background-color: transparent;
+border: none;
+color: #000000;
+cursor: pointer;
+font-weight: 500;
+font-size: 12px;
+line-height: 1.333;
+z-index: 0;
+}
 
-    &:hover{
-        background-color: #FF6B08;
-        color: #ffffff;
-        border-radius: 5px;
-    }
+.pagination-button:hover {
+background-color: #FF6B08;
+color: #ffffff;
+border-radius: 5px;
+}
+
+.pagination__icon {
+position: relative;
+z-index: -1;
+width: 16px;
+height: 16px;
 }
 
 .arrow-left, .arrow-right {
-    width: 40px;
-    height: 40px;
-    padding: 4px;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    background-position: 50%;
-    background-repeat: no-repeat;
-
-    &:hover{
-        fill: #ffffff
-    }
+width: 40px;
+height: 40px;
+padding: 4px;
+border-radius: 5px;
+background-color: #f7f7f7;
+background-position: 50%;
+background-repeat: no-repeat;
+}
+.arrow-left:hover, .arrow-right:hover {
+fill: #ffffff;
 }
 
+@media screen and (max-width: 767px) {
 .pagination-dots, .first-button, .last-button {
-    @media screen and (max-width: 767px) {
     display: none;
-    }
+}
 }
 
 .pagination-dots {
-    margin-right: 16px;
-    margin-left: 16px;
-    color: #000000;
+margin-right: 16px;
+margin-left: 16px;
+color: #000000;
 }
 
-
 .pagination-list {
-    display: flex;
-    align-items: center;
+display: flex;
+align-items: center;
 }
 
 .pagination__current-btn {
-    background-color: #545454;
-    height: 40px;
-    width: 40px;
-    border-radius: 5px;
-    color: #ffffff;
+background-color: #545454;
+height: 40px;
+width: 40px;
+border-radius: 5px;
+color: #ffffff;
 }
 
 
