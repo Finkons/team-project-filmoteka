@@ -51,8 +51,9 @@ export function watchedRender() {
   );
   if (localStorage.getItem('watched_films')) {
     refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.watched_films.split(',');
-    localMessage.map(id => {
+    const localMessage = localStorage.getItem('watched_films');
+    const localParse = JSON.parse(localMessage);
+    localParse.map(id => {
       renderMovie(id);
     });
   }
@@ -65,8 +66,9 @@ function queueRender() {
   );
   if (localStorage.getItem('queued_films')) {
     refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.queued_films.split(',');
-    localMessage.map(id => {
+    const localMessage = localStorage.getItem('queued_films');
+    const localParse = JSON.parse(localMessage);
+    localParse.map(id => {
       renderMovie(id);
     });
   }
