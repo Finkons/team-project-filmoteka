@@ -39,7 +39,7 @@ async function onTrailerClick (movieTitle) {
 let instance;
 
 function renderTrailer(videoId) {
-    const markup = `<iframe width="420" height="315" src="http://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
+    const markup = `<iframe width="420" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`;
     instance = basicLightbox.create(markup);
     stopLoader();
     instance.show();
