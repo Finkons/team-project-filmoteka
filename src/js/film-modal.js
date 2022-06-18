@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { getMoviesById } from './get-movies';
 import filmModalTemplate from '../templates/film-modal.hbs';
+import filmModalTemplateUk from '../templates/film-modal-uk.hbs';
 import { startLoader, stopLoader } from './loader';
 import { addFilmToWatched, notifySuccessWatched } from './film-local-storage';
 import { addFilmToQueued, notifySuccessQueued } from './film-local-storage';
@@ -69,8 +70,15 @@ function addListenerForTrailer(trailerBtn, filmId) {
 
 async function renderMarkup(filmId) {
   try {
+    let markup;
     const resultData = await getMoviesById(filmId);
-    let markup = filmModalTemplate(resultData.data);
+    let pageLang = document.querySelector('html').getAttribute('lang');
+    if (pageLang === 'ua') {
+      markup = filmModalTemplateUk(resultData.data);
+    }
+    if (pageLang === `en`) {
+      markup = filmModalTemplate(resultData.data);
+    }
     return markup;
   } catch (error) {
     console.log(error);

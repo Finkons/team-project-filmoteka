@@ -1,25 +1,29 @@
 .scrolltop {
-    position: fixed;
-    bottom: -150px;
-    right: 10px;
-    transition: 0.6s all;
+  position: fixed;
+  bottom: -150px;
+  right: 10px;
+  transition: 0.6s all;
+
+  @media screen and (min-width: 1025px) {
+    right: 100px;
+  }
 }
 
 .scrolltop.showed {
-    bottom: 20px;
-    transition: 0.6s all;
+  bottom: 20px;
+  transition: 0.6s all;
 }
 
 .scrolltop-ico {
-    width: 40px;
-    height: 40px;
-    opacity: 0.5;
-    cursor: pointer;
-    @extend %animation;
+  width: 40px;
+  height: 40px;
+  opacity: 0.5;
+  cursor: pointer;
+  @extend %animation;
 
-    &:hover {
-        fill: var(--secondary-bg-color);
-        opacity: 1;
-        transition: 0.3s hover;
-    }
+  &:hover {
+    fill: var(--secondary-bg-color);
+    opacity: 1;
+    transition: 0.3s hover;
+  }
 }
