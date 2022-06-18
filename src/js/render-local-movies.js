@@ -49,13 +49,9 @@ export function watchedRender() {
     'beforeend',
     `<p>Your watched films library is empty :(</p>`,
   );
-  if (localStorage.getItem('watched_films')) {
-    refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.getItem('watched_films');
-    const localParse = JSON.parse(localMessage);
-    localParse.map(id => {
-      renderMovie(id);
-    });
+  const watchedLocalStorage = localStorage.getItem('watched_films');
+  if (watchedLocalStorage && watchedLocalStorage.length > 2) {
+    addMovieToGallery(watchedLocalStorage);
   }
 }
 
@@ -64,13 +60,9 @@ function queueRender() {
     'beforeend',
     `<p>Your queue films library is empty :(</p>`,
   );
-  if (localStorage.getItem('queued_films')) {
-    refs.galleryContainer.innerHTML = '';
-    const localMessage = localStorage.getItem('queued_films');
-    const localParse = JSON.parse(localMessage);
-    localParse.map(id => {
-      renderMovie(id);
-    });
+  const queueLocalStorage = localStorage.getItem('queued_films');
+  if (queueLocalStorage && queueLocalStorage.length > 2) {
+    addMovieToGallery(queueLocalStorage);
   }
 }
 
@@ -78,4 +70,13 @@ export function ifMyLibraryOpen() {
   if (refs.myLibraryBtn.classList.contains('current')) {
     refs.galleryContainer.innerHTML = '';
   }
+}
+
+function addMovieToGallery(localMovieId) {
+  refs.galleryContainer.innerHTML = '';
+  const localMessage = localMovieId;
+  const localParse = JSON.parse(localMessage);
+  localParse.map(id => {
+    renderMovie(id);
+  });
 }
