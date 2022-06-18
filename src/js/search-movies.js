@@ -28,8 +28,7 @@ async function onMovieSearch(event) {
     }
     catch (eror) {
 console.log(eror)
-    };
-    
+    };  
 };
 
 function renderMoviesList(movies) {
