@@ -5,6 +5,7 @@ import { startLoader, stopLoader } from './loader.js';
 
 const watchedEmptyTemplatesUa = `<p>Ваша бібліотека переглянутих фільмів порожня :(</p>`;
 const queueEmptyTemplatesUa = `<p>Ваша бібліотека фільмів у черзі порожня :(</p>`;
+const langLocalStorage = document.querySelector('html').getAttribute('lang');
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);
@@ -40,10 +41,22 @@ function QueueBtnAction(e) {
 async function renderMovie(filmId) {
   try {
     const response = await getMoviesById(filmId);
+    response.data.release_date = response.data.release_date.substr(0, 4)
+
+    const twoOfGenres = response.data.genres.slice(0, 2)
+    twoOfGenres.push(otherGenresTemplate())
+    response.data.genres = twoOfGenres;
     let markup = moviesListPatern([response.data]);
     return refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
     console.log(error);
+  }
+}
+function otherGenresTemplate() {
+  if (langLocalStorage === 'ua') {
+    return { name: 'інше'}
+  } else if (langLocalStorage === 'en') {
+    return { name: 'other'}
   }
 }
 
@@ -51,9 +64,10 @@ function clearGalleryContainer() {
   refs.galleryContainer.innerHTML = '';
 }
 
+
 export function watchedRender() {
   addEmptyTemplateEn('watched');
-  if (document.querySelector('html').getAttribute('lang') === 'ua') {
+  if (langLocalStorage === 'ua') {
     addEmptyTemplateUa();
   }
 
@@ -65,7 +79,7 @@ export function watchedRender() {
 
 function queueRender() {
   addEmptyTemplateEn('queue');
-  if (document.querySelector('html').getAttribute('lang') === 'ua') {
+  if (langLocalStorage === 'ua') {
     addEmptyTemplateUa();
   }
 
@@ -100,26 +114,14 @@ export function renderAfterModalClose() {
   }
 }
 
-// refs.enLangBTN.addEventListener('click', whenEngBtnClick)
+const onClick = () => {
+  setTimeout(() => {
+    renderAfterModalClose();
+  }, 20);
+};
 
-
-
-
-// function whenEngBtnClick() {
-//   if (refs.myLibraryBtn.classList.contains('current')) {
-//     console.log(refs.myLibraryBtn.classList.contains('current'))
-//     const watchedLocalStorage = localStorage.getItem('watched_films');
-//     const queueLocalStorage = localStorage.getItem('queued_films');
-//     if (!watchedLocalStorage || watchedLocalStorage.length <= 2) {
-//       addEmptyTemplateEn('watched');
-//       console.log('click en in watched');
-//     } else if (!queueLocalStorage || queueLocalStorage.length <= 2) {
-//       addEmptyTemplateEn('queued');
-//       console.log('click en in queue');
-//     }
-//   }
-// }
-
+refs.enLangBTN.addEventListener('click', onClick)
+refs.uaLangBTN.addEventListener('click', onClick)
 
 function addEmptyTemplateEn(currentLibrary) {
     clearGalleryContainer();
