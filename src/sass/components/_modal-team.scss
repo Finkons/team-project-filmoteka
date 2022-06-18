@@ -18,7 +18,7 @@
 
 .team__item {
   border-radius: 10px;
-  overflow: hidden;
+  
   position: relative;
   cursor: pointer;
   padding: 10px;
@@ -30,8 +30,7 @@
 .team__item:hover {
   transform: scale(1.05);
   
-  box-shadow: 0px 2px 2px rgba(255,107,8,1), 0px 2px 2px rgba(255,107,8,1),
-  1px 2px 3px rgba(255,107,8,1);
+  box-shadow: 1px 1px 5px 1px #ff6600, 1px 1px 5px 1px #ff6b08, 3px 3px 7px 7px rgba(255,107,8,0.11);
 }
 
 .team__image {
@@ -103,8 +102,7 @@
   position: relative;
   padding: 40px;
   background-color:#07131b7d;
-  box-shadow: 5px 0px 4px 4px rgba(255,107,8,1), 0px 4px 4px rgba(255,107,8,1),
-  1px 4px 6px rgba(255,107,8,1);
+  box-shadow: 5px 5px 15px 5px #ff6b08, 5px 5px 50px 7px rgba(255,107,8,0.11);
   border-radius: 4px;
   transition: transform 550ms cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: auto;
@@ -148,14 +146,15 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid #07131bda;
+ 
   background-color: #07131bda;
-  transition: fill 550ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: scale 550ms cubic-bezier(0.4, 0, 0.2, 1);
 } 
 
 .backdrop {
   padding: 20px;
   overflow-y: scroll;
+
   opacity: 1;
   width: 100%;
   height: 100%;
