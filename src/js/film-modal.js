@@ -2,6 +2,7 @@ import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import { getMoviesById } from './get-movies';
 import filmModalTemplate from '../templates/film-modal.hbs';
+import filmModalTemplateUk from '../templates/film-modal-uk.hbs';
 import { startLoader, stopLoader } from './loader';
 import { addFilmToWatched, notifySuccessWatched } from './film-local-storage';
 import { addFilmToQueued, notifySuccessQueued } from './film-local-storage';
@@ -17,8 +18,9 @@ function handleCardClick(event) {
   if (!event.target.closest('li')) return;
 
   let filmId = event.target.closest('li').dataset.id;
+
   startLoader();
-  putFetchToMarkup(filmId).then(markup => {
+  renderMarkup(filmId).then(markup => {
     instance = basicLightbox.create(markup, {
       onShow: () => {
         document.body.classList.toggle('no-scroll');
@@ -38,7 +40,7 @@ function handleCardClick(event) {
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
 
     makeDisableBtn(filmId);
-
+    
     addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId);
   });
 }
@@ -69,10 +71,17 @@ function addListenerForTrailer(trailerBtn, filmId) {
   });
 }
 
-async function putFetchToMarkup(filmId, lang) {
+async function renderMarkup(filmId) {
   try {
-    const resultData = await getMoviesById(filmId, lang);
-    let markup = filmModalTemplate(resultData.data);
+    let markup;
+    const resultData = await getMoviesById(filmId);
+    let pageLang = document.querySelector('html').getAttribute('lang');
+    if (pageLang === 'ua') {
+      markup = filmModalTemplateUk(resultData.data);
+    }
+    if (pageLang === `en`) {
+      markup = filmModalTemplate(resultData.data);
+    }
     return markup;
   } catch (error) {
     console.log(error);
