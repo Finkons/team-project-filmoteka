@@ -1,17 +1,22 @@
+<div class="modal-team"> 
+<div class="team-container">
 {{#each this}}
 <div class="team__item">
   <div class="front">
     <img class="team__image" src="{{photo}}" alt="{{rol}}"/>
       <div class="team-meta">
+        <p class="team__item-text">{{rol}}</p>
           <p class="team__item-title">{{name}}</p>
           <p class="team__item-title">{{family}}</p>
-          <p class="team__item-text">{{rol}}</p>
+          
       </div>        
   </div>
   <div class="back">
-          <p class="team__item-title">{{name}}</p>
-          <p class="team__item-title">{{family}}</p>
+        
           <p class="team__item-text">{{description}}</p>
   </div>
 </div>
 {{/each}}
+</div>
+</div> 
+    

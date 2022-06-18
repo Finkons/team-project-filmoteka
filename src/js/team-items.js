@@ -24,7 +24,7 @@ export const teamItems = [
     photo: 'https://ca.slack-edge.com/T02UC9J08RZ-U030KJA3TPA-2cc0c5675e2d-512',
     name: 'Єлла',
     family: 'Кадряєва',
-    description: 'Реалізоване модальне вікно "Наша комада"',
+    description: 'Реалізоване модальне вікно "Наша комада", модальне вікно авторизації',
     rol: 'Developer',
   },
   {
