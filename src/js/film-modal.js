@@ -7,6 +7,7 @@ import { startLoader, stopLoader } from './loader';
 import { addFilmToWatched, notifySuccessWatched } from './film-local-storage';
 import { addFilmToQueued, notifySuccessQueued } from './film-local-storage';
 import { watchFilmTrailer } from './movie-trailer';
+import { makeDisableBtn } from './film-local-storage';
 
 const filmsContainer = document.querySelector('.cards-collection');
 let instance;
@@ -38,6 +39,8 @@ function handleCardClick(event) {
     addListenerForQueued(document.querySelector('.modal-btn-queue'), JSON.parse(filmId));
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
 
+    makeDisableBtn(filmId);
+    
     addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId);
   });
 }
