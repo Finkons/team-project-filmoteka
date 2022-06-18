@@ -27,6 +27,7 @@ async function insertGenresToMovies() {
 export function insertPopularMovies() {
   startLoader();
   insertGenresToMovies().then(res => {
+    console.log(res);
     res.map(element => {
       if (element.genres.length > 2) {
         const Obj = {name: "Інше"};
