@@ -11,7 +11,14 @@ const refs = {
   galleryContainer: document.querySelector('.cards-collection'),
   filterForm: document.querySelector('.search-filter-form'),
   pagination: document.querySelector('.pagination'),
-
+  // paginationList: document.querySelector('.pagination-list'),
+  // paginationBtn: document.querySelectorAll('.pagination-button'),
+  // pageFirst: document.querySelector('.first-button'),
+  // pageLast: document.querySelector('.last-button'),
+  leftArrow: document.querySelector('#arrow-left'),
+  rightArrow: document.querySelector('#arrow-right'),
+  // prevDots: document.querySelector('.js-previous-dots'),
+  // afterDots: document.querySelector('.js-after-dots')
   // My Library //
   libraryBtnsList: document.querySelector('.library-btn__list'),
   libraryBtnWatched: document.querySelector('.watched-btn'),
