@@ -1,4 +1,3 @@
-// import { getMovieGenre } from './movie-genres';
 import { getGenres, API_KEY } from './get-movies';
 import { startLoader, stopLoader } from './loader.js';
 import moviesListPatern from '../templates/list-of-movies.hbs';
@@ -25,11 +24,12 @@ formEl.addEventListener('click', (event) => {
 if (formValue.id === 'years') {
     
     if (formValue.value !== 'year') {
-        loaderStartStop();
+        startLoader();
         onClickSearchBtnClose();
         Notiflix.Notify.success(`Hooray! Here your films by ${formValue.value} year!`);
         clearGallery();
-        markupMoviesByYear(formValue.value);        
+        markupMoviesByYear(formValue.value);
+        stopLoader();
     }}
 
     
@@ -38,7 +38,7 @@ if (formValue.id === 'years') {
         let genreId;
 
         if (formValue.value !== 'genres') {
-            loaderStartStop();
+            startLoader();
             onClickSearchBtnClose();
             Notiflix.Notify.success(`Hooray! Here your ${formValue.value} movies!`);
             for (const el of genresList) {
@@ -49,22 +49,22 @@ if (formValue.id === 'years') {
             }
             clearGallery();
             markupMoviesByGenres(genreId);
+            stopLoader()
         }
     }
 
     if (formValue.id === 'popularity') {
 
         if (formValue.value !== 'option') {
-            loaderStartStop();
+            startLoader();
             onClickSearchBtnClose();
             Notiflix.Notify.success(`Hooray! We found most popular movies!`);
             clearGallery();
-            markupMoviesByPopularity(formValue.value)
+            markupMoviesByPopularity(formValue.value);
+            stopLoader();
         }
     }
-
     formEl.reset();
-
 })
 
 
@@ -77,7 +77,6 @@ function onClickSearchBtnOpen() {
 function onClickSearchBtnClose() {
     searchBackdrop.classList.remove('is-open');
 }
-
 
 
 function clearGallery() {
@@ -94,10 +93,6 @@ async function renderGenresList() {
 searchGenreEl.insertAdjacentHTML('beforeend', genresItems)
 }
 
-function loaderStartStop() {
-    startLoader();
-    stopLoader();
-}
 
 async function getMoviesByGenres(genreId) {
     const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&include_adult=false&include_video=false&page=1&with_genres=${genreId}`;
@@ -136,7 +131,7 @@ function markupMoviesByPopularity(param) {
     insertGenresToMoviesByPopularity(param).then(res => {
     res.map(element => {
     if (element.genres.length > 2) {
-        const Obj = {name: "Інше"};
+        const Obj = {name: "Other"};
         element.genres[2] = Obj;
         element.genres.length = 3
     }
@@ -166,7 +161,7 @@ function markupMoviesByGenres(id) {
     insertGenresToMoviesByGenres(id).then(res => {
         res.map(element => {
     if (element.genres.length > 2) {
-        const Obj = {name: "Інше"};
+        const Obj = {name: "Other"};
         element.genres[2] = Obj;
         element.genres.length = 3
     }
@@ -195,7 +190,7 @@ function markupMoviesByYear(year) {
     insertGenresToMoviesByYear(year).then(res => {
     res.map(element => {
     if (element.genres.length > 2) {
-        const Obj = {name: "Інше"};
+        const Obj = {name: "Other"};
         element.genres[2] = Obj;
         element.genres.length = 3
     }
