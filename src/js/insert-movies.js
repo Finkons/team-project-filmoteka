@@ -12,18 +12,16 @@ function renderMoviesList(movies) {
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-function insertGenresToMovies() {
-  return getPopularMovies(page, lang).then(data => {
-    return getGenres(lang).then(genresList => {
-      return data.results.map(movie => ({
-        ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids
-          .map(id => genresList.genres.filter(el => el.id === id))
-          .flat(),
-      }))
-    })
-  })
+async function insertGenresToMovies() {
+  const data = await getPopularMovies(page, lang);
+  const genresList = await getGenres(lang);
+  return data.results.map(movie => ({
+    ...movie,
+    release_date: movie.release_date.split('-')[0],
+    genres: movie.genre_ids
+      .map(id => genresList.genres.filter(el => el.id === id))
+      .flat(),
+  }));
 }
 
 export function insertPopularMovies() {

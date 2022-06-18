@@ -6,7 +6,6 @@ refs.uaLangBTN.addEventListener('click', setLang.bind(null, 'ua'));
 
 const inputPlaceholder = document.querySelector('.header__input')
 
-console.log(inputPlaceholder.placeholder);
 function setLang(lang) {
   let par;
   if (!text.hasOwnProperty(lang)) return;
