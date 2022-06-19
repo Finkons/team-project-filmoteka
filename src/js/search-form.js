@@ -15,9 +15,11 @@ const searchBackdrop = document.querySelector('.search-form__wrap');
 
     renderGenresList();
 
+
 let genresList;
 
-formEl.addEventListener('click', (event) => {
+
+formEl.addEventListener('change', (event) => {
     const formValue = event.target;
     event.preventDefault();
 
@@ -39,16 +41,18 @@ if (formValue.id === 'years') {
 
         if (formValue.value !== 'genres') {
             startLoader();
-            onClickSearchBtnClose();
             Notiflix.Notify.success(`Hooray! Here your ${formValue.value} movies!`);
             for (const el of genresList) {
 
                 if (el.name === formValue.value) {
+                    
+                    console.log(formValue.value);
                     genreId = el.id;
+                    markupMoviesByGenres(genreId);
+                    onClickSearchBtnClose();
                 }
             }
             clearGallery();
-            markupMoviesByGenres(genreId);
             stopLoader()
         }
     }
@@ -113,18 +117,16 @@ async function getMoviesByPopularity(param) {
 }
 
 
-function insertGenresToMoviesByPopularity(param) {
-return getMoviesByPopularity(param).then(data => {
-    return getGenres().then(genresList => {
+async function insertGenresToMoviesByPopularity(param) {
+    const data = await getMoviesByPopularity(param);
+    const genresList = await getGenres();
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
         genres: movie.genre_ids
-        .map(id => genresList.genres.filter(el => el.id === id))
-        .flat(),
-    }))
-    })
-})
+            .map(id => genresList.genres.filter(el => el.id === id))
+            .flat(),
+    }));
 }
 
 function markupMoviesByPopularity(param) {
@@ -143,18 +145,16 @@ function markupMoviesByPopularity(param) {
 }
 
 
-function insertGenresToMoviesByGenres(id) {
-    return getMoviesByGenres(id).then(data => {
-    return getGenres().then(genresList => {
+async function insertGenresToMoviesByGenres(id) {
+    const data = await getMoviesByGenres(id);
+    const genresList = await getGenres();
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
         genres: movie.genre_ids
-        .map(id => genresList.genres.filter(el => el.id === id))
-        .flat(),
-    }))
-    })
-})
+            .map(id_1 => genresList.genres.filter(el => el.id === id_1))
+            .flat(),
+    }));
 }
 
 function markupMoviesByGenres(id) {
@@ -172,18 +172,16 @@ function markupMoviesByGenres(id) {
 })
 }
 
-function insertGenresToMoviesByYear(year) {
-return getMoviesByYear(year).then(data => {
-    return getGenres().then(genresList => {
+async function insertGenresToMoviesByYear(year) {
+    const data = await getMoviesByYear(year);
+    const genresList = await getGenres();
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
         genres: movie.genre_ids
-        .map(id => genresList.genres.filter(el => el.id === id))
-        .flat(),
-    }))
-    })
-})
+            .map(id => genresList.genres.filter(el => el.id === id))
+            .flat(),
+    }));
 }
 
 function markupMoviesByYear(year) {

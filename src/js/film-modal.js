@@ -8,6 +8,7 @@ import { addFilmToWatched, notifySuccessWatched } from './film-local-storage';
 import { addFilmToQueued, notifySuccessQueued } from './film-local-storage';
 import { watchFilmTrailer } from './movie-trailer';
 import { makeDisableBtn } from './film-local-storage';
+import { renderAfterModalClose } from './render-local-movies';
 
 const filmsContainer = document.querySelector('.cards-collection');
 let instance;
@@ -30,6 +31,8 @@ function handleCardClick(event) {
       onClose: () => {
         document.body.classList.toggle('no-scroll');
         window.removeEventListener('keydown', onEscPress);
+
+        renderAfterModalClose();
       },
     });
 
@@ -40,7 +43,7 @@ function handleCardClick(event) {
     addListenerForCloseBtn(document.querySelector('.film-modal-close'));
 
     makeDisableBtn(filmId);
-    
+
     addListenerForTrailer(document.querySelector('.modal-btn-trailer'), filmId);
   });
 }
