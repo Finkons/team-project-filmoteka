@@ -5,7 +5,7 @@ import { startLoader, stopLoader } from './loader.js';
 
 const watchedEmptyTemplatesUa = `<p>Ваша бібліотека переглянутих фільмів порожня :(</p>`;
 const queueEmptyTemplatesUa = `<p>Ваша бібліотека фільмів у черзі порожня :(</p>`;
-const langLocalStorage = document.querySelector('html').getAttribute('lang');
+// const langLocalStorage = document.querySelector('html').getAttribute('lang');
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);
@@ -53,9 +53,9 @@ async function renderMovie(filmId) {
   }
 }
 function otherGenresTemplate() {
-  if (langLocalStorage === 'ua') {
+  if (document.querySelector('html').getAttribute('lang') === 'ua') {
     return { name: 'інше'}
-  } else if (langLocalStorage === 'en') {
+  } else if (document.querySelector('html').getAttribute('lang') === 'en') {
     return { name: 'other'}
   }
 }
@@ -67,7 +67,7 @@ function clearGalleryContainer() {
 
 export function watchedRender() {
   addEmptyTemplateEn('watched');
-  if (langLocalStorage === 'ua') {
+  if (document.querySelector('html').getAttribute('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
@@ -79,7 +79,7 @@ export function watchedRender() {
 
 function queueRender() {
   addEmptyTemplateEn('queue');
-  if (langLocalStorage === 'ua') {
+  if (document.querySelector('html').getAttribute('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
