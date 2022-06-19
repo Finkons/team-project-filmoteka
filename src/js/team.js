@@ -20,7 +20,8 @@ function createTeamMarkup(teamItems) {
 refs.openModalBtn.addEventListener('click', toggleModalTeam);
 refs.closeModalBtn.addEventListener('click', toggleModalTeam);
 
-function toggleModalTeam() {
+function toggleModalTeam(event) {
+  event.preventDefault();
   document.body.classList.toggle('modal-open');
   refs.modal.classList.toggle('is-hidden');
 }

@@ -30,8 +30,7 @@ async function onMovieSearch(event) {
     }
     catch (eror) {
 console.log(eror)
-    };
-    
+    };  
 };
 
 export function renderMoviesList(movies) {

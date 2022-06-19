@@ -6,8 +6,8 @@
 .team-container {
   display: grid;
   max-width: 1140px;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  grid-auto-rows: minmax(260px, auto);
+  grid-template-columns: repeat(auto-fit, minmax(164px, 1fr));
+  grid-auto-rows: minmax(164px, auto);
   grid-gap: 12px;
   justify-content: center;
   padding: 0;
@@ -18,7 +18,7 @@
 
 .team__item {
   border-radius: 10px;
-  overflow: hidden;
+  
   position: relative;
   cursor: pointer;
   padding: 10px;
@@ -29,29 +29,40 @@
 
 .team__item:hover {
   transform: scale(1.05);
-  transition: transform var(--animation-duration) var(--timing-function);
-  box-shadow: 0px 4px 4px rgba(245, 124, 50, 0.12), 0px 4px 4px rgba(245, 124, 50, 0.12),
-  1px 4px 6px rgba(245, 124, 50, 0.12);
+  
+  box-shadow: 1px 1px 5px 1px #ff6600, 1px 1px 5px 1px #ff6b08, 3px 3px 7px 7px rgba(255,107,8,0.11);
 }
 
 .team__image {
+  position: relative;
+  z-index: 3;
   min-width: 0;
-  height: 150px;
-  width: 150px;
+  height: 156px;
+  width: 156px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 10px auto 0;
+  margin: 5px auto;
+  transition: 1500ms var(--timing-function);
+  overflow: hidden;
+}
+.team__image:hover {
+  transform: scale(0.5) translate(-50px, -50px);
+  transition: transform 1000ms var(--timing-function);
 }
 
+
 .team-meta {
-  padding: 10px;
+ 
+  z-index: 1;
+  position: absolute;
+  top: 100px;
+  right: 25px;
   font-weight: 700;
 }
 
 .team-meta p {
   margin-top: 0;
   margin-bottom: 0;
-  letter-spacing: 0.1em;
 }
 
 .front,
@@ -90,9 +101,8 @@
 .modal {
   position: relative;
   padding: 40px;
-  background-color: #b8b4a7;
-  box-shadow: 0px 4px 4px rgba(245, 124, 50, 0.12), 0px 4px 4px rgba(245, 124, 50, 0.12),
-  1px 4px 6px rgba(245, 124, 50, 0.12);
+  background-color:#07131b7d;
+  box-shadow: 5px 5px 15px 5px #ff6b08, 5px 5px 50px 7px rgba(255,107,8,0.11);
   border-radius: 4px;
   transition: transform 550ms cubic-bezier(0.4, 0, 0.2, 1);
   margin-left: auto;
@@ -136,20 +146,21 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #ffffff;
-  transition: fill 550ms cubic-bezier(0.4, 0, 0.2, 1);
+ 
+  background-color: #07131bda;
+  transition: scale 550ms cubic-bezier(0.4, 0, 0.2, 1);
 } 
 
 .backdrop {
   padding: 20px;
   overflow-y: scroll;
+
   opacity: 1;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #07131bad;
   position: fixed;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -167,15 +178,17 @@ body.modal-open {
 }
 
 .team__item-title {
+  font-size: 12px;
   text-transform: uppercase;
   color: #ff6b08;
   line-height: 1.14;
   font-weight: 500;
   margin-bottom: 8px;
+  
 }
 
 .team__item-text {
-  font-size: 14px;
+  font-size: 12px;
   color: #212121;
   font-weight: 400;
   line-height: 1.14;
