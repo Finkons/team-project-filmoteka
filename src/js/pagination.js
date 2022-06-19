@@ -108,7 +108,7 @@ function renderPagesList(currentPage, totalPages) {
   // refs.pagination.insertAdjacentHTML('beforeend', markup);
 
   const start = currentPage < 4 ? 1 : currentPage - btnTotal;
-  const end = currentPage + btnTotal;
+  const end = currentPage >= totalPages ? totalPages -1 : currentPage + btnTotal;
 
   if (currentPage >= 4) {
     refs.paginationList.insertAdjacentHTML(
