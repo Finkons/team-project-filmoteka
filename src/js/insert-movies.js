@@ -4,15 +4,12 @@ import refs from './refs';
 import { getGenres } from './get-movies';
 import { startLoader, stopLoader } from './loader.js';
 
-let page = 1;
-let lang = 'uk';
-
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies)
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-async function insertGenresToMovies() {
+async function insertGenresToMovies(page, lang) {
   const data = await getPopularMovies(page, lang);
   const genresList = await getGenres(lang);
   return data.results.map(movie => ({
@@ -24,9 +21,9 @@ async function insertGenresToMovies() {
   }));
 }
 
-export function insertPopularMovies() {
+export function insertPopularMovies(page = 1, lang = "uk") {
   startLoader();
-  insertGenresToMovies().then(res => {
+  insertGenresToMovies(page,lang).then(res => {
     console.log(res);
     res.map(element => {
       if (element.genres.length > 2) {
