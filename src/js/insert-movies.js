@@ -4,15 +4,13 @@ import refs from './refs';
 import { getGenres } from './get-movies';
 import { startLoader, stopLoader } from './loader.js';
 
-let page = 1;
-let lang = 'uk';
 
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies)
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
-function insertGenresToMovies() {
+function insertGenresToMovies(page, lang) {
   return getPopularMovies(page, lang).then(data => {
     return getGenres(lang).then(genresList => {
       return data.results.map(movie => ({
@@ -26,9 +24,9 @@ function insertGenresToMovies() {
   })
 }
 
-export function insertPopularMovies() {
+export function insertPopularMovies(page = 1, lang = "uk") {
   startLoader();
-  insertGenresToMovies().then(res => {
+  insertGenresToMovies(page, lang).then(res => {
     res.map(element => {
       if (element.genres.length > 2) {
         const Obj = {name: "Інше"};
