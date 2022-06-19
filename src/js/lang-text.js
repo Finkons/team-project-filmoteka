@@ -2,7 +2,7 @@ export const text = {
   en: {
     'queue-lang': 'Queue',
     'watched-lang': 'Watched',
-    'zsu': 'support Ukraine',
+    'zsu': 'Support Ukraine',
     'genr-lang': 'Genres',
     'year-lang': 'Year',
     'year-chose': 'year',
@@ -18,7 +18,7 @@ export const text = {
   , ua: {
     'queue-lang': 'В черзі',
     'watched-lang': 'Переглянуті',
-    'zsu': 'Підтримай ЗСУ',
+    'zsu': 'Допомога ЗСУ',
     'genr-lang': 'Жанри',
     'year-lang': 'Рік',
     'year-chose': 'рік',
