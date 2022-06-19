@@ -15,9 +15,11 @@ const searchBackdrop = document.querySelector('.search-form__wrap');
 
     renderGenresList();
 
+
 let genresList;
 
-formEl.addEventListener('click', (event) => {
+
+formEl.addEventListener('change', (event) => {
     const formValue = event.target;
     event.preventDefault();
 
@@ -39,16 +41,18 @@ if (formValue.id === 'years') {
 
         if (formValue.value !== 'genres') {
             startLoader();
-            onClickSearchBtnClose();
             Notiflix.Notify.success(`Hooray! Here your ${formValue.value} movies!`);
             for (const el of genresList) {
 
                 if (el.name === formValue.value) {
+                    
+                    console.log(formValue.value);
                     genreId = el.id;
+                    markupMoviesByGenres(genreId);
+                    onClickSearchBtnClose();
                 }
             }
             clearGallery();
-            markupMoviesByGenres(genreId);
             stopLoader()
         }
     }
