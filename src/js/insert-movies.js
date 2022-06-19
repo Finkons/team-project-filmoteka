@@ -13,6 +13,7 @@ function renderMoviesList(movies) {
 async function insertGenresToMovies(page, lang) {
   const data = await getPopularMovies(page, lang);
   const genresList = await getGenres(lang);
+  renderButtons(data.page, data.total_pages);
   return data.results.map(movie => ({
     ...movie,
     release_date: movie.release_date.split('-')[0],
@@ -21,7 +22,7 @@ async function insertGenresToMovies(page, lang) {
 }
 
 export function insertPopularMovies(page = 1, lang = 'uk') {
-  renderButtons();
+  
   startLoader();
 
   insertGenresToMovies(page, lang)
