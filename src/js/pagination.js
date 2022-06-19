@@ -1,8 +1,8 @@
-import refs from './refs';
-import { getPopularMovies } from './get-movies';
+import refs from './refs.js';
+import { getPopularMovies } from './get-movies.js';
 import moviesListPagin from '../templates/pagination.hbs';
-import { insertPopularMovies } from './insert-movies';
-import { getMovieGenre } from './movie-genres';
+import { insertPopularMovies } from './insert-movies.js';
+import { insertGenresMovies } from './insert-movies.js';
 import {startLoader,stopLoader} from './loader.js';
 import {renderMoviesList} from './search-movies';
 
@@ -11,13 +11,24 @@ let totalPages = 0;
 let searchQuery = '';
 let btnTotal = 2;
 
+export function paginationPage(data) {
+    console.log(data);
+    searchQuery = query;
+    currentPage = data.page;
+    clearPage(refs.paginationList);
+    insertPopularMovies(currentPage, data);
+    getPopularMovies(data.total_pages);
+    setLastPageNumber(data.total_pages);
+    // onMovieSearch(fetchedQuery.results);
+    renderPagesList(data.total_pages);
+    // currentBtn();
+    // checkBtnOpacity();
+}
 
 function onBtnsClick(evt) {
-    console.log(evt.target.classList)
     if (evt.target.nodeName !== 'BUTTON') {
         return;
-    } else
-    if (evt.target.classList.contains('arrow-left')) {
+    } else if (evt.target.classList.contains('arrow-left')) {
     currentPage -= 1;
     } else if (evt.target.classList.contains('arrow-right')) {
     currentPage += 1;
@@ -29,7 +40,7 @@ function onBtnsClick(evt) {
     clearPage(refs.paginationList);
     insertPopularMovies(currentPage);
     // renderPagesList();
-    checkBtnOpacity();
+    // checkBtnOpacity();
 }    
 
 
@@ -60,7 +71,7 @@ function checkBtnOpacity() {
     }
     
 function setLastPageNumber(totalPages) {
-    console.log(totalPages)
+    console.log(totalPages);
     refs.pageLast.textContent = totalPages;
 }
 
@@ -80,30 +91,30 @@ function clearPage() {
 };
 
 function renderPagesList(totalPages) {
-    const pagesArr = [];
-    for (let i = 1; i < totalPages; i += 1) {
-        pagesArr.push({
-            page: i
-        })
-    }
-    const data = {
-        pages: pagesArr,
-        currentPage: currentPage
-    }
-    const markup = moviesListPagin(data)
-    refs.pagination.insertAdjacentHTML('beforeend', markup);
-    refs.pagination.addEventListener('click', onBtnsClick);
-    // const start = currentPage - btnTotal;
-    // const end = currentPage + btnTotal;
-    // for (let i = start; i <= end; i += 1) {
-    //     if (i > 1 && i < totalPages) {
-    //     refs.paginationList.insertAdjacentHTML(
-    //         'beforeend',
-    //         `<li class=""><button class="pagination-button">${i}</button></li>`,
-    //     );
-    //     }
+    // const pagesArr = [];
+    // for (let i = 1; i < totalPages; i += 1) {
+    //     pagesArr.push({
+    //         page: i
+    //     })
     // }
-    }
+    // const data = {
+    //     pages: pagesArr,
+    //     currentPage: currentPage
+    // }
+    // const markup = moviesListPagin(data)
+    // refs.pagination.insertAdjacentHTML('beforeend', markup);
     
-renderPagesList(5);
+    const start = currentPage - btnTotal;
+    const end = currentPage + btnTotal;
+    for (let i = start; i <= end; i += 1) {
+        if (i > 1 && i < totalPages) {
+        refs.paginationList.insertAdjacentHTML(
+            'beforeend',
+            `<li class=""><button class="pagination-button">${i}</button></li>`,
+        );
+        }
+    }
+    }
+refs.pagination.addEventListener('click', onBtnsClick);   
+renderPagesList(6);
 

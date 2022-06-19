@@ -3,7 +3,7 @@ import movieListTpl from '../templates/list-of-movies.hbs';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import refs from './refs';
 import {startLoader,stopLoader} from './loader.js';
-import {papaginationPage} from './pagination';
+
 
 let page = 1;
 let searchQuery = '';
@@ -25,7 +25,6 @@ async function onMovieSearch(event) {
         };
         startLoader();
         stopLoader();
-        paginationPage(query, result);
         renderMoviesList(fetchedQuery.results);
     }
     catch (eror) {
