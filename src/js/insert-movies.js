@@ -9,6 +9,7 @@ function renderMoviesList(movies) {
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
+
 async function insertGenresToMovies(page, lang) {
   const data = await getPopularMovies(page, lang);
   const genresList = await getGenres(lang);
@@ -23,8 +24,10 @@ async function insertGenresToMovies(page, lang) {
 
 export function insertPopularMovies(page = 1, lang = "uk") {
   startLoader();
-  insertGenresToMovies(page,lang).then(res => {
-    console.log(res);
+  
+  insertGenresToMovies(page, lang).then(res => {
+
+
     res.map(element => {
       if (element.genres.length > 2) {
         const Obj = {name: "Інше"};

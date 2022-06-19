@@ -2,7 +2,8 @@ import { getMoviesByName } from './get-movies';
 import movieListTpl from '../templates/list-of-movies.hbs';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import refs from './refs';
-import {startLoader,stopLoader} from './loader.js'
+import {startLoader,stopLoader} from './loader.js';
+import {papaginationPage} from './pagination';
 
 let page = 1;
 let searchQuery = '';
@@ -24,6 +25,7 @@ async function onMovieSearch(event) {
         };
         startLoader();
         stopLoader();
+        paginationPage(query, result);
         renderMoviesList(fetchedQuery.results);
     }
     catch (eror) {
@@ -31,7 +33,7 @@ console.log(eror)
     };  
 };
 
-function renderMoviesList(movies) {
+export function renderMoviesList(movies) {
     const markup = movieListTpl(movies);
     refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
 };
