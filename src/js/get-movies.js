@@ -5,6 +5,13 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 export async function getPopularMovies(page, lang) {
   try {
+    let pageLang = localStorage.getItem('lang');
+    if (pageLang === 'ua') {
+      lang = `uk`;
+    } else {
+      lang = `en`;
+    }
+    
     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=${lang}&page=${page}`;
     const response = await axios.get(url);
     return response.data;
