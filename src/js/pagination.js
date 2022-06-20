@@ -1,7 +1,6 @@
 import refs from './refs.js';
-import { getPopularMovies, getTotalPages } from './get-movies.js';
 import { insertPopularMovies } from './insert-movies.js';
-import { startLoader, stopLoader } from './loader.js';
+
 
 
 let searchQuery = '';
@@ -14,9 +13,7 @@ export function paginationPage(data) {
   currentPage = data.page;
   clearPage(refs.paginationList);
   insertPopularMovies(currentPage, data);
-  // getPopularMovies(data.total_pages);
   setLastPageNumber(data.total_pages);
-  // onMovieSearch(fetchedQuery.results);
   renderPagesList(data.total_pages);
   currentBtn();
   checkBtnOpacity();
@@ -36,8 +33,6 @@ function onBtnsClick(evt) {
   clearPage(refs.paginationList);
   const newPage = `${searchQuery}&page=${currentPage}`;
   insertPopularMovies(newPage);
-  // renderPagesList();
-  // checkBtnOpacity();
 }
 
 function checkBtnOpacity() {
@@ -64,11 +59,13 @@ function checkBtnOpacity() {
     currentPage > Number(refs.pageLast.textContent) - 4
       ? refs.afterDots.classList.add('visually-hidden')
       : refs.afterDots.classList.remove('visually-hidden');
+      currentPage > Number(refs.pageLast.textContent) - 4
+      ? refs.pageLast.classList.add('visually-hidden')
+      : refs.pageLast.classList.remove('visually-hidden');
   }
 }
 
 export function renderButtons(currentPage, pagesCount) {
-  // const pagesCount = await getTotalPages(currentPage);
   setLastPageNumber(pagesCount);
   return renderPagesList(currentPage, pagesCount);
 }
@@ -77,16 +74,7 @@ function setLastPageNumber(totalPages) {
   refs.pageLast.textContent = totalPages;
 }
 
-// function currentBtn() {
-//   let activeBtns = refs.pagination.querySelectorAll('button');
-//   for (let i = 0; i < activeBtns.length; i += 1) {
-//     if (Number(activeBtns[i].textContent) === currentPage) {
-//       activeBtns[i].classList.add('pagination--current');
-//     } else if (Number(activeBtns[i].textContent) !== currentPage) {
-//       activeBtns[i].classList.remove('pagination--current');
-//     }
-//   }
-// }
+
 
 function clearPage() {
   refs.galleryContainer.innerHTML = '';
@@ -94,21 +82,10 @@ function clearPage() {
 
 function renderPagesList(currentPage, totalPages) {
   refs.paginationList.innerHTML = '';
-  // const pagesArr = [];
-  // for (let i = 1; i < totalPages; i += 1) {
-  //     pagesArr.push({
-  //         page: i
-  //     })
-  // }
-  // const data = {
-  //     pages: pagesArr,
-  //     currentPage: currentPage
-  // }
-  // const markup = moviesListPagin(data)
-  // refs.pagination.insertAdjacentHTML('beforeend', markup);
 
   const start = currentPage < 4 ? 1 : currentPage - btnTotal;
-  const end = currentPage >= totalPages ? totalPages -1 : currentPage + btnTotal;
+  let end = currentPage === totalPages ? totalPages : currentPage + btnTotal;
+  end = end > totalPages ? totalPages : end;
 
   if (currentPage >= 4) {
     refs.paginationList.insertAdjacentHTML(

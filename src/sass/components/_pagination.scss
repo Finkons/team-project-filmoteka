@@ -72,11 +72,14 @@ align-items: center;
 }
 
 .pagination--current {
+margin: 0 2px;
+padding: 12px;
 background-color: #FF6B08;
 height: 40px;
 width: 40px;
 border-radius: 5px;
 color: #ffffff;
+z-index: 0;
 }
 
 
