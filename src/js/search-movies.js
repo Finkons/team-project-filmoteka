@@ -27,10 +27,14 @@ async function createSearchFetch(searchQuery) {
           
         if (fetchedQuery.results.length === 0) {
             onSearchFailure();
+        };
+        startLoader();
+        stopLoader();
+        renderMoviesList(fetchedQuery.results);
           };
     
           const genresList = await getGenres();
-          
+         
           renderButtons(fetchedQuery.page, fetchedQuery.total_pages); //// для Вадима ;)
           
   const fetchResult = fetchedQuery.results.map(movie => ({
@@ -40,6 +44,7 @@ async function createSearchFetch(searchQuery) {
   }));
        
           insertSearchedMovies(fetchResult);
+
     }
     catch (eror) {
 console.log(eror)
