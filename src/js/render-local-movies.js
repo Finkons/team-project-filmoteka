@@ -52,7 +52,8 @@ async function renderMovie(filmId) {
     console.log(error);
   }
 }
-function otherGenresTemplate() {
+
+export function otherGenresTemplate() {
   if (document.querySelector('html').getAttribute('lang') === 'ua') {
     return { name: 'інше'}
   } else if (document.querySelector('html').getAttribute('lang') === 'en') {

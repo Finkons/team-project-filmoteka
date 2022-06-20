@@ -7,9 +7,7 @@ import { renderButtons } from './pagination';
 
 let page = 1;
 let searchQuery = '';
-
 refs.searchForm.addEventListener('submit', onMovieSearch);
-
 async function onMovieSearch(event) {
   event.preventDefault();
   searchQuery = event.currentTarget.elements.searchQuery.value.trim();
@@ -28,10 +26,6 @@ async function createSearchFetch(searchQuery) {
     if (fetchedQuery.results.length === 0) {
       onSearchFailure();
     };
-    startLoader();
-    stopLoader();
-    renderMoviesList(fetchedQuery.results);
-
 
     const genresList = await getGenres();
 
@@ -45,7 +39,6 @@ async function createSearchFetch(searchQuery) {
 
     insertSearchedMovies(fetchResult);
   }
-
   catch (eror) {
     console.log(eror)
   };
@@ -69,12 +62,9 @@ export function renderMoviesList(movies) {
   const markup = movieListTpl(movies);
   refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
 };
-
-
 function clearGallery() {
   refs.galleryContainer.innerHTML = '';
 };
-
 function onSearchFailure() {
   Report.failure(
     'Search Failure',
