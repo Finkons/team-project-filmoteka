@@ -13,6 +13,7 @@
     color: var(--secondary-bg-color);
     background-color: inherit;
     box-shadow: 1px 1px 8px 1px var(--secondary-bg-color);
+    border-radius: 5px;
 
     transition: box-shadow 250ms linear, color 250ms linear;
 
@@ -34,8 +35,6 @@
     width: 1em;
     height: 1em;
 
-    // stroke-width: 0;
-    // stroke: currentColor;
     fill: currentColor;
 }
 
@@ -84,7 +83,7 @@
     max-width: 250px;
 
     box-shadow: 1px 1px 12px 3px var(--secondary-bg-color);
-
+    border-radius: 5px;
 
     @media screen and (min-width:768px) {
         display: flex;
@@ -125,6 +124,7 @@
 
 select {
     border: 1px solid rgb(207, 167, 94);
+    border-radius: 5px;
 }
 
 option {
