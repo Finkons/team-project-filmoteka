@@ -1,6 +1,6 @@
 const refs = {
   // Header//
-  searchBtn: document.querySelector('.btn-search'),
+  searchBtn: document.querySelector('.button__search'),
   searchForm: document.querySelector('.search-form'),
   myLibraryBtn: document.querySelector('.my-library__btn'),
   homeBtn: document.querySelector('.home__btn'),

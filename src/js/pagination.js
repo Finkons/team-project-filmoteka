@@ -1,25 +1,24 @@
 import refs from './refs.js';
 import { insertPopularMovies } from './insert-movies.js';
 
-
-
 let searchQuery = '';
 let currentPage = 1;
 let totalPages = 0;
 let btnTotal = 2;
 
-export function paginationPage(data) {
-  searchQuery = query;
-  currentPage = data.page;
-  clearPage(refs.paginationList);
-  insertPopularMovies(currentPage, data);
-  setLastPageNumber(data.total_pages);
-  renderPagesList(data.total_pages);
-  currentBtn();
-  checkBtnOpacity();
-}
+// function paginationPage(data) {
+//   searchQuery = query;
+//   currentPage = data.page;
+//   clearPage(refs.paginationList);
+//   insertPopularMovies(currentPage, data);
+//   setLastPageNumber(data.total_pages);
+//   renderPagesList(data.total_pages);
+//   currentBtn();
+//   checkBtnOpacity();
+// }
 
-function onBtnsClick(evt) {
+export function onBtnsClick(evt) {
+  if (!evt.target) { return; }
   if (evt.target.nodeName !== 'BUTTON') {
     return;
   } else if (evt.target.classList.contains('arrow-left')) {
@@ -31,8 +30,7 @@ function onBtnsClick(evt) {
   }
 
   clearPage(refs.paginationList);
-  const newPage = `${searchQuery}&page=${currentPage}`;
-  insertPopularMovies(newPage);
+  insertPopularMovies(`${currentPage}`)
 }
 
 function checkBtnOpacity() {
@@ -74,8 +72,6 @@ function setLastPageNumber(totalPages) {
   refs.pageLast.textContent = totalPages;
 }
 
-
-
 function clearPage() {
   refs.galleryContainer.innerHTML = '';
 }
@@ -113,7 +109,5 @@ function renderPagesList(currentPage, totalPages) {
   }
   checkBtnOpacity();
 }
+
 refs.pagination.addEventListener('click', onBtnsClick);
-
-
-

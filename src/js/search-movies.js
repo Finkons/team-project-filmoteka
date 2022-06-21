@@ -4,6 +4,7 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 import refs from './refs';
 import { startLoader, stopLoader } from './loader.js';
 import { renderButtons } from './pagination';
+import { langCurrent } from './insert-movies';
 
 let page = 1;
 let searchQuery = '';
@@ -27,7 +28,7 @@ async function createSearchFetch(searchQuery) {
       onSearchFailure();
     };
 
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
 
     renderButtons(fetchedQuery.page, fetchedQuery.total_pages); //// для Вадима ;)
 
@@ -58,7 +59,7 @@ function insertSearchedMovies(result) {
 };
 
 
-export function renderMoviesList(movies) {
+function renderMoviesList(movies) {
   const markup = movieListTpl(movies);
   refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
 };

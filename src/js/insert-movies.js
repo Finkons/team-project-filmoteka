@@ -23,15 +23,15 @@ async function insertGenresToMovies(page) {
   }));
 }
 
-function langCurrent() {
+export function langCurrent() {
   if (localStorage.getItem('lang') === 'ua') {
     return 'uk'
   } 
     return 'en'
 }
 
-
 export function insertPopularMovies(page = 1) { 
+  console.log('Im used');
   startLoader();
 
   insertGenresToMovies(page)

@@ -1,8 +1,9 @@
 import { getGenres, API_KEY } from './get-movies';
 import { startLoader, stopLoader } from './loader.js';
 import moviesListPatern from '../templates/list-of-movies.hbs';
-import Notiflix from 'notiflix';
+import { Notify } from 'notiflix';
 import axios from 'axios';
+import { langCurrent } from './insert-movies';
 
 const BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
 
@@ -28,7 +29,7 @@ if (formValue.id === 'years') {
     if (formValue.value !== 'year') {
         startLoader();
         onClickSearchBtnClose();
-        Notiflix.Notify.success(`Hooray! Here your films by ${formValue.value} year!`);
+        Notify.success(`Hooray! Here your films by ${formValue.value} year!`);
         clearGallery();
         markupMoviesByYear(formValue.value);
         stopLoader();
@@ -41,7 +42,7 @@ if (formValue.id === 'years') {
 
         if (formValue.value !== 'genres') {
             startLoader();
-            Notiflix.Notify.success(`Hooray! Here your ${formValue.value} movies!`);
+            Notify.success(`Hooray! Here your ${formValue.value} movies!`);
             for (const el of genresList) {
 
                 if (el.name === formValue.value) {
@@ -62,7 +63,7 @@ if (formValue.id === 'years') {
         if (formValue.value !== 'option') {
             startLoader();
             onClickSearchBtnClose();
-            Notiflix.Notify.success(`Hooray! We found most popular movies!`);
+            Notify.success(`Hooray! We found most popular movies!`);
             clearGallery();
             markupMoviesByPopularity(formValue.value);
             stopLoader();
@@ -89,7 +90,7 @@ function clearGallery() {
 
 async function renderGenresList() {
 
-    const response = await getGenres();
+    const response = await getGenres(langCurrent());
     genresList = response.genres;
     const genresItems = genresList.map(({ name }) => {
     return `<option value="${name}">${name}</option>`
@@ -119,7 +120,7 @@ async function getMoviesByPopularity(param) {
 
 async function insertGenresToMoviesByPopularity(param) {
     const data = await getMoviesByPopularity(param);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
@@ -147,7 +148,7 @@ function markupMoviesByPopularity(param) {
 
 async function insertGenresToMoviesByGenres(id) {
     const data = await getMoviesByGenres(id);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
@@ -174,7 +175,7 @@ function markupMoviesByGenres(id) {
 
 async function insertGenresToMoviesByYear(year) {
     const data = await getMoviesByYear(year);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
