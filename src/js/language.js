@@ -6,6 +6,13 @@ refs.uaLangBTN.addEventListener('click', setLang.bind(null, 'ua'));
 
 const inputPlaceholder = document.querySelector('.header__input')
 
+export function langCurrent() {
+  if (localStorage.getItem('lang') === 'ua') {
+    return 'uk'
+  }
+    return 'en'
+}
+
 function setLang(lang) {
   let par;
   if (!text.hasOwnProperty(lang)) return;
