@@ -1,10 +1,18 @@
+body{
+min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+main{
+  flex: 1 1 auto;
+}
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--background-footer);
-  height: 77px;
-
+  min-height: 77px;
+  
   &__box {
 
     @media screen and(min-width:768px) {
@@ -27,7 +35,7 @@
     margin-left: 5px;
   }
   &__heart {
-     font-style: normal;
+    font-style: normal;
     display: flex;
     align-items: center;
     color: #FF6B08;
