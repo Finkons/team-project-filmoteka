@@ -1,10 +1,24 @@
 <div class='modal-form'>
+  <button id='modal-auth-close' class='film-modal-close' type='button'>
+    <svg class='modal-close-ico' width='30' height='30' viewBox='0 0 30 30'>
+      <path class='modal-close-ico' d='M8 8L22 22' stroke='black' stroke-width='2'></path>
+      <path class='modal-close-ico' d='M8 22L22 8' stroke='black' stroke-width='2'></path>
+    </svg>
+  </button>
   <input type='checkbox' id='chk' aria-hidden='true' />
   <div class='signup'>
-    <form>
+    <form id='regForm'>
       <label class='label-form' for='chk' aria-hidden='true'>Sign up</label>
-      <input class='input-form' type='email' name='email' placeholder='Email' required='required' />
       <input
+        id='reg-mail'
+        class='input-form'
+        type='email'
+        name='email'
+        placeholder='Email'
+        required='required'
+      />
+      <input
+        id='reg-pass'
         class='input-form'
         type='password'
         name='pswd'
@@ -16,10 +30,18 @@
   </div>
 
   <div class='login'>
-    <form>
+    <form id='loginForm'>
       <label class='label-form' for='chk' aria-hidden='true'>Login</label>
-      <input class='input-form' type='email' name='email' placeholder='Email' required='required' />
       <input
+        id='login-mail'
+        class='input-form'
+        type='email'
+        name='email'
+        placeholder='Email'
+        required='required'
+      />
+      <input
+        id='login-pass'
         class='input-form'
         type='password'
         name='pswd'

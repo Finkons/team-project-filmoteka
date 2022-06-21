@@ -19,4 +19,4 @@ import './js/language';
 import './js/scrolltop';
 import './js/trailer-api';
 import './js/movie-trailer';
-import './js/firebase/firebase';
+import './js/firebase/firebase-cnfg';
