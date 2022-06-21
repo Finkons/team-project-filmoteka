@@ -25,7 +25,6 @@ function onBtnsClick(evt) {
     currentPage = Number(evt.target.textContent);
   }
   clearPage(refs.paginationList);
-  console.log(searchQuery);
   insertPopularMovies(searchQuery,currentPage);
 }
 function checkBtnOpacity() {
