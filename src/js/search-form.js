@@ -3,6 +3,7 @@ import { startLoader, stopLoader } from './loader.js';
 import moviesListPatern from '../templates/list-of-movies.hbs';
 import Notiflix from 'notiflix';
 import axios from 'axios';
+import { langCurrent } from './language';
 
 const BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
 
@@ -13,11 +14,9 @@ const searchBtnOpen = document.querySelector('.search-btn--open');
 const searchBtnClose = document.querySelector('.search-btn--close');
 const searchBackdrop = document.querySelector('.search-form__wrap');
 
-    renderGenresList();
-
+renderGenresList();
 
 let genresList;
-
 
 formEl.addEventListener('change', (event) => {
     const formValue = event.target;
@@ -89,7 +88,7 @@ function clearGallery() {
 
 async function renderGenresList() {
 
-    const response = await getGenres();
+    const response = await getGenres(langCurrent());
     genresList = response.genres;
     const genresItems = genresList.map(({ name }) => {
     return `<option value="${name}">${name}</option>`
@@ -119,7 +118,7 @@ async function getMoviesByPopularity(param) {
 
 async function insertGenresToMoviesByPopularity(param) {
     const data = await getMoviesByPopularity(param);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
@@ -147,7 +146,7 @@ function markupMoviesByPopularity(param) {
 
 async function insertGenresToMoviesByGenres(id) {
     const data = await getMoviesByGenres(id);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
@@ -174,7 +173,7 @@ function markupMoviesByGenres(id) {
 
 async function insertGenresToMoviesByYear(year) {
     const data = await getMoviesByYear(year);
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     return data.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],

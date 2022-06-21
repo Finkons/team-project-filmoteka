@@ -4,7 +4,21 @@ import refs from './refs';
 refs.enLangBTN.addEventListener('click', setLang.bind(null, 'en'));
 refs.uaLangBTN.addEventListener('click', setLang.bind(null, 'ua'));
 
+refs.uaLangBTN.addEventListener('click', onClickReload)
+refs.enLangBTN.addEventListener('click', onClickReload)
+
 const inputPlaceholder = document.querySelector('.header__input')
+
+export function langCurrent() {
+  if (localStorage.getItem('lang') === 'ua') {
+    return 'uk'
+  }
+  return 'en'
+}
+
+function onClickReload() {
+  location.reload()
+}
 
 function setLang(lang) {
   let par;

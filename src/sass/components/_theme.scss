@@ -1,6 +1,6 @@
 .dark {
-  // background-color: rgb(80, 75, 68);
-  background-image:radial-gradient(ellipse at bottom, #7b7f8a 20%, #000000 100%);
+  // background-color: rgb(87, 87, 87);
+  background-image:radial-gradient(ellipse at bottom, #5f5d5d 30%, #000000 100%);
 
   --primary-text-color: #d8d0d0;
   --title-text-color: #ff6b08;
@@ -12,6 +12,13 @@
   color: #f7f7f7;
   transition: 350ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 body {
   transition: 350ms;

@@ -1,9 +1,11 @@
 import refs from './refs.js';
 import { insertPopularMovies } from './insert-movies.js';
-let searchQuery = ''; // 'catch'
+
+let searchQuery = ''; 
 let currentPage = 1;
 let totalPages = 0;
 let btnTotal = 2;
+
 export function paginationPage(data) {
   searchQuery = query;
   currentPage = data.page;
@@ -25,7 +27,6 @@ function onBtnsClick(evt) {
     currentPage = Number(evt.target.textContent);
   }
   clearPage(refs.paginationList);
-  console.log(searchQuery);
   insertPopularMovies(searchQuery,currentPage);
 }
 function checkBtnOpacity() {
@@ -46,13 +47,10 @@ function checkBtnOpacity() {
       ? refs.pageLast.classList.add('visually-hidden')
       : refs.pageLast.classList.remove('visually-hidden');
   } else {
-    // currentPage < 5
-    //   ? refs.prevDots.classList.add('visually-hidden')
-    //   : refs.prevDots.classList.remove('visually-hidden');
     currentPage > Number(refs.pageLast.textContent) - 4
       ? refs.afterDots.classList.add('visually-hidden')
       : refs.afterDots.classList.remove('visually-hidden');
-      currentPage > Number(refs.pageLast.textContent) - 4
+      currentPage > Number(refs.pageLast.textContent) - 3
       ? refs.pageLast.classList.add('visually-hidden')
       : refs.pageLast.classList.remove('visually-hidden');
   }

@@ -24,41 +24,91 @@ export function addFilmToWatched(filmId) {
 }
 
 export function notifySuccessQueued(queueBtn, filmId) {
+  const watchedBtn = document.querySelector('.modal-btn-watched');
+  let pageLang = localStorage.getItem('lang');
+
   if (localStorage.getItem('queued_films').includes(filmId)) {
-    Notify.success('Added to queued');
-    document.querySelector('.modal-btn-watched').disabled = true;
-    // queueBtn.classList.add('added');
-    // queueBtn.textContent = 'Added to queued';
+    if (pageLang === 'ua') {
+      Notify.success('Додано до черги');
+      queueBtn.textContent = 'В черзі';
+    }
+    if (pageLang === 'en') {
+      Notify.success('Added to queued');
+      queueBtn.textContent = 'Queued';
+    }
+    watchedBtn.disabled = true;
   } else {
-    Notify.success('Deleted from queue');
-    document.querySelector('.modal-btn-watched').disabled = false;
-    // queueBtn.classList.remove('added');
-    // queueBtn.textContent = 'Add to queue';
+    if (pageLang === 'ua') {
+      Notify.success('Видалено з черги');
+      queueBtn.textContent = 'Додати до черги';
+    }
+    if (pageLang === 'en') {
+      Notify.success('Deleted from queue');
+      queueBtn.textContent = 'Add to queue';
+    }
+    watchedBtn.disabled = false;
   }
 }
 
 export function notifySuccessWatched(watchBtn, filmId) {
+  const queueBtn = document.querySelector('.modal-btn-queue');
+  let pageLang = localStorage.getItem('lang');
+
   if (localStorage.getItem('watched_films').includes(filmId)) {
-    Notify.success('Added to watched');
-    document.querySelector('.modal-btn-queue').disabled = true;
-    // watchBtn.classList.add('added');
-    // watchBtn.textContent = 'Added to watched';
+    if (pageLang === 'ua') {
+      Notify.success('Додано до переглянутих');
+      watchBtn.textContent = 'Переглянуто';
+    }
+    if (pageLang === 'en') {
+      Notify.success('Added to watched');
+      watchBtn.textContent = 'Added to watched';
+    }
+    queueBtn.disabled = true;
   } else {
-    Notify.success('Deleted from watched');
-    document.querySelector('.modal-btn-queue').disabled = false;
-    // watchBtn.classList.remove('added');
-    // watchBtn.textContent = 'Add to watched';
+    if (pageLang === 'ua') {
+      Notify.success('Видалено з переглянутих');
+      watchBtn.textContent = 'Додати до переглянутих';
+    }
+    if (pageLang === 'en') {
+      Notify.success('Deleted from watched');
+      watchBtn.textContent = 'Add to watched';
+    }
+    queueBtn.disabled = false;
   }
 }
 
 export function makeDisableBtn(id) {
   const watchedLocalStorage = localStorage.getItem('watched_films');
   const queueLocalStorage = localStorage.getItem('queued_films');
+  const watchBtn = document.querySelector('.modal-btn-watched');
+  const queueBtn = document.querySelector('.modal-btn-queue');
+  let pageLang = localStorage.getItem('lang');
 
-  if (watchedLocalStorage && watchedLocalStorage.includes(id)) {
-    document.querySelector('.modal-btn-queue').disabled = true;
+  if (pageLang === 'ua') {
+    if (watchedLocalStorage && watchedLocalStorage.includes(id)) {
+      document.querySelector('.modal-btn-queue').disabled = true;
+      watchBtn.textContent = 'Переглянуто';
+    }
   }
-  if (watchedLocalStorage && queueLocalStorage.includes(id)) {
-    document.querySelector('.modal-btn-watched').disabled = true;
+
+  if (pageLang === 'en') {
+    if (watchedLocalStorage && watchedLocalStorage.includes(id)) {
+      document.querySelector('.modal-btn-queue').disabled = true;
+      watchBtn.textContent = 'Added to watched';
+    }
+  }
+
+  if (pageLang === 'ua') {
+    if (queueLocalStorage && queueLocalStorage.includes(id)) {
+      document.querySelector('.modal-btn-watched').disabled = true;
+      queueBtn.textContent = 'В черзі';
+    }
+  }
+
+  if (pageLang === 'en') {
+    if (queueLocalStorage && queueLocalStorage.includes(id)) {
+      document.querySelector('.modal-btn-watched').disabled = true;
+      queueBtn.textContent = 'Queued';
+    }
   }
 }
