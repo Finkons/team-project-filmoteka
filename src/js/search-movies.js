@@ -4,6 +4,8 @@ import { Report } from 'notiflix/build/notiflix-report-aio';
 import refs from './refs';
 import { startLoader, stopLoader } from './loader.js';
 import { paginationPage, renderButtons } from './pagination';
+import { langCurrent } from './language';
+
 let page = 1;
 let searchQuery = '';
 refs.searchForm.addEventListener('submit', onMovieSearch);
@@ -16,6 +18,7 @@ async function onMovieSearch(event) {
   createSearchFetch(searchQuery);
   refs.searchForm.reset();
 };
+
 export async function createSearchFetch(searchQuery,page) {
   try {
     const fetchedQuery = await getMoviesByName(searchQuery,page);
@@ -23,7 +26,7 @@ export async function createSearchFetch(searchQuery,page) {
     if (fetchedQuery.results.length === 0) {
       onSearchFailure();
     };
-    const genresList = await getGenres();
+    const genresList = await getGenres(langCurrent());
     renderButtons(fetchedQuery.page, fetchedQuery.total_pages, searchQuery); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
     const fetchResult = fetchedQuery.results.map(movie => ({
       ...movie,
