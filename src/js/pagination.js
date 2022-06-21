@@ -1,13 +1,9 @@
 import refs from './refs.js';
 import { insertPopularMovies } from './insert-movies.js';
-
-
-
-let searchQuery = '';
+let searchQuery = ''; // 'catch'
 let currentPage = 1;
 let totalPages = 0;
 let btnTotal = 2;
-
 export function paginationPage(data) {
   searchQuery = query;
   currentPage = data.page;
@@ -18,7 +14,6 @@ export function paginationPage(data) {
   currentBtn();
   checkBtnOpacity();
 }
-
 function onBtnsClick(evt) {
   if (evt.target.nodeName !== 'BUTTON') {
     return;
@@ -29,12 +24,10 @@ function onBtnsClick(evt) {
   } else if (evt.target.classList.contains('pagination-button')) {
     currentPage = Number(evt.target.textContent);
   }
-
   clearPage(refs.paginationList);
-  const newPage = `${searchQuery}&page=${currentPage}`;
-  insertPopularMovies(newPage);
+  console.log(searchQuery);
+  insertPopularMovies(searchQuery,currentPage);
 }
-
 function checkBtnOpacity() {
   console.log(currentPage);
   currentPage === 1
@@ -64,43 +57,34 @@ function checkBtnOpacity() {
       : refs.pageLast.classList.remove('visually-hidden');
   }
 }
-
-export function renderButtons(currentPage, pagesCount) {
+export function renderButtons(currentPage, pagesCount, query) {
   setLastPageNumber(pagesCount);
+  searchQuery = query;
   return renderPagesList(currentPage, pagesCount);
 }
-
 function setLastPageNumber(totalPages) {
   refs.pageLast.textContent = totalPages;
 }
-
-
-
 function clearPage() {
   refs.galleryContainer.innerHTML = '';
 }
-
 function renderPagesList(currentPage, totalPages) {
   refs.paginationList.innerHTML = '';
-
   const start = currentPage < 4 ? 1 : currentPage - btnTotal;
   let end = currentPage === totalPages ? totalPages : currentPage + btnTotal;
   end = end > totalPages ? totalPages : end;
-
   if (currentPage >= 4) {
     refs.paginationList.insertAdjacentHTML(
       'beforeend',
       `<button class="pagination-button first-button">1</button>`,
     );
   }
-
   if (currentPage > 4) {
     refs.paginationList.insertAdjacentHTML(
       'beforeend',
       `<span class="pagination-dots js-previous-dots">...</span>`,
     );
   }
-
   for (let i = start; i <= end; i += 1) {
       let classes = 'pagination-button';
       if (currentPage === i) {
@@ -114,6 +98,3 @@ function renderPagesList(currentPage, totalPages) {
   checkBtnOpacity();
 }
 refs.pagination.addEventListener('click', onBtnsClick);
-
-
-
