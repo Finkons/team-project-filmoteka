@@ -11,16 +11,26 @@ function renderMoviesList(movies) {
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
 }
 
+async function getGenresToCards() {
+  const genresList = await getGenres(langCurrent());
+  localStorage.setItem("genres", JSON.stringify(genresList));
+}
+
+getGenresToCards()
+
 async function insertGenresToMovies(page) {
   const data = await getPopularMovies(page);
-  const genresList = await getGenres(langCurrent());
+  const genresLS = JSON.parse (localStorage.getItem("genres"));
+
   renderButtons(data.page, data.total_pages);
 
-  return data.results.map(movie => ({
-    ...movie,
-    release_date: movie.release_date.split('-')[0],
-    genres: movie.genre_ids.map(id => genresList.genres.filter(el => el.id === id)).flat(),
-  }));
+  if (genresLS) {
+    return data.results.map(movie => ({
+      ...movie,
+      release_date: movie.release_date.split('-')[0],
+      genres: movie.genre_ids.map(id => genresLS.genres.filter(el => el.id === id)).flat(),
+    }))
+  };
 }
 
 function langCurrent() {
@@ -41,6 +51,7 @@ export function insertPopularMovies(page = 1) {
           const Obj = otherGenresTemplate();
           element.genres[2] = Obj;
           element.genres.length = 3;
+
         }
       });
       renderMoviesList(res);
