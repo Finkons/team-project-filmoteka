@@ -28,6 +28,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "basiclightbox": "^5.0.4",
+    "fire": "^0.55.1",
     "firebase": "^9.8.2",
     "gulp": "^4.0.2",
     "handlebars": "^4.7.7",

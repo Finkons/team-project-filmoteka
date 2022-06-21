@@ -4,13 +4,17 @@
   right: 10px;
   transition: 0.6s all;
 
-  @media screen and (min-width: 1025px) {
+  @media screen and (min-width: 1440px) {
     right: 100px;
+  }
+
+  @media screen and (min-width: 2560px) {
+    right: 20%;
   }
 }
 
 .scrolltop.showed {
-  bottom: 20px;
+  bottom: 100px;
   transition: 0.6s all;
 }
 
