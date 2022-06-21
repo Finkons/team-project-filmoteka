@@ -6,6 +6,7 @@ import { renderButtons } from './pagination';
 import { otherGenresTemplate } from './render-local-movies';
 import { getPopularMovies } from './get-movies';
 import { createSearchFetch } from './search-movies';
+import { langCurrent } from './language';
 
 
 function renderMoviesList(movies) {
@@ -22,12 +23,7 @@ async function insertGenresToMovies(page) {
     genres: movie.genre_ids.map(id => genresList.genres.filter(el => el.id === id)).flat(),
   }));
 }
-function langCurrent() {
-  if (localStorage.getItem('lang') === 'ua') {
-    return 'uk'
-  }
-    return 'en'
-}
+
 export function insertPopularMovies(query,page = 1,) {
   startLoader();
   if (query) {
