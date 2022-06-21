@@ -3,8 +3,7 @@ import movieListTpl from '../templates/list-of-movies.hbs';
 import { Report } from 'notiflix/build/notiflix-report-aio';
 import refs from './refs';
 import { startLoader, stopLoader } from './loader.js';
-import { renderButtons } from './pagination';
-
+import { paginationPage, renderButtons } from './pagination';
 let page = 1;
 let searchQuery = '';
 refs.searchForm.addEventListener('submit', onMovieSearch);
@@ -17,33 +16,27 @@ async function onMovieSearch(event) {
   createSearchFetch(searchQuery);
   refs.searchForm.reset();
 };
-
-async function createSearchFetch(searchQuery) {
+export async function createSearchFetch(searchQuery,page) {
   try {
-    const fetchedQuery = await getMoviesByName(page, searchQuery);
+    const fetchedQuery = await getMoviesByName(searchQuery,page);
     clearGallery();
-
     if (fetchedQuery.results.length === 0) {
       onSearchFailure();
     };
-
     const genresList = await getGenres();
-
-    renderButtons(fetchedQuery.page, fetchedQuery.total_pages); //// для Вадима ;)
-
+    renderButtons(fetchedQuery.page, fetchedQuery.total_pages, searchQuery); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
     const fetchResult = fetchedQuery.results.map(movie => ({
       ...movie,
       release_date: movie.release_date.split('-')[0],
       genres: movie.genre_ids.map(id => genresList.genres.filter(el => el.id === id)).flat(),
     }));
-
     insertSearchedMovies(fetchResult);
+    
   }
   catch (eror) {
     console.log(eror)
   };
 }
-
 function insertSearchedMovies(result) {
   startLoader();
   result.map(element => {
@@ -56,8 +49,6 @@ function insertSearchedMovies(result) {
   renderMoviesList(result);
   stopLoader();
 };
-
-
 export function renderMoviesList(movies) {
   const markup = movieListTpl(movies);
   refs.galleryContainer.insertAdjacentHTML("beforeend", markup);
