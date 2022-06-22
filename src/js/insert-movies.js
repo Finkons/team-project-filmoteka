@@ -15,25 +15,38 @@ function renderMoviesList(movies) {
 }
 
 async function getGenresToCards() {
-  const genresList = await getGenres(langCurrent());
-  localStorage.setItem("genres", JSON.stringify(genresList));
+  const genresListEn = await getGenres('en');
+  const genresListUa = await getGenres('uk');
+  console.log(localStorage.getItem('lang'))
+  localStorage.setItem("genres_en", JSON.stringify(genresListEn));
+  localStorage.setItem("genres_ua", JSON.stringify(genresListUa));
 }
 
 getGenresToCards();
 
+
 async function insertGenresToMovies(page) {
   const data = await getPopularMovies(page);
-  const genresLS = JSON.parse(localStorage.getItem("genres"));
+  
   
   renderButtons(data.page, data.total_pages);
 
-  if (genresLS) {
+  
     return data.results.map(movie => ({
       ...movie,
       release_date: releaseDateCheck(movie),//movie.release_date.split('-')[0],
-      genres: movie.genre_ids.map(id => genresLS.genres.filter(el => el.id === id)).flat(),
+      genres: addLangGenres(movie),
     }))
-  };
+  
+}
+
+function addLangGenres(movie) {
+  const genresLocalEn = JSON.parse(localStorage.getItem("genres_en"));
+  const genresLocalUa = JSON.parse(localStorage.getItem("genres_ua"));
+  if (localStorage.getItem('lang') === 'en') {
+    return movie.genre_ids.map(id => genresLocalEn.genres.filter(el => el.id === id)).flat()
+  } 
+  return movie.genre_ids.map(id => genresLocalUa.genres.filter(el => el.id === id)).flat()
 }
 
 function releaseDateCheck(movie) {
