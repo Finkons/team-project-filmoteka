@@ -7,7 +7,9 @@ import { otherGenresTemplate } from './render-local-movies';
 import { getPopularMovies } from './get-movies';
 import { createSearchFetch } from './search-movies';
 import { langCurrent } from './language';
+import { insertGenresToMoviesByGenres, insertGenresToMoviesByYear, SEARCH_TYPE } from './search-form';
 
+localStorage.removeItem(SEARCH_TYPE);
 
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies);
@@ -57,13 +59,39 @@ export function releaseDateCheck(movie) {
 
 export function insertPopularMovies(query,page = 1) {
   startLoader();
-  if (query) {
-    createSearchFetch(query,page)
-    .then(res => {
-      renderMoviesList(res); // how it renders HTML inside DOM?
-      stopLoader();
-    })
-  } else {
+  const currentLocal = localStorage.getItem(SEARCH_TYPE);
+
+  if (currentLocal === 'bySearch') {
+    createSearchFetch(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
+  } else if (currentLocal === 'byYear') {
+    insertGenresToMoviesByYear(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
+  } else if (currentLocal === 'byGenres') {
+    insertGenresToMoviesByGenres(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
+  }
+
+
+  // if (query) {
+  //   createSearchFetch(query,page)
+  //   .then(res => {
+  //     renderMoviesList(res); // how it renders HTML inside DOM?
+  //     stopLoader();
+  //   })
+  else {
     insertGenresToMovies(page)
     .then(res => {
       res.map(element => {

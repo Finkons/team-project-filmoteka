@@ -7,7 +7,7 @@ import { renderButtons } from './pagination';
 import { langCurrent } from './language';
 import { addLangGenres, releaseDateCheck } from './insert-movies.js';
 import { otherGenresTemplate } from './render-local-movies';
-
+import { SEARCH_TYPE } from './search-form';
 
 let searchQuery = '';
 refs.searchForm.addEventListener('submit', onMovieSearch);
@@ -19,6 +19,7 @@ function onMovieSearch(event) {
     return;
   };
   createSearchFetch(searchQuery, 1); 
+  localStorage.setItem(SEARCH_TYPE, "bySearch");
   refs.searchForm.reset();
 };
 
