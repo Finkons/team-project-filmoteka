@@ -5,7 +5,7 @@ import { startLoader, stopLoader } from './loader.js';
 
 const watchedEmptyTemplatesUa = `<p>Ваша бібліотека переглянутих фільмів порожня :(</p>`;
 const queueEmptyTemplatesUa = `<p>Ваша бібліотека фільмів у черзі порожня :(</p>`;
-// const langLocalStorage = document.querySelector('html').getAttribute('lang');
+
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
 refs.libraryBtnQueue.addEventListener('click', QueueBtnAction);
@@ -44,7 +44,10 @@ async function renderMovie(filmId) {
     response.data.release_date = response.data.release_date.substr(0, 4)
 
     const twoOfGenres = response.data.genres.slice(0, 2)
-    twoOfGenres.push(otherGenresTemplate())
+    if (response.data.genres.length > 2) {
+      twoOfGenres.push(otherGenresTemplate())
+    }
+    
     response.data.genres = twoOfGenres;
     let markup = moviesListPatern([response.data]);
     return refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
@@ -67,26 +70,54 @@ function clearGalleryContainer() {
 
 
 export function watchedRender() {
+  removeBtnMore()
   addEmptyTemplateEn('watched');
-  if (document.querySelector('html').getAttribute('lang') === 'ua') {
+  if (localStorage.getItem('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
   const watchedLocalStorage = localStorage.getItem('watched_films');
   if (watchedLocalStorage && watchedLocalStorage.length > 2) {
     addMovieToGallery(watchedLocalStorage);
+
+    
+    addLoadMoreBtn()
+    if (JSON.parse(watchedLocalStorage).length <= 3) {
+      makeDisableBtn()
+    }
+    document.querySelector('.more_btn').addEventListener('click', wichLocalMoreListener)
   }
 }
 
 function queueRender() {
+  removeBtnMore()
   addEmptyTemplateEn('queue');
-  if (document.querySelector('html').getAttribute('lang') === 'ua') {
+  if (localStorage.getItem('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
   const queueLocalStorage = localStorage.getItem('queued_films');
   if (queueLocalStorage && queueLocalStorage.length > 2) {
     addMovieToGallery(queueLocalStorage);
+    
+    
+    addLoadMoreBtn()
+    if (JSON.parse(queueLocalStorage).length <= 3) {
+      makeDisableBtn()
+    }
+    document.querySelector('.more_btn').addEventListener('click', wichLocalMoreListener)
+  }
+}
+
+function makeDisableBtn() {
+  const btn = document.querySelector('.more_btn');
+  btn.textContent = document.querySelector('html').getAttribute('lang') === 'ua' ? 'кінець списку' : 'end of list';
+  btn.disabled = true
+}
+
+function removeBtnMore() {
+  if (document.querySelector('.more_btn_wrap')) {
+     document.querySelector('.more_btn_wrap').remove();
   }
 }
 
@@ -96,13 +127,60 @@ export function ifMyLibraryOpen() {
   }
 }
 
+let firstSliceMovie = 0;
+let lastSliceMovie = 3;
 function addMovieToGallery(localMovieId) {
   clearGalleryContainer();
+
+  firstSliceMovie = 0;
+  lastSliceMovie = 3;
   const localMessage = localMovieId;
   const localParse = JSON.parse(localMessage);
-  localParse.map(id => {
+  
+  const localSlice = localParse.slice(firstSliceMovie, lastSliceMovie);
+
+  localSlice.map(id => {
     renderMovie(id);
   });
+}
+
+
+
+function wichLocalMoreListener() {
+  if (refs.libraryBtnWatched.classList.contains('active')) {
+    renderMoreMovie(localStorage.getItem('watched_films'))
+  } else if (refs.libraryBtnQueue.classList.contains('active')) {
+    renderMoreMovie(localStorage.getItem('queued_films'))
+}
+}
+
+function renderMoreMovie(localMovieId) {
+  startLoader();
+
+  firstSliceMovie += 3;
+  lastSliceMovie += 3;
+  const localMessage = localMovieId;
+  const localParse = JSON.parse(localMessage);
+  
+  const localSlice = localParse.slice(firstSliceMovie, lastSliceMovie);
+  
+  localSlice.map(id => {
+    renderMovie(id);
+  });
+  if (lastSliceMovie >= localParse.length) {
+    makeDisableBtn()
+  }
+  stopLoader();
+}
+
+function addLoadMoreBtn() {
+  const markup = `<div class="more_btn_wrap"style="display: flex;  justify-content: center;
+  align-items: center; margin-bottom: 60px;"><button class="button more_btn" style="display: flex;  justify-content: center;
+  align-items: center;" type="button" >${document.querySelector('html').getAttribute('lang') === 'ua' ? 'більше' : 'more'}</button></div>`;
+  refs.galleryContainer.insertAdjacentHTML(
+        'afterend',
+        markup,
+  )
 }
 
 export function renderAfterModalClose() {
@@ -148,3 +226,6 @@ function addEmptyTemplateUa() {
       )
   }
 }
+
+
+
