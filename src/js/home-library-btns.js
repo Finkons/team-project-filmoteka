@@ -22,6 +22,9 @@ function switchCurrentLibrary(e) {
   startLoader();
   stopLoader();
 
+  refs.libraryBtnQueue.classList.remove('active');
+  refs.libraryBtnWatched.classList.add('active');
+
   watchedRender();
 }
 
