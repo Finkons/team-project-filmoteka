@@ -40,7 +40,7 @@ async function insertGenresToMovies(page) {
   
 }
 
-function addLangGenres(movie) {
+export function addLangGenres(movie) {
   const genresLocalEn = JSON.parse(localStorage.getItem("genres_en"));
   const genresLocalUa = JSON.parse(localStorage.getItem("genres_ua"));
   if (localStorage.getItem('lang') === 'en') {
@@ -49,7 +49,7 @@ function addLangGenres(movie) {
   return movie.genre_ids.map(id => genresLocalUa.genres.filter(el => el.id === id)).flat()
 }
 
-function releaseDateCheck(movie) {
+export function releaseDateCheck(movie) {
   if (movie.release_date) {
   return movie.release_date.split('-')[0]
 } return 'no info'
