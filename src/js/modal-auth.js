@@ -1,10 +1,10 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import authMarkup from '../templates/auth.hbs';
+import authMarkupUk from '../templates/auth-uk.hbs';
 import { startLoader, stopLoader } from './loader';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import refs from './refs';
-import { currentUser } from './firebase/firebase-cnfg';
 import { regUser, loginUser, monitorAuthState } from './firebase/firebase-cnfg';
 
 const UID = localStorage.getItem('uid');
@@ -15,7 +15,20 @@ function onBtnModalFormClick(event) {
   instance.show();
 }
 
-const instance = basicLightbox.create(authMarkup(), {
+function renderMarkupByPageLang() {
+  let pageLang = localStorage.getItem('lang');
+  let modalMarkup;
+  // console.log(pageLang);
+  if (pageLang === 'ua') {
+    modalMarkup = authMarkupUk();
+  }
+  if (pageLang === 'en') {
+    modalMarkup = authMarkup();
+  }
+  return modalMarkup;
+}
+
+const instance = basicLightbox.create(renderMarkupByPageLang(), {
   onShow: instance => {
     window.addEventListener('keydown', onEscPress);
     document.body.classList.toggle('no-scroll');

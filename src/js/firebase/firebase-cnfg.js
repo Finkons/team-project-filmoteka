@@ -60,7 +60,6 @@ function handleLogOut(e) {
   signOut(auth)
     .then(() => {
       // Sign-out successful.
-      console.log('sign out');
       startLoader();
       refs.authorizationBtn.classList.remove('visually-hidden');
       refs.logOutBtn.classList.add('visually-hidden');
