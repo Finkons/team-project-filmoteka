@@ -67,11 +67,22 @@ function clearGallery() {
 };
 
 function onSearchFailure() {
-  Report.failure(
-    'Search Failure',
-    'Sorry, there is no movie matched your query. Please try again.',
-    'Ok',
-    function cb() {
-      location.reload()
-    });
+  let pageLang = localStorage.getItem('lang');
+  if (pageLang === 'ua') {
+    Report.failure(
+      'Помилка пошуку',
+      'На жаль, немає фільму, який би відповідав вашому запиту. Будь ласка спробуйте ще раз.',
+      'Ok',
+      function cb() {
+        location.reload()
+      });
+  } else if (pageLang === 'en') {
+    Report.failure(
+      'Search Failure',
+      'Sorry, there is no movie matched your query. Please try again.',
+      'Ok',
+      function cb() {
+        location.reload()
+      });
+  }
 };
