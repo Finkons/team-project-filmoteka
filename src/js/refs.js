@@ -30,5 +30,10 @@ const refs = {
   openModalBtn: document.querySelector('[data-modal-team-open]'),
   closeModalBtn: document.querySelector('[data-modal-team-close]'),
   modal: document.querySelector('[data-modal-team]'),
+
+  // Modal Auth
+
+  authorizationBtn: document.querySelector('.btn-author-modal-open'),
+  logOutBtn: document.querySelector('.btn-log-out'),
 };
 export default refs;

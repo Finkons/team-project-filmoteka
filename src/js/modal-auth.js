@@ -1,12 +1,14 @@
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
 import authMarkup from '../templates/auth.hbs';
-// import { onEscPress } from './film-modal';
-import { regUser, loginUser } from './firebase/firebase-cnfg';
+import { startLoader, stopLoader } from './loader';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import refs from './refs';
+import { currentUser } from './firebase/firebase-cnfg';
+import { regUser, loginUser, monitorAuthState } from './firebase/firebase-cnfg';
 
-const authorizationBtn = document.querySelector('.btn-author-modal-open');
-
-authorizationBtn.addEventListener('click', onBtnModalFormClick);
+const UID = localStorage.getItem('uid');
+refs.authorizationBtn.addEventListener('click', onBtnModalFormClick);
 
 function onBtnModalFormClick(event) {
   event.preventDefault();
@@ -50,6 +52,7 @@ function regUserWithEmailPass(e) {
   const regPass = pswd.value;
 
   regUser(regMail, regPass);
+  instance.close();
 }
 
 function loginUserWithEmailPass(e) {
@@ -63,6 +66,7 @@ function loginUserWithEmailPass(e) {
   const loginPass = pswd.value;
 
   loginUser(loginMail, loginPass);
+  instance.close();
 }
 
 function onEscPress(event) {
