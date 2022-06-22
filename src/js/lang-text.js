@@ -23,7 +23,7 @@ export const text = {
     'genr-lang': 'Жанри',
     'year-lang': 'Рік',
     'year-chose': 'рік',
-    'p-lang': 'популярні',
+    // 'p-lang': 'популярні',
     // 'popularity-lang': 'Популярні',
     'all-genres-lang': 'всі жанри',
     // 'most-popular-lang': 'за популярністю',
