@@ -15,7 +15,7 @@ async function onMovieSearch(event) {
   if (searchQuery === '') {
     return;
   };
-  createSearchFetch(searchQuery);
+  createSearchFetch(searchQuery, 1); // тут нужно передать вторым аргументом цифру 1, так как при поиске подставляет undefined
   refs.searchForm.reset();
 };
 
@@ -28,6 +28,9 @@ export async function createSearchFetch(searchQuery,page) {
     };
     const genresList = await getGenres(langCurrent());
     renderButtons(fetchedQuery.page, fetchedQuery.total_pages, searchQuery); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
+
+    localStorage.setItem('current_page', 1);
+
     const fetchResult = fetchedQuery.results.map(movie => ({
       ...movie,
       release_date: movie.release_date.split('-')[0],
