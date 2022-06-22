@@ -30,10 +30,16 @@ async function insertGenresToMovies(page) {
   if (genresLS) {
     return data.results.map(movie => ({
       ...movie,
-      release_date: movie.release_date.split('-')[0],
+      release_date: releaseDateCheck(movie),//movie.release_date.split('-')[0],
       genres: movie.genre_ids.map(id => genresLS.genres.filter(el => el.id === id)).flat(),
     }))
   };
+}
+
+function releaseDateCheck(movie) {
+  if (movie.release_date) {
+  return movie.release_date.split('-')[0]
+} return 'no info'
 }
 
 export function insertPopularMovies(query,page = 1) {
@@ -45,7 +51,7 @@ export function insertPopularMovies(query,page = 1) {
       stopLoader();
     })
   } else {
-    insertGenresToMovies(`&page=${page}`)
+    insertGenresToMovies(page)
     .then(res => {
       res.map(element => {
         if (element.genres.length > 2) {
@@ -63,3 +69,29 @@ export function insertPopularMovies(query,page = 1) {
   }
 }
 insertPopularMovies(); 
+
+function onClick ()  {
+  if (refs.homeBtn.classList.contains('current')) {
+    setTimeout(() => {
+      refs.galleryContainer.innerHTML = '';
+      const currentPage = localStorage.getItem('current_page')
+    insertGenresToMovies(currentPage).then(res => {
+      res.map(element => {
+        if (element.genres.length > 2) {
+          const Obj = otherGenresTemplate();
+          element.genres[2] = Obj;
+          element.genres.length = 3;
+        }
+      });
+      renderMoviesList(res);
+      stopLoader();
+    })
+    .catch(error => {
+      console.log(error.message);
+    })
+  }, 20);
+  }
+};
+
+refs.enLangBTN.addEventListener('click', onClick)
+refs.uaLangBTN.addEventListener('click', onClick)

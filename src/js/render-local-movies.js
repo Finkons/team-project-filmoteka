@@ -46,7 +46,10 @@ async function renderMovie(filmId) {
     response.data.release_date = response.data.release_date.substr(0, 4)
 
     const twoOfGenres = response.data.genres.slice(0, 2)
-    twoOfGenres.push(otherGenresTemplate())
+    if (response.data.genres.length > 2) {
+      twoOfGenres.push(otherGenresTemplate())
+    }
+    
     response.data.genres = twoOfGenres;
     let markup = moviesListPatern([response.data]);
     return refs.galleryContainer.insertAdjacentHTML('beforeend', markup);

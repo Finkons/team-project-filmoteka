@@ -30,6 +30,8 @@ function onBtnsClick(evt) {
   insertPopularMovies(searchQuery,currentPage);
 }
 function checkBtnOpacity() {
+  localStorage.setItem('current_page', currentPage)
+  
   console.log(currentPage);
   currentPage === 1
     ? refs.leftArrow.classList.add('visually-hidden')
