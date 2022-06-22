@@ -10,7 +10,7 @@
     </div>
     <div class='card-info'>
       <p class='card-title'>{{title}}</p>
-      <p class='card-text'>{{#each genres}} {{name}} {{/each}} | {{release_date}}</p></p>
+      <p class='card-text'>{{#each genres}}{{name}}{{#unless @last}}, {{/unless}}{{/each}} | {{release_date}}</p>
     </div>
   </li>
 {{/each}}
