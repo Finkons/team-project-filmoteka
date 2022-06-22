@@ -7,7 +7,9 @@ import { otherGenresTemplate } from './render-local-movies';
 import { getPopularMovies } from './get-movies';
 import { createSearchFetch } from './search-movies';
 import { langCurrent } from './language';
+import { SEARCH_TYPE, insertGenresToMoviesByYear, insertGenresToMoviesByGenres } from './search-form';
 
+localStorage.removeItem(SEARCH_TYPE);
 
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies);
@@ -24,30 +26,47 @@ async function insertGenresToMovies(page) {
   }));
 }
 
-export function insertPopularMovies(query,page = 1,) {
+export function insertPopularMovies(query, page = 1,) {
   startLoader();
-  if (query) {
-    createSearchFetch(query,page)
-    .then(res => {
-      renderMoviesList(res); // how it renders HTML inside DOM?
-      stopLoader();
-    })
+  const currentLocal = localStorage.getItem(SEARCH_TYPE)
+
+  if (currentLocal === 'bySearch') {
+    createSearchFetch(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
+  } else if (currentLocal === 'byYear') {
+    insertGenresToMoviesByYear(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
+  } else if (currentLocal === 'byGenres') {
+    insertGenresToMoviesByGenres(query, page)
+      .then(res => {
+
+        renderMoviesList(res); // how it renders HTML inside DOM?
+        stopLoader();
+      })
   } else {
     insertGenresToMovies(`&page=${page}`)
-    .then(res => {
-      res.map(element => {
-        if (element.genres.length > 2) {
-          const Obj = otherGenresTemplate();
-          element.genres[2] = Obj;
-          element.genres.length = 3;
-        }
+      .then(res => {
+        res.map(element => {
+          if (element.genres.length > 2) {
+            const Obj = otherGenresTemplate();
+            element.genres[2] = Obj;
+            element.genres.length = 3;
+          }
+        });
+        renderMoviesList(res);
+        stopLoader();
+      })
+      .catch(error => {
+        console.log(error.message);
       });
-      renderMoviesList(res);
-      stopLoader();
-    })
-    .catch(error => {
-      console.log(error.message);
-    });
   }
 }
 insertPopularMovies(); 

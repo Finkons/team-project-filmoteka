@@ -4,6 +4,8 @@ import moviesListPatern from '../templates/list-of-movies.hbs';
 import Notiflix from 'notiflix';
 import axios from 'axios';
 import { langCurrent } from './language';
+import { paginationPage, renderButtons } from './pagination';
+
 
 const BASE_URL = "https://api.themoviedb.org/3/discover/movie?";
 
@@ -17,25 +19,25 @@ const searchBackdrop = document.querySelector('.search-form__wrap');
 renderGenresList();
 
 let genresList;
+export const SEARCH_TYPE = 'current-search-fetch';
 
 formEl.addEventListener('change', (event) => {
     const formValue = event.target;
     event.preventDefault();
 
 if (formValue.id === 'years') {
-    
     if (formValue.value !== 'year') {
         startLoader();
         onClickSearchBtnClose();
         Notiflix.Notify.success(`Hooray! Here your films by ${formValue.value} year!`);
         clearGallery();
-        markupMoviesByYear(formValue.value);
+        insertGenresToMoviesByYear(formValue.value);
+        localStorage.setItem(SEARCH_TYPE, "byYear");
         stopLoader();
     }}
 
     
     if (formValue.id === 'genres') {
-
         let genreId;
 
         if (formValue.value !== 'genres') {
@@ -47,7 +49,9 @@ if (formValue.id === 'years') {
                     
                     console.log(formValue.value);
                     genreId = el.id;
-                    markupMoviesByGenres(genreId);
+                    insertGenresToMoviesByGenres(genreId);
+                    localStorage.setItem(SEARCH_TYPE, "byGenres");
+
                     onClickSearchBtnClose();
                 }
             }
@@ -56,17 +60,18 @@ if (formValue.id === 'years') {
         }
     }
 
-    if (formValue.id === 'popularity') {
+//     if (formValue.id === 'popularity') {
+//         if (formValue.value === 'popularity') {
+//     startLoader();
+//             onClickSearchBtnClose();
+//             Notiflix.Notify.success(`Hooray! We found most popular movies!`);
+//             clearGallery();
+//             insertGenresToMoviesByPopularity();
+//             localStorage.setItem(SEARCH_TYPE, "byPopularity");
 
-        if (formValue.value !== 'option') {
-            startLoader();
-            onClickSearchBtnClose();
-            Notiflix.Notify.success(`Hooray! We found most popular movies!`);
-            clearGallery();
-            markupMoviesByPopularity(formValue.value);
-            stopLoader();
-        }
-    }
+//             stopLoader();
+// }
+//     }
     formEl.reset();
 })
 
@@ -89,6 +94,7 @@ function clearGallery() {
 async function renderGenresList() {
 
     const response = await getGenres(langCurrent());
+
     genresList = response.genres;
     const genresItems = genresList.map(({ name }) => {
     return `<option value="${name}">${name}</option>`
@@ -97,106 +103,120 @@ searchGenreEl.insertAdjacentHTML('beforeend', genresItems)
 }
 
 
-async function getMoviesByGenres(genreId) {
-    const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&include_adult=false&include_video=false&page=1&with_genres=${genreId}`;
+async function getMoviesByGenres(genreId, page = 1) {
+    const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&include_adult=false&include_video=false&page=${page}&with_genres=${genreId}`;
     const response = await axios.get(url);
-    return response.data.results;
+    return response.data;
 };
 
-async function getMoviesByYear(year) {
-    const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`;
+async function getMoviesByYear(year, page = 1) {
+    const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`;
     const response = await axios.get(url);
-    return response.data.results;
+    return response.data;
 }
 
-async function getMoviesByPopularity(param) {
-    const url = `${BASE_URL}api_key=${API_KEY}&language=en-US&sort_by=${param}.desc&include_adult=false`;
-    const response = await axios.get(url);
-    return response.data.results;
-}
+// async function getMoviesByPopularity( page = 1) {
+//     const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&include_adult=false&page=${page}`;
+//     const response = await axios.get(url);
+//     return response.data;
+// }
 
 
-async function insertGenresToMoviesByPopularity(param) {
-    const data = await getMoviesByPopularity(param);
+// export async function insertGenresToMoviesByPopularity(page) {
+//     try {
+//         const fetchTrendMovie = await getMoviesByPopularity(page);
+//         const genresList = await getGenres(langCurrent());
+//         renderButtons(fetchTrendMovie.page, 500, query); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
+
+//         const fetchRes = fetchTrendMovie.results.map(movie => ({
+//             ...movie,
+//             release_date: movie.release_date.split('-')[0],
+//             genres: movie.genre_ids
+//                 .map(id => genresList.genres.filter(el => el.id === id))
+//                 .flat(),
+//         }));
+//         markupMoviesByPopularity(fetchRes);
+//     }
+//     catch (error) {
+//         console.log(error.message);
+// }
+// }
+
+// function markupMoviesByPopularity(res) {
+//         res.map(element => {
+//             if (element.genres.length > 2) {
+//                 const Obj = { name: "Other" };
+//                 element.genres[2] = Obj;
+//                 element.genres.length = 3
+//             }
+//         })
+//         return renderMoviesList(res);
+//     }
+
+
+export async function insertGenresToMoviesByGenres(id, page) {
+    try {
+        const fetchedGenres = await getMoviesByGenres(id, page);
+    clearGallery();
     const genresList = await getGenres(langCurrent());
-    return data.map(movie => ({
-        ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids
-            .map(id => genresList.genres.filter(el => el.id === id))
-            .flat(),
-    }));
-}
-
-function markupMoviesByPopularity(param) {
-    insertGenresToMoviesByPopularity(param).then(res => {
-    res.map(element => {
-    if (element.genres.length > 2) {
-        const Obj = {name: "Other"};
-        element.genres[2] = Obj;
-        element.genres.length = 3
-    }
-    })
-        renderMoviesList(res);
-}).catch(error => {
-    console.log(error.message)
-})
-}
-
-
-async function insertGenresToMoviesByGenres(id) {
-    const data = await getMoviesByGenres(id);
-    const genresList = await getGenres(langCurrent());
-    return data.map(movie => ({
+    renderButtons(fetchedGenres.page, 500, id); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
+    const fetchRes = fetchedGenres.results.map(movie => ({
         ...movie,
         release_date: movie.release_date.split('-')[0],
         genres: movie.genre_ids
             .map(id_1 => genresList.genres.filter(el => el.id === id_1))
             .flat(),
     }));
+    markupMoviesByGenres(fetchRes);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 function markupMoviesByGenres(id) {
-    insertGenresToMoviesByGenres(id).then(res => {
-        res.map(element => {
+        id.map(element => {
     if (element.genres.length > 2) {
         const Obj = {name: "Other"};
         element.genres[2] = Obj;
         element.genres.length = 3
     }
     })
-        return renderMoviesList(res);
-}).catch(error => {
-    console.log(error.message)
-})
+        return renderMoviesList(id);
 }
 
-async function insertGenresToMoviesByYear(year) {
-    const data = await getMoviesByYear(year);
-    const genresList = await getGenres(langCurrent());
-    return data.map(movie => ({
-        ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids
-            .map(id => genresList.genres.filter(el => el.id === id))
-            .flat(),
-    }));
+
+export async function insertGenresToMoviesByYear(year, page) {
+    try {
+        const fetchedYear = await getMoviesByYear(year, page);
+        clearGallery();
+        const genresList = await getGenres(langCurrent());
+        renderButtons(fetchedYear.page, 500, year); //// для Вадима ;) // paginationFunction(currentPage, totalPages, searchQuery)
+        const fetchRes = fetchedYear.results.map(movie => ({
+            ...movie,
+            release_date: movie.release_date.split('-')[0],
+            genres: movie.genre_ids
+                .map(id => genresList.genres.filter(el => el.id === id))
+                .flat(),
+        }));
+        markupMoviesByYear(fetchRes);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 function markupMoviesByYear(year) {
-    insertGenresToMoviesByYear(year).then(res => {
-    res.map(element => {
+    year.map(element => {
     if (element.genres.length > 2) {
         const Obj = {name: "Other"};
         element.genres[2] = Obj;
         element.genres.length = 3
     }
     })
-        renderMoviesList(res);
-}).catch(error => {
-    console.log(error.message)
-})
-}
+        renderMoviesList(year);
+};
+
 
 function renderMoviesList(movies) {
     const markup = moviesListPatern(movies)

@@ -5,6 +5,7 @@ import refs from './refs';
 import { startLoader, stopLoader } from './loader.js';
 import { paginationPage, renderButtons } from './pagination';
 import { langCurrent } from './language';
+import { SEARCH_TYPE } from './search-form';
 
 let page = 1;
 let searchQuery = '';
@@ -16,6 +17,7 @@ async function onMovieSearch(event) {
     return;
   };
   createSearchFetch(searchQuery);
+  localStorage.setItem(SEARCH_TYPE, "bySearch");
   refs.searchForm.reset();
 };
 
