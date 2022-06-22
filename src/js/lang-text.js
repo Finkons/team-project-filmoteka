@@ -14,6 +14,7 @@ export const text = {
     'home': 'HOME',
     'library': 'MY LIBRARY',
     'log-lang': 'Log in',
+    "log-out": "Log out",
   }
   , ua: {
     'queue-lang': 'В черзі',
@@ -30,5 +31,6 @@ export const text = {
     'home': 'ГОЛОВНА',
     'library': 'МОЯ БІБЛІОТЕКА',
     'log-lang': 'УВІЙТИ',
+    "log-out": "ВИЙТИ",
   }
 };
