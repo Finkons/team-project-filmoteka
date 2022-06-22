@@ -8,7 +8,7 @@ import { langCurrent } from './language';
 import { addLangGenres, releaseDateCheck } from './insert-movies.js';
 import { otherGenresTemplate } from './render-local-movies';
 
-let page = 1;
+
 let searchQuery = '';
 refs.searchForm.addEventListener('submit', onMovieSearch);
 
