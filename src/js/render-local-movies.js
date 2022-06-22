@@ -5,8 +5,6 @@ import { startLoader, stopLoader } from './loader.js';
 
 const watchedEmptyTemplatesUa = `<p>Ваша бібліотека переглянутих фільмів порожня :(</p>`;
 const queueEmptyTemplatesUa = `<p>Ваша бібліотека фільмів у черзі порожня :(</p>`;
-const localLang = localStorage.getItem('lang');
-
 
 
 refs.libraryBtnWatched.addEventListener('click', WatchedBtnAction);
@@ -74,7 +72,7 @@ function clearGalleryContainer() {
 export function watchedRender() {
   removeBtnMore()
   addEmptyTemplateEn('watched');
-  if (localLang === 'ua') {
+  if (localStorage.getItem('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
@@ -94,7 +92,7 @@ export function watchedRender() {
 function queueRender() {
   removeBtnMore()
   addEmptyTemplateEn('queue');
-  if (localLang === 'ua') {
+  if (localStorage.getItem('lang') === 'ua') {
     addEmptyTemplateUa();
   }
 
