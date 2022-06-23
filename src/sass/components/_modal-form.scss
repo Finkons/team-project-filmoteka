@@ -6,6 +6,10 @@
   background: var(--background-body);
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
+
+  @media screen and (max-width: 767px) {
+    width: 300px;
+  }
 }
 
 #chk {
@@ -28,6 +32,10 @@
   font-weight: bold;
   cursor: pointer;
   transition: 0.5s ease-in-out;
+
+  @media screen and (max-width: 767px) {
+    margin: 45px;
+  }
 }
 
 .input-form {
@@ -89,4 +97,17 @@
 
 #chk:checked ~ .signup label {
   transform: scale(0.6);
+}
+
+.auth-modal-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: transparent;
+
+  &:hover .modal-close-ico,
+  &:focus .modal-close-ico {
+    @extend %animation;
+    stroke: var(--secondary-bg-color);
+  }
 }
