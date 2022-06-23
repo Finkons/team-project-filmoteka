@@ -107,7 +107,7 @@ export function insertPopularMovies(query, page = 1) {
 insertPopularMovies();
 
 function onClick() {
-  if (refs.myLibraryBtn.classList.contains('current')) {
+  if (refs.homeBtn.classList.contains('current')) {
     window.location.reload();
   }
 }
