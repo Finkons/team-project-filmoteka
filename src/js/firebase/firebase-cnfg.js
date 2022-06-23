@@ -96,3 +96,11 @@ function showLoginError(error) {
 function showLoginState(user) {
   Notify.success(`You're logged in with email: ${user.email}`);
 }
+
+refs.logOutBtn.addEventListener('click', reload)
+
+function reload() {
+if (refs.authorizationBtn.classList.contains('visually-hidden')) {
+       return window.location.reload()
+     }
+}
