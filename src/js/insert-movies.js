@@ -11,6 +11,8 @@ import { insertGenresToMoviesByGenres, insertGenresToMoviesByYear, SEARCH_TYPE }
 
 localStorage.removeItem(SEARCH_TYPE);
 
+getGenresToCards();
+
 function renderMoviesList(movies) {
   const markup = moviesListPatern(movies);
   refs.galleryContainer.insertAdjacentHTML('beforeend', markup);
@@ -23,9 +25,6 @@ async function getGenresToCards() {
   localStorage.setItem("genres_en", JSON.stringify(genresListEn));
   localStorage.setItem("genres_ua", JSON.stringify(genresListUa));
 }
-
-getGenresToCards();
-
 
 async function insertGenresToMovies(page) {
   const data = await getPopularMovies(page);
@@ -54,10 +53,10 @@ export function addLangGenres(movie) {
 export function releaseDateCheck(movie) {
   if (movie.release_date) {
   return movie.release_date.split('-')[0]
-} return 'no info'
+  } return 'no info'
 }
 
-export function insertPopularMovies(query,page = 1) {
+export function insertPopularMovies(query, page = 1) {
   startLoader();
   const currentLocal = localStorage.getItem(SEARCH_TYPE);
 
@@ -104,7 +103,8 @@ export function insertPopularMovies(query,page = 1) {
       renderMoviesList(res);
       stopLoader();
     })
-    .catch(error => {
+      .catch(error => {
+      document.location.reload()
       console.log(error.message);
     });
   }
