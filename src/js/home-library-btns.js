@@ -2,12 +2,23 @@ import refs from './refs';
 import { ifMyLibraryOpen } from './render-local-movies';
 import { watchedRender } from './render-local-movies';
 import { startLoader, stopLoader } from './loader.js';
+import { checkIfLoggedIn } from './film-local-storage'
+import { onMyLibraryBtnClick } from './header-mylib';
 
 refs.myLibraryBtn.addEventListener('click', switchCurrentLibrary);
 refs.homeBtn.addEventListener('click', switchCurrentHome);
 
 function switchCurrentLibrary(e) {
   const currentPage = e.target;
+  const UID = localStorage.getItem('uid');
+
+  if (!UID) {
+    
+    return checkIfLoggedIn()
+    
+  } else {
+  onMyLibraryBtnClick() // зміна фону в хедері
+
   currentPage.classList.add('current');
   refs.homeBtn.classList.remove('current');
 
@@ -26,6 +37,7 @@ function switchCurrentLibrary(e) {
   refs.libraryBtnWatched.classList.add('active');
 
   watchedRender();
+  }  
 }
 
 function switchCurrentHome(e) {

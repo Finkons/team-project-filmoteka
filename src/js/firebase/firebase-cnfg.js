@@ -87,3 +87,11 @@ onAuthStateChanged(auth, user => {
     localStorage.removeItem('uid');
   }
 });
+
+refs.logOutBtn.addEventListener('click', reload)
+
+function reload() {
+if (refs.authorizationBtn.classList.contains('visually-hidden')) {
+       return window.location.reload()
+     }
+}

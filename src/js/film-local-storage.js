@@ -129,7 +129,7 @@ export function makeDisableBtn(id) {
   }
 }
 
-function checkIfLoggedIn() {
+export function checkIfLoggedIn() {
   const UID = localStorage.getItem('uid');
   if (!UID) {
     if (localStorage.getItem('lang') === 'ua') {
