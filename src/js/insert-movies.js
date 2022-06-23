@@ -113,24 +113,7 @@ insertPopularMovies();
 
 function onClick ()  {
   if (refs.homeBtn.classList.contains('current')) {
-    setTimeout(() => {
-      refs.galleryContainer.innerHTML = '';
-      const currentPage = localStorage.getItem('current_page')
-    insertGenresToMovies(currentPage).then(res => {
-      res.map(element => {
-        if (element.genres.length > 2) {
-          const Obj = otherGenresTemplate();
-          element.genres[2] = Obj;
-          element.genres.length = 3;
-        }
-      });
-      renderMoviesList(res);
-      stopLoader();
-    })
-    .catch(error => {
-      console.log(error.message);
-    })
-  }, 20);
+    window.location.reload();
   }
 };
 
