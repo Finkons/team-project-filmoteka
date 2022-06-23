@@ -31,9 +31,16 @@ export async function getMoviesById(id, lang) {
     console.log(error);
   }
 }
-export async function getMoviesByName(searchQuery,page) {
+export async function getMoviesByName(searchQuery, page, lang) {
   try {
-    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&language=uk&include_adult=false&page=${page}`;
+    let pageLang = localStorage.getItem('lang');
+    console.log(pageLang);
+    if (pageLang === 'en') {
+      lang = `en`;
+    } else {
+      lang = `uk`;
+    }
+    const url = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${searchQuery}&include_adult=false&page=${page}&language=${lang}`;
     const response = await axios.get(url);
     return response.data;
   } catch (error) {
