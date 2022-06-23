@@ -1,7 +1,7 @@
 import { getGenres, API_KEY } from './get-movies';
 import refs from './refs';
 import { otherGenresTemplate } from './render-local-movies';
-
+import { addLangGenres, releaseDateCheck } from './insert-movies.js';
 import { startLoader, stopLoader } from './loader.js';
 import moviesListPatern from '../templates/list-of-movies.hbs';
 import Notiflix from 'notiflix';
@@ -76,19 +76,25 @@ function clearGallery() {
     refs.galleryContainer.innerHTML = '';
 }
 
+refs.enLangBTN.addEventListener('click', renderGenresList)
+refs.uaLangBTN.addEventListener('click', renderGenresList)
+
+
+
 async function renderGenresList(lang) {
+    searchGenreEl.innerHTML = '';
     let pageLang = localStorage.getItem('lang');
     if (pageLang === 'ua') {
-    lang = `uk`;
+        lang = `uk`;
     } else {
-    lang = `en`;
+        lang = `en`;    
     }
     const response = await getGenres(lang);
     genresList = response.genres;
     const genresItems = genresList.map(({ name }) => {
     return `<option value="${name}">${name}</option>`
-}).join('');
-searchGenreEl.insertAdjacentHTML('beforeend', genresItems)
+    }).join('');
+    lang === `uk` ? searchGenreEl.insertAdjacentHTML('beforeend', `<option id="all-genres-lang" value="genres">всі жанри</option>` + genresItems) : searchGenreEl.insertAdjacentHTML('beforeend', `<option id="all-genres-lang" value="genres">all genres</option>` + genresItems);
 }
 
 
@@ -132,10 +138,8 @@ export async function insertGenresToMoviesByGenres(id, page) {
         totalPages > 500 ? renderButtons(fetchedGenres.page, 500, id) : renderButtons(fetchedGenres.page, fetchedGenres.total_pages-1, id);
     const fetchRes = fetchedGenres.results.map(movie => ({
         ...movie,
-        release_date: movie.release_date.split('-')[0],
-        genres: movie.genre_ids
-            .map(id_1 => genresList.genres.filter(el => el.id === id_1))
-            .flat(),
+        release_date: releaseDateCheck(movie),
+        genres: addLangGenres(movie),
     }));
     markupMoviesWithParams(fetchRes);
     }
@@ -165,10 +169,8 @@ export async function insertGenresToMoviesByYear(year, page) {
         totalPages > 500 ? renderButtons(fetchedYear.page, 500, year) : renderButtons(fetchedYear.page, fetchedYear.total_pages-1, year);
         const fetchRes = fetchedYear.results.map(movie => ({
             ...movie,
-            release_date: movie.release_date.split('-')[0],
-            genres: movie.genre_ids
-                .map(id => genresList.genres.filter(el => el.id === id))
-                .flat(),
+            release_date: releaseDateCheck(movie),
+            genres: addLangGenres(movie),
         }));
         markupMoviesWithParams(fetchRes);
     }
@@ -188,9 +190,7 @@ function markupMoviesWithParams(searchParam) {
         renderMoviesList(searchParam);
 };
 
-function onSearchFailure() {
-  Report.failure(
-    'Search Failure',
-    'Sorry, there is no movie matched your query. Please try again.',
-    'Ok');
-};
+// function cb() {
+//         location.reload()
+//     };
+
