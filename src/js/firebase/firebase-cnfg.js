@@ -11,6 +11,8 @@ import {
 import { getDatabase } from 'firebase/database';
 import refs from '../refs';
 import { startLoader, stopLoader } from '../loader';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { instance } from '../modal-auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCQboDh7MdYexzQ9iKKBLnYdXvaQGXlSyw',
@@ -30,13 +32,11 @@ export function regUser(mail, pass) {
   createUserWithEmailAndPassword(auth, mail, pass)
     .then(userCredential => {
       const user = userCredential.user;
+      instance.close();
       return user;
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
+      showLoginError(error);
     });
 }
 
@@ -44,13 +44,11 @@ export function loginUser(mail, pass) {
   signInWithEmailAndPassword(auth, mail, pass)
     .then(userCredential => {
       const user = userCredential.user;
+      instance.close();
       return user;
     })
     .catch(error => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode);
-      console.log(errorMessage);
+      showLoginError(error);
     });
 }
 
@@ -74,15 +72,27 @@ function handleLogOut(e) {
 
 onAuthStateChanged(auth, user => {
   if (user !== null) {
+    showLoginState(user);
     const uid = user.uid;
-    console.log(uid, `User in`);
     localStorage.setItem('uid', uid);
     refs.authorizationBtn.classList.add('visually-hidden');
     refs.logOutBtn.classList.remove('visually-hidden');
     return uid;
   } else {
     // User is signed out
-    console.log('User is signed out');
     localStorage.removeItem('uid');
   }
 });
+
+// Handle UI
+function showLoginError(error) {
+  if (error.code === AuthErrorCodes.INVALID_PASSWORD) {
+    Notify.failure(`Wrong password. Try again.`);
+  } else {
+    Notify.failure(`${error.message}`);
+  }
+}
+
+function showLoginState(user) {
+  Notify.success(`You're logged in with email: ${user.email}`);
+}

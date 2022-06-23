@@ -28,7 +28,7 @@ function renderMarkupByPageLang() {
   return modalMarkup;
 }
 
-const instance = basicLightbox.create(renderMarkupByPageLang(), {
+export const instance = basicLightbox.create(renderMarkupByPageLang(), {
   onShow: instance => {
     window.addEventListener('keydown', onEscPress);
     document.body.classList.toggle('no-scroll');
@@ -65,7 +65,8 @@ function regUserWithEmailPass(e) {
   const regPass = pswd.value;
 
   regUser(regMail, regPass);
-  instance.close();
+  startLoader();
+  stopLoader();
 }
 
 function loginUserWithEmailPass(e) {
@@ -79,7 +80,8 @@ function loginUserWithEmailPass(e) {
   const loginPass = pswd.value;
 
   loginUser(loginMail, loginPass);
-  instance.close();
+  startLoader();
+  stopLoader();
 }
 
 function onEscPress(event) {
