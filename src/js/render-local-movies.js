@@ -82,7 +82,7 @@ export function watchedRender() {
 
     
     addLoadMoreBtn()
-    if (JSON.parse(watchedLocalStorage).length <= 3) {
+    if (JSON.parse(watchedLocalStorage).length <= 6) {
       makeDisableBtn()
     }
     document.querySelector('.more_btn').addEventListener('click', wichLocalMoreListener)
@@ -102,7 +102,7 @@ function queueRender() {
     
     
     addLoadMoreBtn()
-    if (JSON.parse(queueLocalStorage).length <= 3) {
+    if (JSON.parse(queueLocalStorage).length <= 6) {
       makeDisableBtn()
     }
     document.querySelector('.more_btn').addEventListener('click', wichLocalMoreListener)
@@ -128,12 +128,12 @@ export function ifMyLibraryOpen() {
 }
 
 let firstSliceMovie = 0;
-let lastSliceMovie = 3;
+let lastSliceMovie = 6;
 function addMovieToGallery(localMovieId) {
   clearGalleryContainer();
 
   firstSliceMovie = 0;
-  lastSliceMovie = 3;
+  lastSliceMovie = 6;
   const localMessage = localMovieId;
   const localParse = JSON.parse(localMessage);
   
@@ -157,8 +157,8 @@ function wichLocalMoreListener() {
 function renderMoreMovie(localMovieId) {
   startLoader();
 
-  firstSliceMovie += 3;
-  lastSliceMovie += 3;
+  firstSliceMovie += 6;
+  lastSliceMovie += 6;
   const localMessage = localMovieId;
   const localParse = JSON.parse(localMessage);
   

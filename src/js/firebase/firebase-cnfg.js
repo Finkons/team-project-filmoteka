@@ -72,7 +72,7 @@ function handleLogOut(e) {
 
 onAuthStateChanged(auth, user => {
   if (user !== null) {
-    showLoginState(user);
+    // showLoginState(user);
     const uid = user.uid;
     localStorage.setItem('uid', uid);
     refs.authorizationBtn.classList.add('visually-hidden');
@@ -93,9 +93,9 @@ function showLoginError(error) {
   }
 }
 
-function showLoginState(user) {
-  Notify.success(`You're logged in with email: ${user.email}`);
-}
+// function showLoginState(user) {
+//   Notify.success(`You're logged in with email: ${user.email}`);
+// }
 
 refs.logOutBtn.addEventListener('click', reload)
 
