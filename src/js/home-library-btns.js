@@ -17,7 +17,7 @@ function switchCurrentLibrary(e) {
     return checkIfLoggedIn()
     
   } else {
-  onMyLibraryBtnClick() // зміна фону в хедері
+    onMyLibraryBtnClick();
 
   currentPage.classList.add('current');
   refs.homeBtn.classList.remove('current');

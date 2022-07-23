@@ -61,7 +61,6 @@ export async function getTotalPages(page) {
     const url = `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=en&page=${page}`;
     const response = await axios.get(url);
     const totalPages = response.data.total_pages;
-    // console.log(totalPages);
     return totalPages;
   } catch (error) {
     console.log(error);

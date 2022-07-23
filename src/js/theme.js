@@ -1,8 +1,5 @@
 const themeBtn = document.getElementById('toggle-theme-btn')
 
-
-
-
 function setDarkTheme() {
   document.body.classList.add('dark')
   themeBtn.textContent = "🔆"

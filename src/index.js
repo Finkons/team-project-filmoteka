@@ -3,8 +3,6 @@ import './js/get-movies';
 import './js/insert-movies';
 import './js/theme';
 import './js/loader';
-import './js/team';
-// import './js/modal-team';
 import './js/modal-auth';
 import './js/movie-genres';
 import './js/search-movies';

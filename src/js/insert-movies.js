@@ -25,7 +25,7 @@ function renderMoviesList(movies) {
 async function getGenresToCards() {
   const genresListEn = await getGenres('en');
   const genresListUa = await getGenres('uk');
-  console.log(localStorage.getItem('lang'));
+
   localStorage.setItem('genres_en', JSON.stringify(genresListEn));
   localStorage.setItem('genres_ua', JSON.stringify(genresListUa));
 }

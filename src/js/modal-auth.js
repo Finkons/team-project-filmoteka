@@ -18,7 +18,7 @@ function onBtnModalFormClick(event) {
 function renderMarkupByPageLang() {
   let pageLang = localStorage.getItem('lang');
   let modalMarkup;
-  // console.log(pageLang);
+  
   if (pageLang === 'ua') {
     modalMarkup = authMarkupUk();
   }

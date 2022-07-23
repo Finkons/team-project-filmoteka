@@ -57,14 +57,14 @@ function addListenerForCloseBtn(closeBtn) {
 function addListenerForWatched(watchBtn, filmId) {
   watchBtn.addEventListener('click', () => {
     addFilmToWatched(filmId);
-    notifySuccessWatched(watchBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
+    notifySuccessWatched(watchBtn, filmId); 
   });
 }
 
 function addListenerForQueued(queueBtn, filmId) {
   queueBtn.addEventListener('click', () => {
     addFilmToQueued(filmId);
-    notifySuccessQueued(queueBtn, filmId); // працює поки що тільки на динамічно створеному маркапі, потім пофікшу
+    notifySuccessQueued(queueBtn, filmId); 
   });
 }
 
@@ -93,7 +93,7 @@ async function renderMarkup(filmId) {
 
 function onEscPress(event) {
   const ESC_KEY = 'Escape';
-  // console.log(event);
+  
   if (event.code === ESC_KEY) {
     instance.close();
   }

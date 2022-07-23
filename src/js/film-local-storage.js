@@ -40,21 +40,29 @@ export function notifySuccessQueued(queueBtn, filmId) {
 
     if (localStorage.getItem('queued_films').includes(filmId)) {
       if (pageLang === 'ua') {
-        Notify.success('Додано до черги');
+        Notify.success('Додано до черги', {
+          clickToClose: true,
+        });
         queueBtn.textContent = 'В черзі';
       }
       if (pageLang === 'en') {
-        Notify.success('Added to queued');
+        Notify.success('Added to queued', {
+          clickToClose: true,
+        });
         queueBtn.textContent = 'Queued';
       }
       watchedBtn.disabled = true;
     } else {
       if (pageLang === 'ua') {
-        Notify.success('Видалено з черги');
+        Notify.success('Видалено з черги', {
+          clickToClose: true,
+        });
         queueBtn.textContent = 'Додати до черги';
       }
       if (pageLang === 'en') {
-        Notify.success('Deleted from queue');
+        Notify.success('Deleted from queue', {
+          clickToClose: true,
+        });
         queueBtn.textContent = 'Add to queue';
       }
       watchedBtn.disabled = false;
@@ -71,21 +79,29 @@ export function notifySuccessWatched(watchBtn, filmId) {
 
     if (localStorage.getItem('watched_films').includes(filmId)) {
       if (pageLang === 'ua') {
-        Notify.success('Додано до переглянутих');
+        Notify.success('Додано до переглянутих', {
+          clickToClose: true,
+        });
         watchBtn.textContent = 'Переглянуто';
       }
       if (pageLang === 'en') {
-        Notify.success('Added to watched');
+        Notify.success('Added to watched', {
+          clickToClose: true,
+        });
         watchBtn.textContent = 'Added to watched';
       }
       queueBtn.disabled = true;
     } else {
       if (pageLang === 'ua') {
-        Notify.success('Видалено з переглянутих');
+        Notify.success('Видалено з переглянутих', {
+          clickToClose: true,
+        });
         watchBtn.textContent = 'Додати до переглянутих';
       }
       if (pageLang === 'en') {
-        Notify.success('Deleted from watched');
+        Notify.success('Deleted from watched', {
+          clickToClose: true,
+        });
         watchBtn.textContent = 'Add to watched';
       }
       queueBtn.disabled = false;
@@ -133,11 +149,15 @@ export function checkIfLoggedIn() {
   const UID = localStorage.getItem('uid');
   if (!UID) {
     if (localStorage.getItem('lang') === 'ua') {
-      Notify.warning('Будь ласка зайдіть в акаунт')
+      Notify.warning('Будь ласка зайдіть в акаунт', {
+        clickToClose: true,
+      });
       return false;
     }
     if (localStorage.getItem('lang') === 'en') {
-      Notify.warning('Log in first please')
+      Notify.warning('Log in first please', {
+        clickToClose: true,
+      });
       return false;
     }
   }
