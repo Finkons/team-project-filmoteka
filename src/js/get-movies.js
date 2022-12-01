@@ -16,6 +16,7 @@ export async function getPopularMovies(page, lang) {
     console.log(error);
   }
 }
+
 export async function getMoviesById(id, lang) {
   try {
     let pageLang = document.querySelector('html').getAttribute('lang');
@@ -31,6 +32,7 @@ export async function getMoviesById(id, lang) {
     console.log(error);
   }
 }
+
 export async function getMoviesByName(searchQuery, page, lang) {
   try {
     let pageLang = localStorage.getItem('lang');
